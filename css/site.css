@@ -1081,3 +1081,68 @@ video, .fmt-hero, .beauty-card video, .cap-bg-video, .fmt-thumb video {
   object-fit: cover !important;
   object-position: center center !important;
 }
+
+/* ============ FINAL FINAL · videos display exactly as source, no crop, no stretch ============ */
+/* Hero player: tall Instagram Reel proportions, centered, video fills without cropping the character */
+.fmt-block .fmt-stage {
+  width: 100% !important;
+  max-width: 480px !important;
+  aspect-ratio: 9 / 16 !important;
+  min-height: 0 !important;
+  margin: 40px auto !important;
+  background: #000 !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+.fmt-block .fmt-stage video.fmt-hero {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: 50% 50% !important;
+  min-height: 0 !important;
+  aspect-ratio: auto !important;
+  display: block !important;
+}
+/* Thumbs match the hero exactly, just smaller */
+.fmt-thumbs {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 240px)) !important;
+  gap: 20px !important;
+  justify-content: center !important;
+  margin-top: 32px !important;
+}
+.fmt-thumb {
+  aspect-ratio: 9 / 16 !important;
+  min-height: 0 !important;
+  width: 100% !important;
+  background: #000 !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  position: relative !important;
+  cursor: pointer !important;
+}
+.fmt-thumb .fmt-thumb-img,
+.fmt-thumb img,
+.fmt-thumb video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: 50% 50% !important;
+  display: block !important;
+}
+/* Beauty reels: same treatment */
+.vid-grid.beauty .beauty-card {
+  aspect-ratio: 9 / 16 !important;
+  min-height: 0 !important;
+  max-width: 500px !important;
+  background: #000 !important;
+  overflow: hidden !important;
+  border-radius: 16px !important;
+}
+.vid-grid.beauty .beauty-card video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: 50% 50% !important;
+}
