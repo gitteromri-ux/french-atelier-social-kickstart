@@ -356,14 +356,38 @@ function sproutBlock(b){
 }
 
 const sproutHost = document.getElementById("sproutHost");
+// Real product screenshots per block
+const SPROUT_SHOTS = {
+  "Publishing · every calendar post scheduled once": "sprout/ui_publishing_calendar.webp",
+  "Approvals · Philippe reviews before anything goes live": "sprout/ui_publishing_new_post.webp",
+  "Engagement · Smart Inbox and rule-based replies": "sprout/ui_engagement_inbox.webp",
+  "Reporting · monthly delivered to inbox automatically": "sprout/ui_analytics_dashboard.webp"
+};
+
+function sproutBlockWithShot(b){
+  const shot = SPROUT_SHOTS[b.title];
+  return `
+    <div class="sprout-block-lg">
+      <div class="sprout-shot"><img src="${shot}" alt="${b.title}" loading="lazy"></div>
+      <div class="sprout-block-body">
+        <div class="sprout-icon-lg">${b.icon}</div>
+        <h3 class="sprout-title-lg">${b.title}</h3>
+        <ul class="sprout-list-lg">${b.lines.map(l => `<li>${l}</li>`).join("")}</ul>
+      </div>
+    </div>`;
+}
+
 if (sproutHost) {
   sproutHost.innerHTML = `
-    <div class="sprout-plan">
-      <div class="sprout-plan-name">${SPROUT.plan}</div>
-      <div class="sprout-plan-price">${SPROUT.price}</div>
-      <div class="sprout-plan-seats">${SPROUT.seats}</div>
+    <div class="sprout-header">
+      <img class="sprout-logo" src="sprout/sprout_logo.png" alt="Sprout Social">
+      <div class="sprout-plan-info">
+        <div class="sprout-plan-name">${SPROUT.plan}</div>
+        <div class="sprout-plan-price">${SPROUT.price}</div>
+        <div class="sprout-plan-seats">${SPROUT.seats}</div>
+      </div>
     </div>
-    <div class="sprout-grid">${SPROUT.blocks.map(sproutBlock).join("")}</div>
+    <div class="sprout-stack">${SPROUT.blocks.map(sproutBlockWithShot).join("")}</div>
     <div class="sprout-cautions">
       <div class="sprout-cautions-h">What this plan does NOT include</div>
       <ul>${SPROUT.cautions.map(c => `<li>${c}</li>`).join("")}</ul>

@@ -673,3 +673,151 @@ h2.big { font-size: clamp(64px, 8vw, 128px) !important; }
   .sprout-grid { grid-template-columns: 1fr; }
   .sprout-plan { grid-template-columns: 1fr; gap: 16px; }
 }
+
+/* ============ 4× GLOBAL FONT BUMP ============ */
+html, body { font-size: 26px !important; }
+.hero-h1 { font-size: clamp(120px, 14vw, 260px) !important; }
+.hero-sub { font-size: 40px !important; line-height: 1.35 !important; }
+.hero-kicker { font-size: 30px !important; }
+h2.big { font-size: clamp(96px, 12vw, 200px) !important; line-height: 0.98 !important; }
+.lead { font-size: 34px !important; line-height: 1.45 !important; }
+.eyebrow { font-size: 32px !important; }
+.stat-n { font-size: clamp(80px, 8vw, 140px) !important; }
+.stat-l { font-size: 22px !important; }
+.stat-sub { font-size: 20px !important; }
+
+/* Presenter cue MUCH bigger */
+.presenter-say { padding: 40px 48px !important; }
+.presenter-say .lbl { font-size: 20px !important; letter-spacing: 0.3em !important; }
+.presenter-say .txt { font-size: 40px !important; line-height: 1.3 !important; }
+
+/* RTM cards huge */
+.rtm-date { font-size: 32px !important; }
+.rtm-name { font-size: 48px !important; }
+.rtm-city { font-size: 20px !important; }
+.rtm-hook { font-size: 26px !important; }
+.rtm-body { padding: 40px 36px !important; }
+
+/* Format blocks bigger */
+.fmt-num { font-size: clamp(180px, 16vw, 280px) !important; }
+.fmt-title { font-size: clamp(84px, 10vw, 160px) !important; }
+.fmt-tag { font-size: 30px !important; }
+.fmt-lede { font-size: 32px !important; }
+.fmt-cap { font-size: 40px !important; padding: 22px 32px !important; }
+.fmt-sound { font-size: 22px !important; padding: 20px 34px !important; }
+
+/* Beauty caption */
+.beauty-cap { font-size: 30px !important; padding: 22px 28px !important; }
+
+/* Email frames bigger */
+.email-sub { font-size: 44px !important; line-height: 1.1 !important; }
+.email-pre { font-size: 22px !important; }
+.email-tag { font-size: 15px !important; letter-spacing: 0.22em !important; }
+.email-chrome .from { font-size: 18px !important; }
+.email-chrome .day { font-size: 16px !important; }
+.email-cta { font-size: 18px !important; padding: 22px !important; letter-spacing: 0.22em !important; }
+.email-frame { min-height: 780px !important; }
+.email-hero-img { aspect-ratio: 16/9 !important; }
+.email-row { grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)) !important; gap: 48px !important; }
+.email-track { margin-top: 120px !important; }
+.track-h h3 { font-size: 72px !important; }
+.track-h .count { font-size: 22px !important; }
+
+/* Capsule cards bigger */
+.cap-h { font-size: clamp(48px, 4.5vw, 68px) !important; }
+.cap-sub { font-size: 22px !important; }
+.cap-tag { font-size: 17px !important; padding: 10px 18px !important; letter-spacing: 0.28em !important; }
+.cap-num { font-size: 92px !important; }
+.cap-brand { font-size: 15px !important; letter-spacing: 0.32em !important; }
+.cap-meta { font-size: 16px !important; }
+
+/* Calendar cards MASSIVE */
+.cal-date-band { font-size: 68px !important; padding: 32px 36px 10px !important; }
+.cal-pillar-band { font-size: 24px !important; padding: 0 36px 28px !important; letter-spacing: 0.24em !important; }
+.cal-h { font-size: 56px !important; line-height: 1.0 !important; }
+.cal-cap { font-size: 28px !important; line-height: 1.45 !important; }
+.cal-asset { font-size: 18px !important; }
+.cal-card { min-height: 900px !important; border-top-width: 16px !important; }
+.cal-body { padding: 40px 36px 44px !important; gap: 20px !important; }
+.leg { font-size: 26px !important; }
+.swatch { width: 30px !important; height: 30px !important; }
+.cal-month h3 { font-size: clamp(96px, 10vw, 140px) !important; margin-bottom: 60px !important; }
+
+/* Diag list bigger */
+.diag-list .num { font-size: 34px !important; }
+.diag-list .txt { font-size: 26px !important; line-height: 1.5 !important; }
+.diag-list li { padding: 32px 0 !important; }
+.right-card h3 { font-size: 40px !important; }
+.right-card p { font-size: 24px !important; }
+.right-card .metric { font-size: 120px !important; }
+
+/* Pillar cards bigger */
+.pillar { padding: 60px 48px 48px !important; min-height: 480px !important; }
+.pillar-tag { font-size: 20px !important; }
+.pillar-h { font-size: 56px !important; line-height: 1.02 !important; }
+.pillar-p { font-size: 22px !important; }
+.pillar-day { font-size: 17px !important; padding-top: 24px !important; }
+.pillar::before { font-size: 96px !important; }
+
+/* Section num visible */
+.section-num { font-size: 220px !important; color: rgba(201,166,98,0.10) !important; }
+
+/* Nav bigger */
+.nav-brand { font-size: 34px !important; }
+.nav-links { gap: 40px !important; font-size: 18px !important; }
+.brand-strip { font-size: 32px !important; }
+.deck-counter { font-size: 30px !important; padding: 12px 24px !important; }
+.flow-dot { width: 34px !important; height: 34px !important; font-size: 14px !important; }
+.deck-btn { width: 78px !important; height: 78px !important; font-size: 36px !important; }
+
+/* ============ SPROUT SLIDE · with real logo + product screenshots ============ */
+.sprout-header {
+  display: flex; align-items: center; gap: 60px; margin-top: 60px;
+  padding: 48px 56px; background: white; border-radius: 20px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
+.sprout-logo { height: 96px; width: auto; flex-shrink: 0; }
+.sprout-plan-info { flex: 1; display: grid; grid-template-columns: 1.5fr 1.5fr 2fr; gap: 40px; align-items: baseline; }
+.sprout-plan-name { font-family: var(--serif); font-size: 44px; color: #1a1a1a; font-weight: 500; letter-spacing: -0.02em; }
+.sprout-plan-price { font-family: var(--serif); font-style: italic; font-size: 34px; color: #059669; font-weight: 500; }
+.sprout-plan-seats { font-size: 20px; color: #4a4a4a; line-height: 1.4; }
+
+.sprout-stack { display: flex; flex-direction: column; gap: 60px; margin-top: 80px; }
+.sprout-block-lg {
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center;
+  background: var(--ink-2); border: 2px solid rgba(242,237,227,0.12);
+  border-radius: 16px; padding: 48px; overflow: hidden;
+}
+.sprout-block-lg:nth-child(even) { grid-template-columns: 1fr 1.1fr; }
+.sprout-block-lg:nth-child(even) .sprout-shot { order: 2; }
+.sprout-shot {
+  border-radius: 12px; overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08);
+  background: #fff;
+}
+.sprout-shot img { width: 100%; height: auto; display: block; }
+.sprout-icon-lg { font-size: 88px; line-height: 1; margin-bottom: 24px; }
+.sprout-title-lg {
+  font-family: var(--serif); font-weight: 500; font-size: 52px; line-height: 1.05;
+  color: var(--cream); letter-spacing: -0.02em; margin-bottom: 32px;
+}
+.sprout-list-lg { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 20px; }
+.sprout-list-lg li {
+  font-size: 24px; line-height: 1.5; color: rgba(242,237,227,0.92);
+  padding-left: 32px; position: relative;
+}
+.sprout-list-lg li::before {
+  content: "→"; color: #10B981; font-weight: 700; font-size: 28px;
+  position: absolute; left: 0; top: 0;
+}
+
+.sprout-cautions { margin-top: 80px; padding: 48px 56px !important; border-radius: 16px !important; }
+.sprout-cautions-h { font-size: 22px !important; letter-spacing: 0.28em !important; }
+.sprout-cautions li { font-size: 22px !important; padding-left: 32px !important; }
+.sprout-cautions li::before { font-size: 28px !important; }
+
+@media (max-width: 1200px) {
+  .sprout-block-lg { grid-template-columns: 1fr !important; }
+  .sprout-header { flex-direction: column; gap: 30px; }
+  .sprout-plan-info { grid-template-columns: 1fr; }
+}
