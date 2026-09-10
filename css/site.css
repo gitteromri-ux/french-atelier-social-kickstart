@@ -1,4 +1,4 @@
-/* French Atelier · Social Kickstart — nocturnal editorial design system */
+/* French Atelier · Social Kickstart · nocturnal editorial design system */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --ink: #0A0910;
@@ -150,10 +150,23 @@ h3.mid { font-family: var(--serif); font-weight: 500; font-size: clamp(28px, 3vw
 .rtm-src { font-size: 12px; color: rgba(201,166,98,0.7); word-break: break-all; margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line-2); }
 .rtm-src a { color: var(--gold-2); }
 
-/* Assets — videos */
+/* Assets · videos */
 .assets-vid { background: linear-gradient(180deg, var(--ink-2) 0%, var(--ink) 100%); }
 .vid-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 72px; }
-.vid-grid.beauty { grid-template-columns: repeat(3, 1fr); margin-top: 48px; }
+.vid-grid.beauty { grid-template-columns: repeat(3, 1fr); margin-top: 32px; }
+
+/* Format blocks · large-headline presentation */
+.format-block { margin-top: 90px; padding-top: 60px; border-top: 1px solid var(--line); }
+.format-block:first-of-type { margin-top: 72px; }
+.format-h { display: grid; grid-template-columns: 160px 1fr auto; gap: 28px; align-items: baseline; margin-bottom: 20px; }
+.format-num { font-family: var(--serif); font-style: italic; font-size: 24px; color: var(--gold-2); letter-spacing: 0.01em; }
+.format-title { font-family: var(--serif); font-weight: 500; font-size: clamp(44px, 5vw, 72px); line-height: 1.02; letter-spacing: -0.02em; color: var(--cream); }
+.format-count { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,237,227,0.6); font-weight: 600; text-align: right; white-space: nowrap; }
+.format-lede { font-size: 18px; line-height: 1.5; color: rgba(242,237,227,0.78); max-width: 900px; margin: 0 0 32px; }
+@media (max-width: 900px) {
+  .format-h { grid-template-columns: 1fr; gap: 8px; }
+  .format-count { text-align: left; }
+}
 .vid-card { background: #000; border: 1px solid var(--line); position: relative; overflow: hidden; }
 .vid-card video { width: 100%; height: 100%; display: block; aspect-ratio: 9/16; object-fit: cover; background: #000; }
 .vid-card.wide video { aspect-ratio: 16/9; }
