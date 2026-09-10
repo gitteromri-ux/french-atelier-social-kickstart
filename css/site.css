@@ -843,3 +843,32 @@ h2.big { font-size: clamp(96px, 12vw, 200px) !important; line-height: 0.98 !impo
   left: 24px !important; 
   right: 24px !important; 
 }
+
+/* Beauty actual selectors */
+.vid-grid.beauty { 
+  grid-template-columns: repeat(auto-fit, minmax(560px, 1fr)) !important;
+  gap: 60px !important;
+  margin-top: 80px !important;
+}
+.vid-grid.beauty .beauty-card { 
+  aspect-ratio: 9/16 !important;
+  min-height: 980px !important;
+  max-width: none !important;
+}
+.vid-grid.beauty .beauty-card video { 
+  width: 100% !important; 
+  height: 100% !important; 
+  object-fit: cover !important; 
+}
+.beauty-cap { 
+  font-size: 36px !important; 
+  padding: 28px 36px !important; 
+  bottom: 28px !important; 
+  left: 28px !important; 
+  right: 28px !important;
+  line-height: 1.2 !important;
+}
+.beauty-sound {
+  width: 72px !important; height: 72px !important; font-size: 32px !important;
+  top: 24px !important; right: 24px !important;
+}
