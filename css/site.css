@@ -498,3 +498,100 @@ h2.big { font-size: clamp(64px, 8vw, 128px) !important; }
 .cap-h { font-size: clamp(34px, 3.4vw, 48px) !important; }
 .cap-sub { font-size: 17px !important; }
 .cap-tag { font-size: 13px !important; }
+
+/* ============ RTM CARDS · 4K image, colored accent, larger ============ */
+.rtm-grid { grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)) !important; gap: 32px !important; }
+.rtm-card {
+  padding: 0 !important;
+  background: var(--ink-2);
+  border: 2px solid var(--accent, rgba(201,166,98,0.3)) !important;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  transition: transform .4s, box-shadow .4s;
+  display: flex; flex-direction: column;
+  min-height: 620px;
+}
+.rtm-card:hover { transform: translateY(-6px); box-shadow: 0 50px 120px rgba(0,0,0,0.8), 0 0 0 3px var(--accent, var(--gold)); }
+.rtm-img { aspect-ratio: 16/10; overflow: hidden; position: relative; }
+.rtm-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.rtm-img::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(10,9,16,0.6) 100%);
+}
+.rtm-body { padding: 32px 28px 28px; display: flex; flex-direction: column; flex: 1; gap: 12px; }
+.rtm-date {
+  font-family: var(--serif); font-style: italic; font-size: 24px !important;
+  color: var(--accent, var(--gold-2)); font-weight: 500;
+}
+.rtm-name {
+  font-family: var(--serif); font-weight: 500;
+  font-size: 32px !important; line-height: 1.05;
+  color: var(--cream); letter-spacing: -0.01em;
+}
+.rtm-city { font-size: 14px !important; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(242,237,227,0.65); font-weight: 700; }
+.rtm-hook { font-size: 18px !important; line-height: 1.5; color: rgba(242,237,227,0.9); flex: 1; }
+.rtm-src { font-size: 13px; padding-top: 14px; margin-top: auto; border-top: 1px solid rgba(242,237,227,0.15); }
+.rtm-src a { color: var(--accent, var(--gold-2)); font-weight: 600; }
+
+/* ============ CONTENT CALENDAR GRID · huge colored cards with mockup thumbs ============ */
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 32px; margin-top: 40px;
+}
+.cal-card {
+  background: var(--ink-2);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  border-top: 8px solid var(--gold-2);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  transition: transform .3s, box-shadow .3s;
+  min-height: 520px;
+}
+.cal-card:hover { transform: translateY(-4px); box-shadow: 0 40px 100px rgba(0,0,0,0.7); }
+.cal-card.cal-inspo { border-top-color: var(--gold-2); background: linear-gradient(180deg, rgba(217,184,114,0.10), var(--ink-2)); }
+.cal-card.cal-prod  { border-top-color: var(--rose);   background: linear-gradient(180deg, rgba(228,180,168,0.10), var(--ink-2)); }
+.cal-card.cal-edu   { border-top-color: #7CA6C7;       background: linear-gradient(180deg, rgba(124,166,199,0.10), var(--ink-2)); }
+
+.cal-date-band {
+  padding: 20px 24px 6px;
+  font-family: var(--serif); font-style: italic;
+  font-size: 36px; color: var(--cream); font-weight: 500;
+}
+.cal-pillar-band {
+  padding: 0 24px 20px;
+  font-size: 13px; letter-spacing: 0.18em; font-weight: 800;
+  text-transform: uppercase;
+}
+.cal-inspo .cal-pillar-band { color: var(--gold-2); }
+.cal-prod  .cal-pillar-band { color: var(--rose); }
+.cal-edu   .cal-pillar-band { color: #7CA6C7; }
+
+.cal-thumb {
+  aspect-ratio: 16/9;
+  background: #000; overflow: hidden; position: relative;
+  border-top: 1px solid rgba(242,237,227,0.08);
+  border-bottom: 1px solid rgba(242,237,227,0.08);
+}
+.cal-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+.cal-body { padding: 24px 24px 28px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.cal-h {
+  font-family: var(--serif); font-weight: 500;
+  font-size: 30px; line-height: 1.1;
+  color: var(--cream); letter-spacing: -0.01em; margin: 0;
+}
+.cal-cap {
+  font-size: 17px; line-height: 1.5; color: rgba(242,237,227,0.85);
+  margin: 0;
+}
+.cal-asset {
+  margin-top: auto; padding-top: 14px; border-top: 1px solid rgba(242,237,227,0.15);
+  font-family: monospace; font-size: 13px; color: var(--gold-2);
+  letter-spacing: 0.03em;
+}
+
+/* fix thumb aspect for portrait videos */
+.fmt-thumb video { aspect-ratio: 9/16 !important; max-height: 260px; }
