@@ -85,9 +85,10 @@ function vidCard(v){
       </div>
     </div>`;
 }
-document.getElementById("vidGrid").innerHTML    = FORMAL.map(vidCard).join("");
-document.getElementById("orgGrid").innerHTML    = ORG.map(vidCard).join("");
-document.getElementById("beautyGrid").innerHTML = BEAUTY.map(vidCard).join("");
+function fill(id, arr, fn){ const el = document.getElementById(id); if(el) el.innerHTML = arr.map(fn).join(""); }
+fill("vidGrid",    FORMAL, vidCard);
+fill("orgGrid",    ORG,    vidCard);
+fill("beautyGrid", BEAUTY, vidCard);
 
 // Sound-toggle behavior · single video with sound at a time
 document.querySelectorAll(".sound-btn").forEach(btn => {
@@ -159,10 +160,10 @@ function emailCard(m){
       </div>
     </div>`;
 }
-document.getElementById("emailsLifecycle").innerHTML = EMAILS_LIFECYCLE.map(emailCard).join("");
-document.getElementById("emailsAcq").innerHTML       = EMAILS_ACQ.map(emailCard).join("");
-document.getElementById("emailsOnb").innerHTML       = EMAILS_ONB.map(emailCard).join("");
-document.getElementById("emailsCap").innerHTML       = EMAILS_CAP.map(emailCard).join("");
+fill("emailsLifecycle", EMAILS_LIFECYCLE, emailCard);
+fill("emailsAcq",       EMAILS_ACQ,       emailCard);
+fill("emailsOnb",       EMAILS_ONB,       emailCard);
+fill("emailsCap",       EMAILS_CAP,       emailCard);
 
 /* ---------- CONTENT CALENDAR · 23 posts ---------- */
 const CAL_SEP = [
@@ -212,5 +213,6 @@ function calRow(r){
       <td class="asset">${r.asset}</td>
     </tr>`;
 }
-document.querySelector("#calSep tbody").innerHTML = CAL_SEP.map(calRow).join("");
-document.querySelector("#calOct tbody").innerHTML = CAL_OCT.map(calRow).join("");
+function fillTbody(sel, arr){ const el = document.querySelector(sel); if(el) el.innerHTML = arr.map(calRow).join(""); }
+fillTbody("#calSep tbody", CAL_SEP);
+fillTbody("#calOct tbody", CAL_OCT);
