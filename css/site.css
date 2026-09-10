@@ -821,3 +821,25 @@ h2.big { font-size: clamp(96px, 12vw, 200px) !important; line-height: 0.98 !impo
   .sprout-header { flex-direction: column; gap: 30px; }
   .sprout-plan-info { grid-template-columns: 1fr; }
 }
+
+/* ============ BEAUTY VIDEOS 3× LARGER + FA LOGO OVERLAY (baked in mp4) ============ */
+.beauty-grid { 
+  grid-template-columns: repeat(auto-fit, minmax(560px, 1fr)) !important;
+  gap: 60px !important;
+}
+.beauty-card { 
+  aspect-ratio: 9/16 !important;
+  min-height: 900px !important;
+}
+.beauty-card video { 
+  width: 100% !important; 
+  height: 100% !important; 
+  object-fit: cover !important; 
+}
+.beauty-cap { 
+  font-size: 34px !important; 
+  padding: 26px 32px !important; 
+  bottom: 24px !important; 
+  left: 24px !important; 
+  right: 24px !important; 
+}
