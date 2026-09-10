@@ -1043,3 +1043,41 @@ video, .fmt-hero, .beauty-card video, .cap-bg-video, .fmt-thumb video {
   object-position: center top !important;
   width: 100% !important; height: 100% !important; display: block !important;
 }
+
+/* ============ FINAL FIX · videos at natural aspect, full character visible ============ */
+/* Overrides all prior broken object-fit rules */
+.fmt-stage {
+  min-height: auto !important;
+  aspect-ratio: 9/16 !important;
+  max-width: 560px !important;
+  margin: 40px auto !important;
+  background: #000 !important;
+}
+.fmt-stage video.fmt-hero {
+  width: 100% !important; height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  min-height: 0 !important;
+}
+.fmt-thumb {
+  aspect-ratio: 9/16 !important;
+  min-height: 480px !important;
+  background: #000 !important;
+}
+.fmt-thumb-img, .fmt-thumb video {
+  width: 100% !important; height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+.beauty-card {
+  aspect-ratio: 9/16 !important;
+  background: #000 !important;
+}
+.beauty-card video {
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+.cap-bg-video {
+  object-fit: cover !important;
+  object-position: center center !important;
+}
