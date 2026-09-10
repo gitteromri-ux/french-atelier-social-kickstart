@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>French Atelier · Social Kickstart · Deck view</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  html, body { height: 100%; overflow: hidden; }
+  body { background: var(--ink); }
+  .deck-nav { position: fixed; bottom: 24px; left: 0; right: 0; z-index: 200; display: flex; justify-content: center; gap: 16px; }
+  .deck-btn { background: rgba(201,166,98,0.15); border: 1px solid rgba(201,166,98,0.35); color: var(--cream); width: 52px; height: 52px; border-radius: 50%; font-size: 22px; cursor: pointer; backdrop-filter: blur(10px); }
+  .deck-btn:hover { background: rgba(201,166,98,0.35); }
+  .deck-counter { position: fixed; top: 20px; right: 40px; z-index: 200; font-family: var(--serif); font-style: italic; color: var(--gold-2); font-size: 20px; background: rgba(10,9,16,0.85); padding: 8px 16px; border-radius: 4px; }
+  .slide { position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow-y: auto; overflow-x: hidden; opacity: 0; pointer-events: none; transition: opacity .5s ease; padding: 40px; }
+  .slide.active { opacity: 1; pointer-events: all; }
+  .slide section { padding: 60px 40px 40px; min-height: auto; }
+  .slide .section-num { top: 60px; right: 40px; font-size: 180px; }
+  .slide .stat-row { margin-top: 48px; padding-top: 32px; }
+  .slide .diag-grid { margin-top: 40px; }
+  .slide .pillar-grid { margin-top: 40px; }
+  .slide .rtm-grid, .slide .vid-grid, .slide .email-row, .slide .cap-grid { margin-top: 40px; }
+  .slide .lead { margin-top: 20px; font-size: 20px; }
+  .slide .cal-month { margin-top: 32px; }
+  .slide .cal-month h3 { font-size: 36px; }
+  .slide h1.display, .slide h2.big { font-size: clamp(48px, 5vw, 84px); }
+  .slide .hero-h1 { font-size: clamp(56px, 7vw, 120px); }
+  .brand-strip { position: fixed; top: 20px; left: 40px; z-index: 200; font-family: var(--serif); font-size: 22px; color: var(--cream); }
+  .brand-strip em { font-style: italic; color: var(--gold-2); }
+</style>
+</head>
+<body>
+
+<div class="brand-strip">The French <em>Atelier</em> · Deck</div>
+<div class="deck-counter" id="counter">01 / 08</div>
+
+<!-- SLIDE 1 · HERO -->
+<div class="slide active" data-i="1">
+  <section class="hero" style="min-height:calc(100vh - 80px)">
+    <div class="wrap">
+      <div class="hero-kicker">French Atelier by Acadomia · Organic Social Kickstart · Sept and Oct 2026</div>
+      <h1 class="hero-h1">Three posts a week,<br>starting <em>today</em>.</h1>
+      <p class="hero-sub">A live cultural calendar, an on-brand cadence of Inspiration, Product and Education, and a delivery-ready library of Philippe and Charline videos, viral beauty reels, one hundred and four designed emails, and the Mapster journey.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="stat-n">16,875</div><div class="stat-l">Instagram · @livefrenchatelier</div><div class="stat-sub">Dormant audience</div></div>
+        <div class="stat"><div class="stat-n">6,700</div><div class="stat-l">Facebook · French Atelier</div><div class="stat-sub">Combined reach 23,575</div></div>
+        <div class="stat"><div class="stat-n">23</div><div class="stat-l">Posts · Sept and Oct</div><div class="stat-sub">3 per week</div></div>
+        <div class="stat"><div class="stat-n">104</div><div class="stat-l">Designed emails in library</div><div class="stat-sub">30 · 40 · 34</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- SLIDE 2 · BACKGROUND & STRATEGY -->
+<div class="slide" data-i="2">
+  <section class="bg-diagnosis">
+    <div class="section-num">01</div>
+    <div class="wrap">
+      <div class="eyebrow">Where we are · and where we go</div>
+      <h2 class="big">The account is quiet. From today, it <em>speaks</em>.</h2>
+      <div class="diag-grid">
+        <ul class="diag-list">
+          <li><span class="num">i.</span><span class="txt"><b>Baseline reality.</b> 16,875 followers on Instagram, 6,700 on Facebook, silent since Bastille Day.</span></li>
+          <li><span class="num">ii.</span><span class="txt"><b>Audience.</b> American adults, aspirational Francophiles, drawn to beauty, taste, craft.</span></li>
+          <li><span class="num">iii.</span><span class="txt"><b>Cadence.</b> Three posts a week. Monday Inspiration, Wednesday Product, Friday Education.</span></li>
+          <li><span class="num">iv.</span><span class="txt"><b>Format bias.</b> Video first, ninety percent motion. Static reserved for editorial email heroes.</span></li>
+          <li><span class="num">v.</span><span class="txt"><b>Voice.</b> Cormorant italic, cream on ink, gold. Curated as a magazine, sold as a school.</span></li>
+        </ul>
+        <div class="right-card">
+          <h3>The one belief we shift</h3>
+          <p>Americans learn French from apps. We show them the culture apps cannot teach.</p>
+          <div class="metric">3× / week</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- SLIDE 3 · CADENCE -->
+<div class="slide" data-i="3">
+  <section class="cadence">
+    <div class="section-num">02</div>
+    <div class="wrap">
+      <div class="eyebrow">The three pillars of the week</div>
+      <h2 class="big">A rhythm that <em>reads like a magazine</em>.</h2>
+      <div class="pillar-grid">
+        <article class="pillar" data-num="01"><div class="pillar-tag">Monday · Inspiration</div><div class="pillar-h">The France that stops the scroll.</div><div class="pillar-p">Real-time cultural moments happening in France this week. Grape harvests, museum openings, Fashion Week couture close-ups, Lyon lit up, Louvre after dark.</div><div class="pillar-day"><b>Format:</b> 9:16 reel · 8 to 20 sec · music-forward</div></article>
+        <article class="pillar" data-num="02"><div class="pillar-tag">Wednesday · Product</div><div class="pillar-h">The lesson, in the wild.</div><div class="pillar-p">Philippe and Charline side-by-side, formal versus spoken French, one micro-lesson at a time. Lip-sync clean, subtitles on, sound-off legible, sound-on delightful.</div><div class="pillar-day"><b>Format:</b> 9:16 · 5 to 8 sec · captioned</div></article>
+        <article class="pillar" data-num="03"><div class="pillar-tag">Friday · Education</div><div class="pillar-h">One word that changes everything.</div><div class="pillar-p">Idea-behind-the-word posts. Tu me manques. Dépaysement. Flâner. Culture-first vocabulary delivered as a soft essay across a hero image.</div><div class="pillar-day"><b>Format:</b> Editorial carousel or 6-sec kinetic type</div></article>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- SLIDE 4 · RTM -->
+<div class="slide" data-i="4">
+  <section class="rtm">
+    <div class="section-num">03</div>
+    <div class="wrap">
+      <div class="eyebrow">Real-time · France, right now</div>
+      <h2 class="big">There is a lot of <em>hot stuff</em> going on in France.</h2>
+      <p class="lead">Nineteen dazzling cultural moments across the seven weeks. Every post rides one.</p>
+      <div class="rtm-grid" id="rtmGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- SLIDE 5 · ASSETS -->
+<div class="slide" data-i="5">
+  <section class="assets-vid">
+    <div class="section-num">04</div>
+    <div class="wrap">
+      <div class="eyebrow">In our repository, ready to post</div>
+      <h2 class="big">Philippe and Charline · <em>formal versus spoken</em>.</h2>
+      <p class="lead">Eleven finished side-by-side lessons. Perfect lip-sync. Ready for every Wednesday post through end of October.</p>
+      <div class="vid-grid" id="vidGrid"></div>
+      <div class="subhead">Aspirational beauty reels · Monday inspiration bank</div>
+      <div class="vid-grid beauty" id="beautyGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- SLIDE 6 · EMAILS -->
+<div class="slide" data-i="6">
+  <section class="emails">
+    <div class="section-num">05</div>
+    <div class="wrap">
+      <div class="eyebrow">One hundred and four designed emails</div>
+      <h2 class="big">A library of <em>hero images and subjects</em> already earning open rates.</h2>
+      <div class="email-track">
+        <div class="track-h"><h3>Lifecycle track</h3><div class="count">30 emails</div></div>
+        <div class="email-row" id="emailsLifecycle"></div>
+      </div>
+      <div class="email-track">
+        <div class="track-h"><h3>Culture Capsule invitations</h3><div class="count">Exclusive tier</div></div>
+        <div class="email-row" id="emailsCap"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- SLIDE 7 · CAPSULES + MAPSTER -->
+<div class="slide" data-i="7">
+  <section class="capsules">
+    <div class="section-num">06</div>
+    <div class="wrap">
+      <div class="eyebrow">Culture capsules · exclusive to French Atelier</div>
+      <h2 class="big">Chanel. Dior. Impressionism. <em>Only here</em>.</h2>
+      <div class="cap-grid">
+        <article class="cap-card"><img src="capsules/capsule-chanel.jpg"><div class="cap-body"><div class="cap-tag">Fashion</div><div class="cap-h">Chanel · The Rue Cambon Language</div></div></article>
+        <article class="cap-card"><img src="capsules/capsule-impressionism.jpg"><div class="cap-body"><div class="cap-tag">Art</div><div class="cap-h">Impressionism · Reading Monet's Light</div></div></article>
+        <article class="cap-card"><img src="capsules/capsule-louis.jpg"><div class="cap-body"><div class="cap-tag">Heritage</div><div class="cap-h">Louis XIV · Versailles as Grammar</div></div></article>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- SLIDE 8 · CONTENT CALENDAR -->
+<div class="slide" data-i="8">
+  <section class="calendar">
+    <div class="section-num">07</div>
+    <div class="wrap">
+      <div class="eyebrow">The plan · 23 posts · goes live today</div>
+      <h2 class="big">Content calendar · <em>Sept and Oct 2026</em>.</h2>
+      <div class="cal-legend">
+        <span class="leg"><span class="swatch sw-inspo"></span>Monday · Inspiration</span>
+        <span class="leg"><span class="swatch sw-prod"></span>Wednesday · Product</span>
+        <span class="leg"><span class="swatch sw-edu"></span>Friday · Education</span>
+      </div>
+      <div class="cal-month">
+        <h3>Remainder of <em>September</em></h3>
+        <table class="cal-table" id="calSep"><thead><tr><th>Date</th><th>Pillar</th><th>Concept</th><th>Caption</th><th>Asset</th></tr></thead><tbody></tbody></table>
+      </div>
+      <div class="cal-month">
+        <h3>All of <em>October</em></h3>
+        <table class="cal-table" id="calOct"><thead><tr><th>Date</th><th>Pillar</th><th>Concept</th><th>Caption</th><th>Asset</th></tr></thead><tbody></tbody></table>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="deck-nav">
+  <button class="deck-btn" id="prev" aria-label="Prev">‹</button>
+  <button class="deck-btn" id="next" aria-label="Next">›</button>
+</div>
+
+<script src="js/site.js"></script>
+<script>
+  const slides = document.querySelectorAll(".slide");
+  const total = slides.length;
+  let cur = 0;
+  const counter = document.getElementById("counter");
+  function show(i) {
+    if (i < 0) i = 0; if (i >= total) i = total - 1;
+    cur = i;
+    slides.forEach((s, idx) => s.classList.toggle("active", idx === i));
+    counter.textContent = String(i+1).padStart(2,"0") + " / " + String(total).padStart(2,"0");
+    // pause videos not in active slide
+    document.querySelectorAll("video").forEach(v => v.muted = true);
+    document.querySelectorAll(".sound-btn").forEach(b => b.textContent = "🔇");
+  }
+  document.getElementById("next").addEventListener("click", () => show(cur+1));
+  document.getElementById("prev").addEventListener("click", () => show(cur-1));
+  document.addEventListener("keydown", e => {
+    if (e.key === "ArrowRight" || e.key === " ") show(cur+1);
+    if (e.key === "ArrowLeft") show(cur-1);
+  });
+</script>
+</body>
+</html>
