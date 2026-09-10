@@ -176,35 +176,35 @@ if (beautyHost) {
 /* ---------- ALL 30 EMAILS ---------- */
 const EMAILS = [
   {n:"01",day:"0",cat:"WELCOME",from:"hello@frenchatelier.com",sub:"Bienvenue · your French starts here",pre:"You just took a step most adults never take. Here is what happens in the next seven days.",hero:"heroes/banner.jpg"},
-  {n:"02",day:"1",cat:"WELCOME",from:"charline@frenchatelier.com",sub:"Meet your teacher · live from France",pre:"Charline introduces herself. One minute. In her real Paris apartment.",hero:"heroes/banner.jpg"},
-  {n:"03",day:"3",cat:"WELCOME",from:"hello@frenchatelier.com",sub:"The 4-minute placement test",pre:"Four minutes. One click. We match you to the right cohort.",hero:"heroes/banner.jpg"},
-  {n:"04",day:"5",cat:"WELCOME",from:"philippe@frenchatelier.com",sub:"Why we teach in groups of 8 (not 1)",pre:"The intimacy of a private tutor. The energy of a real cohort.",hero:"heroes/banner.jpg"},
-  {n:"05",day:"7",cat:"WELCOME",from:"hello@frenchatelier.com",sub:"What a French Atelier class actually looks like",pre:"Three-minute tour of a live session. No slides. Real conversation.",hero:"heroes/banner.jpg"},
+  {n:"02",day:"1",cat:"WELCOME",from:"charline@frenchatelier.com",sub:"Meet your teacher · live from France",pre:"Charline introduces herself. One minute. In her real Paris apartment.",hero:"posters/formal_vs_spoken_11.jpg"},
+  {n:"03",day:"3",cat:"WELCOME",from:"hello@frenchatelier.com",sub:"The 4-minute placement test",pre:"Four minutes. One click. We match you to the right cohort.",hero:"posters/homonyms_4.jpg"},
+  {n:"04",day:"5",cat:"WELCOME",from:"philippe@frenchatelier.com",sub:"Why we teach in groups of 8 (not 1)",pre:"The intimacy of a private tutor. The energy of a real cohort.",hero:"posters/french_history.jpg"},
+  {n:"05",day:"7",cat:"WELCOME",from:"hello@frenchatelier.com",sub:"What a French Atelier class actually looks like",pre:"Three-minute tour of a live session. No slides. Real conversation.",hero:"posters/formal_vs_spoken_12.jpg"},
   {n:"08",day:"25",cat:"SOUL",from:"vincent@frenchatelier.com",sub:"The French don't say \"I miss you\"",pre:"They say tu me manques · you are missing from me. One grammatical flip changes how love is spoken.",hero:"heroes/email8_tu_me_manques.jpg"},
   {n:"11",day:"35",cat:"SOUL",from:"philippe@frenchatelier.com",sub:"On June 21st, all of France sings",pre:"La Fête de la Musique. Every corner, every square. Twelve words to sing along.",hero:"heroes/email11_sings.jpg"},
-  {n:"15",day:"49",cat:"SOUL",from:"vincent@frenchatelier.com",sub:"The unsent letter · a Proust passage we love",pre:"Twelve lines. One breath. The rhythm of French thought.",hero:"heroes/email8_tu_me_manques.jpg"},
-  {n:"19",day:"63",cat:"SOUL",from:"charline@frenchatelier.com",sub:"The single French expression that defines friendship",pre:"On se voit. See you. It's not a farewell, it's a promise.",hero:"heroes/email9_coffee.jpg"},
+  {n:"15",day:"49",cat:"SOUL",from:"vincent@frenchatelier.com",sub:"The unsent letter · a Proust passage we love",pre:"Twelve lines. One breath. The rhythm of French thought.",hero:"capsules/capsule-versailles.jpg"},
+  {n:"19",day:"63",cat:"SOUL",from:"charline@frenchatelier.com",sub:"The single French expression that defines friendship",pre:"On se voit. See you. It's not a farewell, it's a promise.",hero:"posters/beauty_4.jpg"},
   {n:"09",day:"28",cat:"TASTE",from:"vincent@frenchatelier.com",sub:"How to order a coffee in Paris",pre:"Un café is a verb in Paris. What you order says who you are.",hero:"heroes/email9_coffee.jpg"},
-  {n:"13",day:"42",cat:"TASTE",from:"philippe@frenchatelier.com",sub:"The French word for hunger has three meanings",pre:"Faim, envie, gourmandise. The French map appetite the way English maps colour.",hero:"heroes/email9_coffee.jpg"},
-  {n:"17",day:"56",cat:"TASTE",from:"charline@frenchatelier.com",sub:"The market in Lyon at 8am",pre:"Twelve stalls. Nine cheeses. One vocabulary that opens them all.",hero:"heroes/email9_coffee.jpg"},
+  {n:"13",day:"42",cat:"TASTE",from:"philippe@frenchatelier.com",sub:"The French word for hunger has three meanings",pre:"Faim, envie, gourmandise. The French map appetite the way English maps colour.",hero:"posters/french_cheeses.jpg"},
+  {n:"17",day:"56",cat:"TASTE",from:"charline@frenchatelier.com",sub:"The market in Lyon at 8am",pre:"Twelve stalls. Nine cheeses. One vocabulary that opens them all.",hero:"posters/french_wines_1.jpg"},
   {n:"10",day:"32",cat:"STYLE",from:"charline@frenchatelier.com",sub:"There is a French word for the cinema I love",pre:"Cinéphile, cinéaste, séance, salle. Four words the industry itself gave the world.",hero:"heroes/email10_cinema.jpg"},
-  {n:"14",day:"46",cat:"STYLE",from:"charline@frenchatelier.com",sub:"Why Parisian women say less",pre:"Silence is a Parisian vocabulary. Here is when to use it.",hero:"heroes/email10_cinema.jpg"},
-  {n:"18",day:"60",cat:"STYLE",from:"charline@frenchatelier.com",sub:"What a Parisian wears to a wedding",pre:"Navy. Never black. Never white. Three rules, one word: sobriété.",hero:"heroes/email10_cinema.jpg"},
+  {n:"14",day:"46",cat:"STYLE",from:"charline@frenchatelier.com",sub:"Why Parisian women say less",pre:"Silence is a Parisian vocabulary. Here is when to use it.",hero:"capsules/capsule-chanel.jpg"},
+  {n:"18",day:"60",cat:"STYLE",from:"charline@frenchatelier.com",sub:"What a Parisian wears to a wedding",pre:"Navy. Never black. Never white. Three rules, one word: sobriété.",hero:"posters/french_wardrobe.jpg"},
   {n:"07",day:"21",cat:"ART",from:"vincent@frenchatelier.com",sub:"Why your French teacher should know Monet",pre:"The Impressionists rewrote how French sees light. That's the language you inherit.",hero:"capsules/capsule-impressionism.jpg"},
   {n:"12",day:"39",cat:"ART",from:"philippe@frenchatelier.com",sub:"You already speak more French than you think",pre:"250 words you use in English every day are French. We start there.",hero:"heroes/email12_already_speak.jpg"},
-  {n:"16",day:"53",cat:"ART",from:"vincent@frenchatelier.com",sub:"Three French painters who never left their region",pre:"Cézanne stayed in Aix. Millet stayed in Barbizon. The vocabulary of a place.",hero:"capsules/capsule-impressionism.jpg"},
-  {n:"20",day:"67",cat:"ART",from:"vincent@frenchatelier.com",sub:"Why French film has no Hollywood ending",pre:"La fin ouverte. The open ending. A grammar you can borrow.",hero:"heroes/email10_cinema.jpg"},
+  {n:"16",day:"53",cat:"ART",from:"vincent@frenchatelier.com",sub:"Three French painters who never left their region",pre:"Cézanne stayed in Aix. Millet stayed in Barbizon. The vocabulary of a place.",hero:"posters/beauty_5.jpg"},
+  {n:"20",day:"67",cat:"ART",from:"vincent@frenchatelier.com",sub:"Why French film has no Hollywood ending",pre:"La fin ouverte. The open ending. A grammar you can borrow.",hero:"posters/beauty_6.jpg"},
   {n:"06",day:"14",cat:"PILLARS",from:"hello@frenchatelier.com",sub:"The Six Pillars · why we teach French this way",pre:"Grammar. Speech. Reading. Culture. Confidence. Community.",hero:"heroes/banner.jpg"},
-  {n:"21",day:"70",cat:"PILLARS",from:"philippe@frenchatelier.com",sub:"The slow Sunday · France's quietest ritual",pre:"Le dimanche. What shops close. What stays open.",hero:"heroes/email9_coffee.jpg"},
-  {n:"22",day:"74",cat:"TRIAL",from:"hello@frenchatelier.com",sub:"Your free 20-minute advisor call · book it",pre:"One call. We match you to a cohort, an instructor, a level.",hero:"heroes/banner.jpg"},
-  {n:"23",day:"78",cat:"TRIAL",from:"philippe@frenchatelier.com",sub:"What a 12-week cohort actually changes",pre:"Twelve weeks. Live classes twice a week.",hero:"heroes/banner.jpg"},
-  {n:"24",day:"82",cat:"TRIAL",from:"charline@frenchatelier.com",sub:"Charline answers your most asked question",pre:"Am I too old to learn? Ninety-second video reply.",hero:"heroes/banner.jpg"},
-  {n:"25",day:"86",cat:"TRIAL",from:"hello@frenchatelier.com",sub:"Your seat in the July cohort · held until Friday",pre:"Ten seats per cohort. Yours is reserved until Friday.",hero:"heroes/banner.jpg"},
-  {n:"26",day:"90",cat:"TRIAL",from:"hello@frenchatelier.com",sub:"Last call · July cohort closes tonight",pre:"Midnight Paris time.",hero:"heroes/banner.jpg"},
-  {n:"27",day:"150",cat:"REACTIVATION",from:"hello@frenchatelier.com",sub:"Your French is still here. We saved your seat.",pre:"You paused. That's fine. The next cohort starts in three weeks.",hero:"heroes/banner.jpg"},
-  {n:"28",day:"160",cat:"REACTIVATION",from:"charline@frenchatelier.com",sub:"Three students who came back after a year",pre:"Marina. James. Eleanor. Same fear, same return.",hero:"heroes/banner.jpg"},
-  {n:"29",day:"170",cat:"BASTILLE",from:"hello@frenchatelier.com",sub:"Win a long weekend in Paris · drawn July 14",pre:"Enter free. Two nights, flights included.",hero:"heroes/banner.jpg"},
-  {n:"30",day:"172",cat:"BASTILLE",from:"hello@frenchatelier.com",sub:"Last 48 hours · Bastille draw closes Sunday",pre:"Two nights in Paris. Enter free before Sunday midnight.",hero:"heroes/banner.jpg"}
+  {n:"21",day:"70",cat:"PILLARS",from:"philippe@frenchatelier.com",sub:"The slow Sunday · France's quietest ritual",pre:"Le dimanche. What shops close. What stays open.",hero:"posters/formal_vs_spoken_5.jpg"},
+  {n:"22",day:"74",cat:"TRIAL",from:"hello@frenchatelier.com",sub:"Your free 20-minute advisor call · book it",pre:"One call. We match you to a cohort, an instructor, a level.",hero:"posters/homonyms_2.jpg"},
+  {n:"23",day:"78",cat:"TRIAL",from:"philippe@frenchatelier.com",sub:"What a 12-week cohort actually changes",pre:"Twelve weeks. Live classes twice a week.",hero:"posters/french_tourism.jpg"},
+  {n:"24",day:"82",cat:"TRIAL",from:"charline@frenchatelier.com",sub:"Charline answers your most asked question",pre:"Am I too old to learn? Ninety-second video reply.",hero:"posters/formal_vs_spoken_9.jpg"},
+  {n:"25",day:"86",cat:"TRIAL",from:"hello@frenchatelier.com",sub:"Your seat in the July cohort · held until Friday",pre:"Ten seats per cohort. Yours is reserved until Friday.",hero:"capsules/capsule-versailles.jpg"},
+  {n:"26",day:"90",cat:"TRIAL",from:"hello@frenchatelier.com",sub:"Last call · July cohort closes tonight",pre:"Midnight Paris time.",hero:"rtm/rtm_champs.png"},
+  {n:"27",day:"150",cat:"REACTIVATION",from:"hello@frenchatelier.com",sub:"Your French is still here. We saved your seat.",pre:"You paused. That's fine. The next cohort starts in three weeks.",hero:"posters/french_holiday.jpg"},
+  {n:"28",day:"160",cat:"REACTIVATION",from:"charline@frenchatelier.com",sub:"Three students who came back after a year",pre:"Marina. James. Eleanor. Same fear, same return.",hero:"posters/beauty_3.jpg"},
+  {n:"29",day:"170",cat:"BASTILLE",from:"hello@frenchatelier.com",sub:"Win a long weekend in Paris · drawn July 14",pre:"Enter free. Two nights, flights included.",hero:"rtm/rtm_champs.png"},
+  {n:"30",day:"172",cat:"BASTILLE",from:"hello@frenchatelier.com",sub:"Last 48 hours · Bastille draw closes Sunday",pre:"Two nights in Paris. Enter free before Sunday midnight.",hero:"rtm/rtm_strasbourg.png"}
 ];
 
 function emailCard(m){
@@ -271,24 +271,47 @@ const CAL = [
 const CAL_SEP = CAL.filter(r => r.d.startsWith("Sept"));
 const CAL_OCT = CAL.filter(r => r.d.startsWith("Oct"));
 
-function calCard(r){
-  const PILL = {inspo:"MON · INSPIRATION", prod:"WED · PRODUCT", edu:"FRI · EDUCATION"};
-  return `
-    <div class="cal-card cal-${r.pillar}">
-      <div class="cal-date-band">${r.date} · ${r.d}</div>
-      <div class="cal-pillar-band">${PILL[r.pillar]}</div>
-      <div class="cal-thumb"><img src="${r.thumb}" alt="asset" loading="lazy"></div>
-      <div class="cal-body">
-        <h4 class="cal-h">${r.head}</h4>
-        <p class="cal-cap">${r.cap}</p>
-        <div class="cal-asset">${r.asset}</div>
-      </div>
-    </div>`;
+// Real month grid Sun-Sat with dated cells. Sept 1 2026 = Tuesday. Oct 1 2026 = Thursday.
+function buildMonthGrid(monthName, year, month0, daysInMonth, firstWeekday, items){
+  const DAY_LBL = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  const byDay = {};
+  items.forEach(it => {
+    const m = it.d.match(/(Sept|Oct)\s+(\d+)/);
+    if (m) byDay[parseInt(m[2])] = it;
+  });
+  const PILL = {inspo:"MON", prod:"WED", edu:"FRI"};
+  const total = firstWeekday + daysInMonth;
+  const rows = Math.ceil(total/7);
+  let cells = "";
+  // Header
+  cells += DAY_LBL.map(d => `<div class="mg-hd">${d}</div>`).join("");
+  // Blank leading cells
+  for (let i=0; i<firstWeekday; i++) cells += `<div class="mg-blank"></div>`;
+  // Days
+  for (let day=1; day<=daysInMonth; day++){
+    const it = byDay[day];
+    if (it){
+      cells += `
+        <div class="mg-cell mg-post mg-${it.pillar}">
+          <div class="mg-num">${day}</div>
+          <div class="mg-pill">${PILL[it.pillar]}</div>
+          <div class="mg-thumb"><img src="${it.thumb}" alt="post" loading="lazy"></div>
+          <div class="mg-head">${it.head}</div>
+          <div class="mg-cap">${it.cap}</div>
+          <div class="mg-asset">${it.asset}</div>
+        </div>`;
+    } else {
+      cells += `<div class="mg-cell mg-empty"><div class="mg-num">${day}</div></div>`;
+    }
+  }
+  // Trailing blanks
+  while ((firstWeekday + daysInMonth + (rows*7 - total)) % 7 !== 0){ cells += `<div class="mg-blank"></div>`; break; }
+  return `<div class="mg">${cells}</div>`;
 }
 const sepHost = document.getElementById("calSepHost");
 const octHost = document.getElementById("calOctHost");
-if (sepHost) sepHost.innerHTML = CAL_SEP.map(calCard).join("");
-if (octHost) octHost.innerHTML = CAL_OCT.map(calCard).join("");
+if (sepHost) sepHost.innerHTML = buildMonthGrid("September", 2026, 8, 30, 2, CAL_SEP);
+if (octHost) octHost.innerHTML = buildMonthGrid("October", 2026, 9, 31, 4, CAL_OCT);
 
 /* ---------- SPROUT SOCIAL EXECUTION SLIDE ---------- */
 const SPROUT = {

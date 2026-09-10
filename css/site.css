@@ -872,3 +872,112 @@ h2.big { font-size: clamp(96px, 12vw, 200px) !important; line-height: 0.98 !impo
   width: 72px !important; height: 72px !important; font-size: 32px !important;
   top: 24px !important; right: 24px !important;
 }
+
+/* ============ REAL MONTH GRID ============ */
+.mg {
+  display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px;
+  margin-top: 60px;
+}
+.mg-hd {
+  font-family: var(--sans); font-weight: 700; font-size: 22px; letter-spacing: 0.28em;
+  text-transform: uppercase; text-align: center; padding: 20px 0;
+  color: rgba(242,237,227,0.7); border-bottom: 2px solid rgba(201,166,98,0.35);
+}
+.mg-cell {
+  min-height: 260px; background: rgba(255,255,255,0.03); border-radius: 12px;
+  border: 1px solid rgba(242,237,227,0.08); padding: 20px 18px; position: relative;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.mg-cell.mg-empty { min-height: 160px; background: rgba(255,255,255,0.015); }
+.mg-blank { min-height: 160px; }
+.mg-num {
+  font-family: var(--serif); font-weight: 500; font-size: 42px; line-height: 1;
+  color: rgba(242,237,227,0.55);
+}
+.mg-cell.mg-post .mg-num { color: var(--cream); }
+.mg-pill {
+  display: inline-block; font-size: 13px; letter-spacing: 0.24em; font-weight: 700;
+  padding: 6px 14px; border-radius: 20px; align-self: flex-start;
+  background: rgba(0,0,0,0.4); border: 1.5px solid;
+}
+.mg-post.mg-inspo { border-color: #d8a8ff88; box-shadow: inset 0 0 0 2px #d8a8ff33; }
+.mg-post.mg-inspo .mg-pill { color:#d8a8ff; border-color:#d8a8ff; }
+.mg-post.mg-prod { border-color: #7dd3ff88; box-shadow: inset 0 0 0 2px #7dd3ff33; }
+.mg-post.mg-prod .mg-pill { color:#7dd3ff; border-color:#7dd3ff; }
+.mg-post.mg-edu { border-color: #f9c66888; box-shadow: inset 0 0 0 2px #f9c66833; }
+.mg-post.mg-edu .mg-pill { color:#f9c668; border-color:#f9c668; }
+.mg-thumb {
+  border-radius: 8px; overflow: hidden; aspect-ratio: 4/3;
+  background: rgba(0,0,0,0.35); margin: 4px 0;
+}
+.mg-thumb img { width:100%; height:100%; object-fit: cover; display:block; }
+.mg-head {
+  font-family: var(--serif); font-weight: 500; font-size: 18px; line-height: 1.15;
+  color: var(--cream); letter-spacing: -0.01em; margin-top: 4px;
+}
+.mg-cap { font-size: 13px; line-height: 1.4; color: rgba(242,237,227,0.72); }
+.mg-asset { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(201,166,98,0.85); margin-top: auto; padding-top: 8px; border-top: 1px solid rgba(242,237,227,0.1); }
+
+/* Hide OLD cal-grid layout (we replaced calCard) */
+.cal-grid > .cal-card { display: none !important; }
+
+/* ============ RTM LEGIBILITY ============ */
+.rtm-card { background: #0a1024 !important; }
+.rtm-img { position: relative; }
+.rtm-img::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(10,16,36,0.85) 100%);
+}
+.rtm-body { background: linear-gradient(180deg, #0a1024 0%, #0e1530 100%) !important; }
+.rtm-name, .rtm-date { color: #fff !important; text-shadow: 0 2px 12px rgba(0,0,0,0.7); }
+.rtm-hook { color: rgba(255,255,255,0.92) !important; }
+.rtm-city { color: #f9c668 !important; text-transform: uppercase; letter-spacing: 0.16em; }
+
+/* ============ WHAT HAPPENS NEXT ============ */
+.whats-next { padding: 120px 40px; min-height: 90vh; }
+.wn-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 80px;
+}
+.wn-step {
+  background: linear-gradient(135deg, #0d1636 0%, #05060a 100%);
+  border: 2px solid rgba(201,166,98,0.35); border-radius: 20px;
+  padding: 56px 48px; display: flex; flex-direction: column; gap: 20px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5), inset 0 0 60px rgba(201,166,98,0.06);
+}
+.wn-num {
+  font-family: var(--serif); font-weight: 400; font-size: 96px; line-height: 1;
+  color: var(--gold-2); letter-spacing: -0.02em;
+}
+.wn-when {
+  font-size: 22px; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 700;
+  color: rgba(242,237,227,0.6);
+}
+.wn-h {
+  font-family: var(--serif); font-weight: 500; font-size: 42px; line-height: 1.12;
+  color: var(--cream); letter-spacing: -0.02em;
+}
+.wn-p { font-size: 22px; line-height: 1.5; color: rgba(242,237,227,0.85); }
+
+/* ============ MAPSTER embed fit ============ */
+.map-shell { max-height: 720px; overflow: hidden; border-radius: 20px; }
+.map-iframe { width: 100%; height: 720px; border: 0; display: block; background: #05060a; }
+
+/* ============ CAPSULES with motion ============ */
+.cap-card {
+  position: relative; overflow: hidden;
+  min-height: 620px !important;
+}
+.cap-card::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.85) 100%);
+  pointer-events: none; z-index: 1;
+}
+.cap-card > * { position: relative; z-index: 2; }
+.cap-bg-video {
+  position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important;
+  object-fit: cover !important; z-index: 0 !important; opacity: 0.45;
+}
+
+/* ============ Email hero images - always render at good size ============ */
+.email-frame { min-height: 900px !important; }
+.email-hero-img { min-height: 340px !important; object-fit: cover !important; background: #0a0f24; }
