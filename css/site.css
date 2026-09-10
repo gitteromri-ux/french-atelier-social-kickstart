@@ -595,3 +595,81 @@ h2.big { font-size: clamp(64px, 8vw, 128px) !important; }
 
 /* fix thumb aspect for portrait videos */
 .fmt-thumb video { aspect-ratio: 9/16 !important; max-height: 260px; }
+
+/* ============ CALENDAR CARDS · MUCH BIGGER ============ */
+.cal-grid {
+  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)) !important;
+  gap: 40px !important;
+}
+.cal-card { min-height: 720px !important; border-top-width: 12px !important; }
+.cal-date-band { font-size: 48px !important; padding: 28px 32px 8px !important; }
+.cal-pillar-band { font-size: 18px !important; padding: 0 32px 24px !important; letter-spacing: 0.22em !important; }
+.cal-thumb { aspect-ratio: 16/10 !important; }
+.cal-body { padding: 32px 32px 36px !important; gap: 16px !important; }
+.cal-h { font-size: 40px !important; line-height: 1.05 !important; }
+.cal-cap { font-size: 22px !important; line-height: 1.5 !important; }
+.cal-asset { font-size: 15px !important; padding-top: 18px !important; }
+
+@media (min-width: 1600px) {
+  .cal-grid { grid-template-columns: repeat(3, 1fr) !important; }
+}
+
+/* ============ SPROUT EXECUTION SLIDE ============ */
+.sprout-plan {
+  margin-top: 48px; padding: 36px 40px;
+  background: linear-gradient(135deg, rgba(201,166,98,0.18), rgba(201,166,98,0.05));
+  border: 1px solid rgba(201,166,98,0.4); border-radius: 12px;
+  display: grid; grid-template-columns: 2fr 1.5fr 2fr; gap: 32px; align-items: baseline;
+}
+.sprout-plan-name { font-family: var(--serif); font-size: 38px; color: var(--cream); font-weight: 500; }
+.sprout-plan-price { font-family: var(--serif); font-style: italic; font-size: 30px; color: var(--gold-2); }
+.sprout-plan-seats { font-size: 16px; color: rgba(242,237,227,0.85); }
+
+.sprout-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 48px;
+}
+.sprout-block {
+  background: var(--ink-2); border: 1px solid rgba(242,237,227,0.12);
+  border-radius: 12px; padding: 36px 32px;
+  display: grid; grid-template-columns: 80px 1fr; gap: 24px;
+  transition: border-color .3s, transform .3s;
+}
+.sprout-block:hover { border-color: var(--gold-2); transform: translateY(-4px); }
+.sprout-icon { font-size: 56px; line-height: 1; }
+.sprout-title {
+  font-family: var(--serif); font-weight: 500; font-size: 30px;
+  color: var(--cream); letter-spacing: -0.01em; margin-bottom: 20px; line-height: 1.15;
+}
+.sprout-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.sprout-list li {
+  font-size: 18px; line-height: 1.5; color: rgba(242,237,227,0.9);
+  padding-left: 22px; position: relative;
+}
+.sprout-list li::before {
+  content: "→"; color: var(--gold-2); font-weight: 700;
+  position: absolute; left: 0; top: 0;
+}
+
+.sprout-cautions {
+  margin-top: 48px; padding: 32px 40px;
+  border: 1px dashed rgba(242,237,227,0.2); border-radius: 12px;
+  background: rgba(255,255,255,0.02);
+}
+.sprout-cautions-h {
+  font-size: 14px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(242,237,227,0.6); font-weight: 700; margin-bottom: 20px;
+}
+.sprout-cautions ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.sprout-cautions li {
+  font-size: 17px; line-height: 1.5; color: rgba(242,237,227,0.8);
+  padding-left: 22px; position: relative;
+}
+.sprout-cautions li::before {
+  content: "×"; color: #C97878; font-weight: 700;
+  position: absolute; left: 0; top: 0; font-size: 20px;
+}
+
+@media (max-width: 1200px) {
+  .sprout-grid { grid-template-columns: 1fr; }
+  .sprout-plan { grid-template-columns: 1fr; gap: 16px; }
+}

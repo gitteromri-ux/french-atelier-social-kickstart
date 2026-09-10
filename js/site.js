@@ -289,3 +289,84 @@ const sepHost = document.getElementById("calSepHost");
 const octHost = document.getElementById("calOctHost");
 if (sepHost) sepHost.innerHTML = CAL_SEP.map(calCard).join("");
 if (octHost) octHost.innerHTML = CAL_OCT.map(calCard).join("");
+
+/* ---------- SPROUT SOCIAL EXECUTION SLIDE ---------- */
+const SPROUT = {
+  plan: "Sprout Social · Advanced Plan",
+  price: "$399 / seat / month · billed annually",
+  seats: "1 seat included · Philippe added as External Approver (no seat cost)",
+  blocks: [
+    {
+      icon: "📅",
+      title: "Publishing · every calendar post scheduled once",
+      lines: [
+        "Instagram Feed, Reels and Stories · Facebook + Reels · TikTok video · LinkedIn · X · YouTube · Threads · Pinterest images",
+        "MP4 upload native. Reels up to 90s, TikTok up to 10 min / 1 GB, Facebook up to 3 GB / 45 min.",
+        "Publishing Rule Builder enforces our Mon Inspiration · Wed Product · Fri Education cadence.",
+        "Automated Link Tracking on every post from bio."
+      ]
+    },
+    {
+      icon: "✅",
+      title: "Approvals · Philippe reviews before anything goes live",
+      lines: [
+        "Message Approval Workflow: every draft queued to Philippe.",
+        "External Approval Workflow: Philippe reviews and approves without a Sprout seat.",
+        "Nothing publishes until he clicks approve. Every post traceable."
+      ]
+    },
+    {
+      icon: "💬",
+      title: "Engagement · Smart Inbox and rule-based replies",
+      lines: [
+        "Unified Smart Inbox pulls comments and DMs from all networks into one queue.",
+        "Enhance Reply · AI writes on-brand reply drafts, we approve and send.",
+        "Sentiment tagging on every incoming message (Advanced-tier only).",
+        "Bot Builder handles Twitter DMs and Facebook Messenger with predefined flows that end in a Talk-to-Sales link. Instagram DM bots are not supported by Sprout · we handle those manually via Smart Inbox."
+      ]
+    },
+    {
+      icon: "📊",
+      title: "Reporting · monthly delivered to inbox automatically",
+      lines: [
+        "Cross-Network Performance Report emailed monthly on Sprout's Scheduled Delivery.",
+        "Team &amp; Productivity Report shows response time and reply volume.",
+        "Customer Feedback Report captures CSAT and NPS from social replies.",
+        "PDF format · lands in Philippe's inbox on the 1st of every month."
+      ]
+    }
+  ],
+  cautions: [
+    "One paid seat only · Philippe joins as free External Approver.",
+    "Social Listening, Premium Analytics and Employee Advocacy are separate paid add-ons and are NOT part of this plan.",
+    "Instagram DM chatbots are not offered by Sprout · IG DMs handled manually via Smart Inbox.",
+    "HEIC and WEBP images are not supported · we deliver everything in JPG or PNG."
+  ]
+};
+
+function sproutBlock(b){
+  return `
+    <div class="sprout-block">
+      <div class="sprout-icon">${b.icon}</div>
+      <div class="sprout-body">
+        <h3 class="sprout-title">${b.title}</h3>
+        <ul class="sprout-list">${b.lines.map(l => `<li>${l}</li>`).join("")}</ul>
+      </div>
+    </div>`;
+}
+
+const sproutHost = document.getElementById("sproutHost");
+if (sproutHost) {
+  sproutHost.innerHTML = `
+    <div class="sprout-plan">
+      <div class="sprout-plan-name">${SPROUT.plan}</div>
+      <div class="sprout-plan-price">${SPROUT.price}</div>
+      <div class="sprout-plan-seats">${SPROUT.seats}</div>
+    </div>
+    <div class="sprout-grid">${SPROUT.blocks.map(sproutBlock).join("")}</div>
+    <div class="sprout-cautions">
+      <div class="sprout-cautions-h">What this plan does NOT include</div>
+      <ul>${SPROUT.cautions.map(c => `<li>${c}</li>`).join("")}</ul>
+    </div>
+  `;
+}
