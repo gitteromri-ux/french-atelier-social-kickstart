@@ -30,81 +30,64 @@ if (rtmGrid) RTM.forEach(e => {
 // ALL 28 organic burned videos, every clip per format, uploaded to CEO deck.
 const FORMATS = [
   {
-    id: "fvs",
-    num: "01",
-    title: "Formal vs Spoken French",
-    tag: "Wednesday Product",
-    availability: "11 clips uploaded",
+    id: "fvs", num: "01", title: "Formal vs Spoken French", tag: "Wednesday Product",
+    availability: "11 raw clips from Drive",
     lede: "Textbook French on one side. The French Parisians actually speak on the other.",
-    hero: {f:"videos/formal_vs_spoken_9.mp4",  label:"Peut-être · P'têt"},
+    hero: {f:"videos/formal_vs_spoken_5.mp4", label:"Il y a · Y a · 10s"},
     thumbs: [
-      {f:"videos/formal_vs_spoken_2.mp4",  label:"Formal vs Spoken · 01"},
-      {f:"videos/formal_vs_spoken_3.mp4",  label:"Formal vs Spoken · 02"},
-      {f:"videos/formal_vs_spoken_4.mp4",  label:"Formal vs Spoken · 03"},
-      {f:"videos/formal_vs_spoken_5.mp4",  label:"Il y a · Y a"},
-      {f:"videos/formal_vs_spoken_6.mp4",  label:"Formal vs Spoken · 05"},
-      {f:"videos/formal_vs_spoken_7.mp4",  label:"Formal vs Spoken · 06"},
-      {f:"videos/formal_vs_spoken_8.mp4",  label:"Formal vs Spoken · 07"},
-      {f:"videos/formal_vs_spoken_10.mp4", label:"Formal vs Spoken · 09"},
-      {f:"videos/formal_vs_spoken_11.mp4", label:"Tu as vu · T'as vu"},
-      {f:"videos/formal_vs_spoken_12.mp4", label:"C'est un peu · C't'un peu"}
+      {f:"videos/formal_vs_spoken_2.mp4",  label:"Formal vs Spoken · take 02"},
+      {f:"videos/formal_vs_spoken_3.mp4",  label:"Formal vs Spoken · take 03"},
+      {f:"videos/formal_vs_spoken_4.mp4",  label:"Formal vs Spoken · take 04"},
+      {f:"videos/formal_vs_spoken_6.mp4",  label:"Formal vs Spoken · take 06 · 12s"},
+      {f:"videos/formal_vs_spoken_7.mp4",  label:"Formal vs Spoken · take 07 · 14s"},
+      {f:"videos/formal_vs_spoken_8.mp4",  label:"Formal vs Spoken · take 08 · 13s"},
+      {f:"videos/formal_vs_spoken_9.mp4",  label:"Peut-être · P'têt · 10s"},
+      {f:"videos/formal_vs_spoken_10.mp4", label:"Formal vs Spoken · take 10 · 9s"},
+      {f:"videos/formal_vs_spoken_11.mp4", label:"Tu as vu · T'as vu · 10s"},
+      {f:"videos/formal_vs_spoken_12.mp4", label:"C'est un peu · C't'un peu · 10s"}
     ]
   },
   {
-    id: "hom",
-    num: "02",
-    title: "French Homonyms",
-    tag: "Friday Education",
-    availability: "8 clips uploaded",
+    id: "hom", num: "02", title: "French Homonyms", tag: "Friday Education",
+    availability: "8 raw clips from Drive",
     lede: "Same sound. Different word. Different meaning.",
-    hero: {f:"videos/homonyms_1.mp4",  label:"Homonyms · Charline intro"},
+    hero: {f:"videos/homonyms_5.mp4", label:"Homonyms · take 05 · 17s"},
     thumbs: [
-      {f:"videos/homonyms_2.mp4",  label:"Sang · Cent · Sans · Sent"},
-      {f:"videos/homonyms_3.mp4",  label:"Homonyms · 03"},
-      {f:"videos/homonyms_4.mp4",  label:"Ou · Où · Août"},
-      {f:"videos/homonyms_5.mp4",  label:"Homonyms · 05"},
-      {f:"videos/homonyms_6.mp4",  label:"Homonyms · 06"},
-      {f:"videos/homonyms_7.mp4",  label:"Chant · Champ"},
-      {f:"videos/homonyms_8.mp4",  label:"Tant · Temps · Tend · Taon"}
+      {f:"videos/homonyms_1.mp4",  label:"Charline intro · 9s"},
+      {f:"videos/homonyms_2.mp4",  label:"Sang · Cent · Sans · Sent · 10s"},
+      {f:"videos/homonyms_3.mp4",  label:"Homonyms · take 03 · 12s"},
+      {f:"videos/homonyms_4.mp4",  label:"Ou · Où · Août · 12s"},
+      {f:"videos/homonyms_6.mp4",  label:"Homonyms · take 06 · 18s"},
+      {f:"videos/homonyms_7.mp4",  label:"Chant · Champ · 13s"},
+      {f:"videos/homonyms_8.mp4",  label:"Tant · Temps · Tend · Taon · 20s"}
     ]
   },
   {
-    id: "th",
-    num: "03",
-    title: "French Tourism · French History",
-    tag: "Monday Inspiration",
-    availability: "2 clips uploaded",
+    id: "th", num: "03", title: "French Tourism · French History", tag: "Monday Inspiration",
+    availability: "2 raw clips from Drive",
     lede: "The map lesson and the fast-take history lesson.",
-    hero: {f:"videos/french_tourism.mp4",  label:"Tourism · Bienvenue en France"},
+    hero: {f:"videos/french_tourism.mp4", label:"Tourism · Bienvenue en France · 34s"},
     thumbs: [
-      {f:"videos/french_history.mp4",  label:"History · Le Roi Soleil"}
+      {f:"videos/french_history.mp4",  label:"History · Le Roi Soleil · 35s"}
     ]
   },
   {
-    id: "wh",
-    num: "04",
-    title: "French Wardrobe · French Holiday",
-    tag: "Monday Inspiration",
-    availability: "3 clips uploaded",
+    id: "wh", num: "04", title: "French Wardrobe · French Holiday", tag: "Monday Inspiration",
+    availability: "2 raw clips from Drive",
     lede: "Five wardrobe essentials. Eleven public holidays.",
-    hero: {f:"videos/french_wardrobe.mp4",  label:"Wardrobe · full 35s take"},
+    hero: {f:"videos/french_wardrobe.mp4", label:"Wardrobe · full 35s take"},
     thumbs: [
-      {f:"videos/french_holiday.mp4",   label:"Holiday · full 40s take"},
-      {f:"videos/french_holiday_1.mp4", label:"Holiday · short take"}
+      {f:"videos/french_holiday.mp4",  label:"Holiday · full 40s take"}
     ]
   },
   {
-    id: "cw",
-    num: "05",
-    title: "French Cheeses · French Wines",
-    tag: "Friday Education",
-    availability: "4 clips uploaded",
+    id: "cw", num: "05", title: "French Cheeses · French Wines", tag: "Friday Education",
+    availability: "3 raw clips from Drive",
     lede: "The two categories no French meal survives without.",
-    hero: {f:"videos/french_cheeses.mp4",  label:"Cheeses · full 24s take"},
+    hero: {f:"videos/french_wines_1.mp4", label:"Wines · chapitre I · 36s"},
     thumbs: [
-      {f:"videos/french_cheeses_1.mp4", label:"Cheeses · short take"},
-      {f:"videos/french_wines_1.mp4",   label:"Wines · chapitre I"},
-      {f:"videos/french_wines_2.mp4",   label:"Wines · chapitre II"}
+      {f:"videos/french_wines_2.mp4",  label:"Wines · chapitre II · 35s"},
+      {f:"videos/french_cheeses.mp4",  label:"Cheeses · full 24s take"}
     ]
   }
 ];
