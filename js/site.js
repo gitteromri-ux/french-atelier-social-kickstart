@@ -121,12 +121,15 @@ function bigFormatBlock(F){
         </div>
       </div>
       <div class="fmt-stage">
-        <video class="fmt-hero" autoplay muted loop playsinline preload="auto" src="${F.hero.f}"></video>
+        <video class="fmt-hero" autoplay muted loop playsinline preload="metadata" src="${F.hero.f}"></video>
         <button class="fmt-sound" data-fmt="${F.id}" aria-label="Toggle sound">🔇 SOUND</button>
         <div class="fmt-cap">${F.hero.label}</div>
       </div>
       <div class="fmt-thumbs">
-        ${F.thumbs.map(t => `<button class="fmt-thumb" data-src="${t.f}" data-label="${t.label}"><video muted playsinline preload="metadata" src="${t.f}#t=1"></video><span>${t.label}</span></button>`).join("")}
+        ${F.thumbs.map(t => {
+          const poster = t.f.replace("videos/","posters/").replace(".mp4",".jpg");
+          return `<button class="fmt-thumb" data-src="${t.f}" data-label="${t.label}"><img class="fmt-thumb-img" src="${poster}" alt="${t.label}" loading="lazy"><span>${t.label}</span></button>`;
+        }).join("")}
       </div>
     </div>`;
 }
@@ -427,3 +430,33 @@ if (sproutHost) {
     </div>
   `;
 }
+
+/* ============ PERFORMANCE · lazy-play videos only when their slide is active ============ */
+(function(){
+  function pauseAllHiddenSlides(){
+    document.querySelectorAll('.slide').forEach(s => {
+      const isActive = s.classList.contains('active');
+      s.querySelectorAll('video').forEach(v => {
+        if (isActive) {
+          if (v.dataset.pendingSrc && !v.src){ v.src = v.dataset.pendingSrc; }
+          if (v.paused && v.autoplay !== false && v.hasAttribute('data-autoplay-in-view')) {
+            v.play().catch(()=>{});
+          }
+        } else {
+          v.pause();
+        }
+      });
+    });
+  }
+  // Mark autoplay videos to be lazy-triggered
+  document.querySelectorAll('video[autoplay]').forEach(v => {
+    v.setAttribute('data-autoplay-in-view', '1');
+  });
+  // Hook into slide-show
+  const origShow = window.show;
+  // Observe class changes on .slide
+  const mo = new MutationObserver(pauseAllHiddenSlides);
+  document.querySelectorAll('.slide').forEach(s => mo.observe(s, {attributes:true, attributeFilter:['class']}));
+  // Kick once  
+  setTimeout(pauseAllHiddenSlides, 200);
+})();

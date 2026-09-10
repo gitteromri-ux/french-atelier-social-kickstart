@@ -1014,3 +1014,20 @@ h2.big { font-size: clamp(96px, 12vw, 200px) !important; line-height: 0.98 !impo
   width: 100% !important; height: 100% !important; min-height: 900px !important;
   object-fit: contain !important; background: #000;
 }
+
+/* ============ NEVER CROP VIDEOS - always show full frame ============ */
+video, .fmt-hero, .beauty-card video, .cap-bg-video, .fmt-thumb video {
+  object-fit: contain !important;
+  background: #000 !important;
+}
+.fmt-thumb-img {
+  object-fit: contain !important;
+  width: 100% !important; height: 100% !important; display: block !important;
+  background: #000 !important;
+}
+.fmt-thumb {
+  aspect-ratio: 9/16 !important; min-height: 480px !important;
+  background: #000 !important;
+}
+.beauty-card { background: #000 !important; }
+.cap-card { background: #000 !important; }
