@@ -171,36 +171,26 @@ if (beautyHost) {
 
 /* ---------- ALL 30 EMAILS ---------- */
 const EMAILS = [
-  {n:"01",day:"0",cat:"WELCOME",from:"hello@frenchatelier.com",sub:"Bienvenue · your French starts here",pre:"You just took a step most adults never take. Here is what happens in the next seven days.",hero:"heroes/banner.jpg"},
-  {n:"02",day:"1",cat:"WELCOME",from:"charline@frenchatelier.com",sub:"Meet your teacher · live from France",pre:"Charline introduces herself. One minute. In her real Paris apartment.",hero:"posters/formal_vs_spoken_11.jpg"},
-  {n:"03",day:"3",cat:"WELCOME",from:"hello@frenchatelier.com",sub:"The 4-minute placement test",pre:"Four minutes. One click. We match you to the right cohort.",hero:"posters/homonyms_4.jpg"},
-  {n:"04",day:"5",cat:"WELCOME",from:"philippe@frenchatelier.com",sub:"Why we teach in groups of 8 (not 1)",pre:"The intimacy of a private tutor. The energy of a real cohort.",hero:"posters/french_history.jpg"},
-  {n:"05",day:"7",cat:"WELCOME",from:"hello@frenchatelier.com",sub:"What a French Atelier class actually looks like",pre:"Three-minute tour of a live session. No slides. Real conversation.",hero:"posters/formal_vs_spoken_12.jpg"},
-  {n:"08",day:"25",cat:"SOUL",from:"vincent@frenchatelier.com",sub:"The French don't say \"I miss you\"",pre:"They say tu me manques · you are missing from me. One grammatical flip changes how love is spoken.",hero:"heroes/email8_tu_me_manques.jpg"},
-  {n:"11",day:"35",cat:"SOUL",from:"philippe@frenchatelier.com",sub:"On June 21st, all of France sings",pre:"La Fête de la Musique. Every corner, every square. Twelve words to sing along.",hero:"heroes/email11_sings.jpg"},
-  {n:"15",day:"49",cat:"SOUL",from:"vincent@frenchatelier.com",sub:"The unsent letter · a Proust passage we love",pre:"Twelve lines. One breath. The rhythm of French thought.",hero:"capsules/capsule-versailles.jpg"},
-  {n:"19",day:"63",cat:"SOUL",from:"charline@frenchatelier.com",sub:"The single French expression that defines friendship",pre:"On se voit. See you. It's not a farewell, it's a promise.",hero:"posters/beauty_4.jpg"},
-  {n:"09",day:"28",cat:"TASTE",from:"vincent@frenchatelier.com",sub:"How to order a coffee in Paris",pre:"Un café is a verb in Paris. What you order says who you are.",hero:"heroes/email9_coffee.jpg"},
-  {n:"13",day:"42",cat:"TASTE",from:"philippe@frenchatelier.com",sub:"The French word for hunger has three meanings",pre:"Faim, envie, gourmandise. The French map appetite the way English maps colour.",hero:"posters/french_cheeses.jpg"},
-  {n:"17",day:"56",cat:"TASTE",from:"charline@frenchatelier.com",sub:"The market in Lyon at 8am",pre:"Twelve stalls. Nine cheeses. One vocabulary that opens them all.",hero:"posters/french_wines_1.jpg"},
-  {n:"10",day:"32",cat:"STYLE",from:"charline@frenchatelier.com",sub:"There is a French word for the cinema I love",pre:"Cinéphile, cinéaste, séance, salle. Four words the industry itself gave the world.",hero:"heroes/email10_cinema.jpg"},
-  {n:"14",day:"46",cat:"STYLE",from:"charline@frenchatelier.com",sub:"Why Parisian women say less",pre:"Silence is a Parisian vocabulary. Here is when to use it.",hero:"capsules/capsule-chanel.jpg"},
-  {n:"18",day:"60",cat:"STYLE",from:"charline@frenchatelier.com",sub:"What a Parisian wears to a wedding",pre:"Navy. Never black. Never white. Three rules, one word: sobriété.",hero:"posters/french_wardrobe.jpg"},
-  {n:"07",day:"21",cat:"ART",from:"vincent@frenchatelier.com",sub:"Why your French teacher should know Monet",pre:"The Impressionists rewrote how French sees light. That's the language you inherit.",hero:"capsules/capsule-impressionism.jpg"},
-  {n:"12",day:"39",cat:"ART",from:"philippe@frenchatelier.com",sub:"You already speak more French than you think",pre:"250 words you use in English every day are French. We start there.",hero:"heroes/email12_already_speak.jpg"},
-  {n:"16",day:"53",cat:"ART",from:"vincent@frenchatelier.com",sub:"Three French painters who never left their region",pre:"Cézanne stayed in Aix. Millet stayed in Barbizon. The vocabulary of a place.",hero:"posters/beauty_5.jpg"},
-  {n:"20",day:"67",cat:"ART",from:"vincent@frenchatelier.com",sub:"Why French film has no Hollywood ending",pre:"La fin ouverte. The open ending. A grammar you can borrow.",hero:"posters/beauty_6.jpg"},
-  {n:"06",day:"14",cat:"PILLARS",from:"hello@frenchatelier.com",sub:"The Six Pillars · why we teach French this way",pre:"Grammar. Speech. Reading. Culture. Confidence. Community.",hero:"heroes/banner.jpg"},
-  {n:"21",day:"70",cat:"PILLARS",from:"philippe@frenchatelier.com",sub:"The slow Sunday · France's quietest ritual",pre:"Le dimanche. What shops close. What stays open.",hero:"posters/formal_vs_spoken_5.jpg"},
-  {n:"22",day:"74",cat:"TRIAL",from:"hello@frenchatelier.com",sub:"Your free 20-minute advisor call · book it",pre:"One call. We match you to a cohort, an instructor, a level.",hero:"posters/homonyms_2.jpg"},
-  {n:"23",day:"78",cat:"TRIAL",from:"philippe@frenchatelier.com",sub:"What a 12-week cohort actually changes",pre:"Twelve weeks. Live classes twice a week.",hero:"posters/french_tourism.jpg"},
-  {n:"24",day:"82",cat:"TRIAL",from:"charline@frenchatelier.com",sub:"Charline answers your most asked question",pre:"Am I too old to learn? Ninety-second video reply.",hero:"posters/formal_vs_spoken_9.jpg"},
-  {n:"25",day:"86",cat:"TRIAL",from:"hello@frenchatelier.com",sub:"Your seat in the July cohort · held until Friday",pre:"Ten seats per cohort. Yours is reserved until Friday.",hero:"capsules/capsule-versailles.jpg"},
-  {n:"26",day:"90",cat:"TRIAL",from:"hello@frenchatelier.com",sub:"Last call · July cohort closes tonight",pre:"Midnight Paris time.",hero:"rtm/rtm_champs.png"},
-  {n:"27",day:"150",cat:"REACTIVATION",from:"hello@frenchatelier.com",sub:"Your French is still here. We saved your seat.",pre:"You paused. That's fine. The next cohort starts in three weeks.",hero:"posters/french_holiday.jpg"},
-  {n:"28",day:"160",cat:"REACTIVATION",from:"charline@frenchatelier.com",sub:"Three students who came back after a year",pre:"Marina. James. Eleanor. Same fear, same return.",hero:"posters/beauty_3.jpg"},
-  {n:"29",day:"170",cat:"BASTILLE",from:"hello@frenchatelier.com",sub:"Win a long weekend in Paris · drawn July 14",pre:"Enter free. Two nights, flights included.",hero:"rtm/rtm_champs.png"},
-  {n:"30",day:"172",cat:"BASTILLE",from:"hello@frenchatelier.com",sub:"Last 48 hours · Bastille draw closes Sunday",pre:"Two nights in Paris. Enter free before Sunday midnight.",hero:"rtm/rtm_strasbourg.png"}
+  // Sandra's ACQ Drip Series Stage 3 (12 emails, real subject lines + banners)
+  {n:"01",day:"0",cat:"CELEBS",from:"hello@frenchatelier.com",sub:"Meet the French names the world knows",pre:"Mbappe, Omar Sy, Marion Cotillard. Six names that open conversations in France.",hero:"emails_real/01-celebs-today.jpg"},
+  {n:"02",day:"2",cat:"CELEBS",from:"hello@frenchatelier.com",sub:"Meet six French lives that changed the world",pre:"From Joan of Arc to Marie Curie. Stories you will want to retell.",hero:"emails_real/02-celebs-history.jpg"},
+  {n:"03",day:"4",cat:"CULTURE",from:"hello@frenchatelier.com",sub:"Meet Edith Piaf, the little sparrow",pre:"A street singer who became the voice of France.",hero:"emails_real/03-edith-piaf.jpg"},
+  {n:"04",day:"6",cat:"CULTURE",from:"hello@frenchatelier.com",sub:"Decode the musketeer legend",pre:"The true men behind d'Artagnan, Athos, Porthos and Aramis.",hero:"emails_real/04-musketeers.jpg"},
+  {n:"05",day:"8",cat:"PROMO",from:"hello@frenchatelier.com",sub:"Take the quiz, claim your reward",pre:"Five friendly questions. Do well and earn something special.",hero:"emails_real/05-promo-quiz.jpg"},
+  {n:"06",day:"10",cat:"PROMO",from:"hello@frenchatelier.com",sub:"Claim your welcome scholarship",pre:"20% off your course, and a seat open in the next class.",hero:"emails_real/06-promo-seat.jpg"},
+  {n:"07",day:"12",cat:"PROMO",from:"hello@frenchatelier.com",sub:"Save your seat, the class is filling",pre:"A few seats left, and your 20% welcome scholarship still applies.",hero:"emails_real/07-promo-seat-2.jpg"},
+  {n:"08",day:"14",cat:"PROMO",from:"hello@frenchatelier.com",sub:"Final call, save your seat",pre:"The class is nearly full. Your 20% closes with it.",hero:"emails_real/08-promo-final.jpg"},
+  {n:"09",day:"16",cat:"PRODUCT",from:"hello@frenchatelier.com",sub:"Learn live with real teachers from France",pre:"Small groups, 85 live minutes, and someone who hears you speak.",hero:"emails_real/09-product-teachers.jpg"},
+  {n:"10",day:"18",cat:"PRODUCT",from:"hello@frenchatelier.com",sub:"Master French, region by region",pre:"Courses that travel from Paris to the Basque Country while you learn.",hero:"emails_real/10-product-journeys.jpg"},
+  {n:"11",day:"20",cat:"PRODUCT",from:"hello@frenchatelier.com",sub:"Learn France, not just French",pre:"Art, food, music and daily rituals, inside every class.",hero:"emails_real/11-product-culture.jpg"},
+  {n:"12",day:"22",cat:"PRODUCT",from:"hello@frenchatelier.com",sub:"Choose a school, not an app",pre:"A fair comparison, and what makes French Atelier different.",hero:"emails_real/12-product-difference.jpg"},
+  // WhatsApp RET/ACQ Broadcast topics (6 landing pages, real hero imagery)
+  {n:"13",day:"25",cat:"WHATSAPP",from:"WhatsApp broadcast",sub:"The Paris Metro alphabet",pre:"Fourteen lines, thirteen colours. The vocabulary Parisians use every morning.",hero:"emails_real/wa-paris-metro.jpg"},
+  {n:"14",day:"28",cat:"WHATSAPP",from:"WhatsApp broadcast",sub:"Jambon-beurre, France in a sentence",pre:"One baguette, one slice of ham, one piece of butter. And a whole grammar of choice.",hero:"emails_real/wa-jambon-beurre.jpg"},
+  {n:"15",day:"31",cat:"WHATSAPP",from:"WhatsApp broadcast",sub:"Provence lavender, spoken in French",pre:"Two months a year, the country becomes purple. The words that describe it are older.",hero:"emails_real/wa-provence-lavender.jpg"},
+  {n:"16",day:"34",cat:"WHATSAPP",from:"WhatsApp broadcast",sub:"The French comic book grammar",pre:"Tintin, Asterix, Persepolis. Panels teach French rhythm the classroom cannot.",hero:"emails_real/wa-french-comics.jpg"},
+  {n:"17",day:"37",cat:"WHATSAPP",from:"WhatsApp broadcast",sub:"The language of French perfume",pre:"Sillage, longevity, projection. Fragrance vocabulary that opens Rue Cambon.",hero:"emails_real/wa-french-perfumes.jpg"},
+  {n:"18",day:"40",cat:"WHATSAPP",from:"WhatsApp broadcast",sub:"French words English forgot to translate",pre:"Depaysement, flaneur, retrouvailles. Words with no English equivalent.",hero:"emails_real/wa-french-words.jpg"}
 ];
 
 function emailCard(m){
@@ -213,7 +203,7 @@ function emailCard(m){
       </div>
       <img class="email-hero-img" src="${m.hero}" alt="hero" loading="lazy">
       <div class="email-body-min">
-        <div class="email-tag">${m.cat} · Email ${m.n} of 30</div>
+        <div class="email-tag">${m.cat} · Email ${m.n} of 18</div>
         <div class="email-sub">${m.sub}</div>
         <div class="email-pre">${m.pre}</div>
         <div class="email-cta">Open in inbox</div>
@@ -221,7 +211,7 @@ function emailCard(m){
     </div>`;
 }
 
-const CATS = ["WELCOME","SOUL","TASTE","STYLE","ART","PILLARS","TRIAL","REACTIVATION","BASTILLE"];
+const CATS = ["CELEBS","CULTURE","PROMO","PRODUCT","WHATSAPP"];
 const emailsHost = document.getElementById("emailsHost");
 if (emailsHost) {
   emailsHost.innerHTML = CATS.map(cat => {
