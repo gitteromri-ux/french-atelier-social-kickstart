@@ -685,3 +685,70 @@ function emailCardReal(m){
     }
   });
 })();
+
+/* ================================================================
+   V1401 — PERF PASS
+   Lazy every video: swap src → data-pending-src at render time,
+   swap back only when the video's slide becomes active.
+   Also drop preload on all videos + lazy image tags.
+   ================================================================ */
+(function lazyMedia(){
+  // Convert every video's src to data-pending-src, force preload=none
+  document.querySelectorAll('video').forEach(v => {
+    if (v.src && !v.dataset.pendingSrc) {
+      v.dataset.pendingSrc = v.src;
+      v.removeAttribute('src');
+    }
+    // Handle <source> children too
+    v.querySelectorAll('source[src]').forEach(s => {
+      if (!s.dataset.pendingSrc) {
+        s.dataset.pendingSrc = s.src;
+        s.removeAttribute('src');
+      }
+    });
+    v.preload = 'none';
+    // Keep poster for visual placeholder
+  });
+
+  function activateSlideMedia(slide){
+    if (!slide) return;
+    slide.querySelectorAll('video').forEach(v => {
+      let changed = false;
+      if (v.dataset.pendingSrc && !v.getAttribute('src')) {
+        v.src = v.dataset.pendingSrc; changed = true;
+      }
+      v.querySelectorAll('source[data-pending-src]').forEach(s => {
+        if (!s.getAttribute('src')) { s.src = s.dataset.pendingSrc; changed = true; }
+      });
+      if (changed) {
+        try { v.load(); } catch(e){}
+      }
+      // If autoplay, kick it once ready
+      if (v.hasAttribute('autoplay') || v.dataset.autoplayInView === '1') {
+        const p = v.play();
+        if (p && p.catch) p.catch(()=>{});
+      }
+    });
+    // Force <img loading=lazy> nearby to eager once visible
+    slide.querySelectorAll('img[loading="lazy"]').forEach(i => i.loading = 'eager');
+  }
+  function deactivateSlideMedia(slide){
+    if (!slide) return;
+    slide.querySelectorAll('video').forEach(v => {
+      try { v.pause(); } catch(e){}
+    });
+  }
+
+  // Observe .active toggle
+  const mo = new MutationObserver(muts => {
+    muts.forEach(m => {
+      const s = m.target;
+      if (s.classList.contains('active')) activateSlideMedia(s);
+      else deactivateSlideMedia(s);
+    });
+  });
+  document.querySelectorAll('.slide').forEach(s => {
+    mo.observe(s, {attributes:true, attributeFilter:['class']});
+    if (s.classList.contains('active')) activateSlideMedia(s);
+  });
+})();
