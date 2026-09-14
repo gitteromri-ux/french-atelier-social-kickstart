@@ -433,3 +433,255 @@ if (sproutHost) {
   // Kick once  
   setTimeout(pauseAllHiddenSlides, 200);
 })();
+
+/* ================================================================
+   V1400 — DECK FEEDBACK PASS
+   ================================================================ */
+
+/* -------- 3. BEAUTY reels · stamp visible French Atelier logo on every tile -------- */
+(function stampBeautyLogo(){
+  const cards = document.querySelectorAll(".vid-grid.beauty .beauty-card");
+  cards.forEach(card => {
+    if (card.querySelector(".beauty-logo-plate")) return;
+    const plate = document.createElement("div");
+    plate.className = "beauty-logo-plate";
+    plate.innerHTML = `
+      <img src="brand/logo-white.png" alt="The French Atelier">
+      <div class="bl-txt">By The French <em>Atelier</em></div>
+    `;
+    card.appendChild(plate);
+  });
+})();
+
+/* -------- 4. REAL EMAILS · magazine-grade mockups with full body copy -------- */
+const EMAIL_BODIES = {
+  // Sandra's ACQ Drip Series - real subjects, matching body prose
+  "01": {h:"Meet the French names the world knows.", p:["Mbappé on the pitch. Omar Sy on Netflix. Marion Cotillard in Paris and Los Angeles. Camille Cottin, Vincent Cassel, Léa Seydoux.","Six names. Six accents. Six ways to say <b>bonjour</b> that open a real conversation in France.","This Friday we open the full carousel inside your Culture Capsule."], cta:"Open the carousel"},
+  "02": {h:"Six French lives that changed the world.", p:["Joan of Arc rode into Orléans at seventeen. Marie Curie was the only person alive to win two Nobels in two sciences.","Napoleon rewrote European law. De Gaulle rebuilt a nation. Simone de Beauvoir rewrote how we think about being a woman.","One name a week, inside your Sunday capsule."], cta:"Read the six stories"},
+  "03": {h:"Edith Piaf, the little sparrow.", p:["She sang from the pavement of Belleville before she sang from the stage of Carnegie Hall.","<b>La Vie en Rose</b>, <b>Non, je ne regrette rien</b>. Two songs that carry more French than a semester of textbooks.","Your capsule this week: her lyrics, translated, sung, and taught."], cta:"Hear the lesson"},
+  "04": {h:"Decode the musketeer legend.", p:["Athos, Porthos, Aramis, d'Artagnan. Four men Dumas invented from four real Gascon soldiers of Louis XIII.","<b>Un pour tous, tous pour un.</b> One sentence that traveled from Dumas to every schoolyard in France.","Inside: the real men, the real Paris, the real French of 1625."], cta:"Meet the four"},
+  "05": {h:"Take the quiz. Claim your reward.", p:["Five friendly questions on the French you already speak. <b>Rendez-vous. Déjà vu. Souvenir. Cliché. Chic.</b>","Do well and we open your welcome scholarship on the next page.","Two minutes. No wrong answers, only the reward at the end."], cta:"Start the quiz"},
+  "06": {h:"Claim your welcome scholarship.", p:["<b>20% off your first French Atelier course</b>, plus a live seat held in the next class opening.","Live teaching from Paris. Small groups. Eighty-five minutes. Someone who hears you speak.","The scholarship holds for seven days. Your seat holds for the same."], cta:"Claim my 20% seat"},
+  "07": {h:"Save your seat. The class is filling.", p:["The next cohort has six seats left before we close it and open the following one.","Your <b>20% welcome scholarship</b> is still on the offer. It closes with the class.","Reserve now and choose your teacher on the confirmation page."], cta:"Reserve my seat"},
+  "08": {h:"Final call. Save your seat.", p:["The class is nearly full. Your <b>20% welcome scholarship</b> closes when the last seat closes.","One click reserves the seat. The confirmation opens the schedule and the teacher choice.","After tonight, the next class opens on the standard fare."], cta:"Finish my reservation"},
+  "09": {h:"Learn live with real French teachers.", p:["Every French Atelier teacher was born in France, trained in France, and teaches from France.","Small live groups. Eighty-five real minutes. Someone who hears every word you say and corrects it in the moment.","Meet Philippe, Charline, Caitlin, Carmèle, Shanice. Choose whose class you want to walk into."], cta:"Meet the teachers"},
+  "10": {h:"Master French, region by region.", p:["Foundation opens at a Parisian café. Beginner walks through daily life from Normandy to Paris.","Elementary crosses the Loire to the Basque Country. Intermediate reaches Marseille, Chamonix and Alsace.","Every level travels. Every class arrives somewhere real."], cta:"See the four levels"},
+  "11": {h:"Learn France, not just French.", p:["Art on Monday. Food on Wednesday. Music on Friday. The daily rituals a French person grows up inside.","Every course carries its Culture Capsules. Every capsule carries the vocabulary of that world.","The language and the culture, in the same eighty-five minutes."], cta:"See a capsule"},
+  "12": {h:"Choose a school. Not an app.", p:["Duolingo teaches you words. An app never hears you speak. An app never opens a door in Paris.","French Atelier is a live school with a real teacher, a small class, and a real hour of French every week.","A fair comparison, and the one thing that makes us different, in one page."], cta:"See the comparison"},
+  // WhatsApp broadcasts
+  "13": {h:"The Paris Metro alphabet.", p:["Fourteen lines. Thirteen colors. One century of French vocabulary a Parisian uses before breakfast.","<b>Prochain arrêt. Correspondance. Direction.</b> Three words that carry a whole morning.","Inside: the fourteen names, the two you must not confuse, and the one line no one takes for fun."], cta:"Open the guide"},
+  "14": {h:"Jambon-beurre. France in a sentence.", p:["One baguette. One slice of ham. One thick knob of butter. Sold on every Paris corner since 1900.","And a whole grammar of choice hidden in the order: <b>demi-baguette, sans cornichon, avec un peu plus de beurre s'il vous plaît</b>.","This is the sentence you master first."], cta:"Practice the order"},
+  "15": {h:"Provence lavender, spoken in French.", p:["Two months a year the country turns purple. Valensole, Sault, the plateau of Albion.","<b>La lavande. Le champ. La ruche. La récolte.</b> The words are older than the fields.","Inside: the harvest calendar, the villages, and the vocabulary that comes with them."], cta:"Walk the fields"},
+  "16": {h:"French comic book grammar.", p:["Tintin taught two generations to read. Astérix taught them to pun. Persepolis taught them to argue.","A panel of French comic teaches rhythm no textbook can: pause, punchline, silence, retort.","Inside: three panels, three lessons, one small joke that lands in French."], cta:"Read a panel"},
+  "17": {h:"The language of French perfume.", p:["<b>Sillage. Longévité. Projection. Nez.</b> Words the great houses invented for a sense English never bothered to name.","Grasse taught the world how to describe smell. Rue Cambon taught the world what to smell like.","Inside: the twelve terms that open a Paris perfume counter."], cta:"Open the counter"},
+  "18": {h:"French words English forgot to translate.", p:["<b>Dépaysement.</b> The feeling of being pleasantly out of your country.","<b>Flâneur.</b> A wanderer who watches, on purpose.","<b>Retrouvailles.</b> The joy of meeting again after long apart.","Six more inside. Every one of them yours to use in an English sentence tomorrow."], cta:"See the nine"}
+};
+
+function emailCardReal(m){
+  const b = EMAIL_BODIES[m.n] || {h: m.sub, p: [m.pre], cta: "Open"};
+  const bodyHtml = b.p.map(p => `<p class="ebr-p">${p}</p>`).join("");
+  const initials = m.from.includes("hello") ? "FA" : "WA";
+  const fromName = m.from.includes("hello") ? "The French Atelier" : "French Atelier WhatsApp";
+  const fromEmail = m.from.includes("hello") ? "hello@frenchatelier.com" : "broadcast";
+  const catLabel = m.cat === "WHATSAPP" ? "WhatsApp Broadcast" : `${m.cat} · ACQ Drip · Day ${m.day}`;
+  const sig = m.from.includes("hello") ? "Sandra — French Atelier team" : "The French Atelier · WhatsApp";
+  return `
+    <div class="email-frame">
+      <div class="email-mail-chrome">
+        <div class="emc-top">
+          <span class="emc-back">←</span>
+          <span class="emc-icons">
+            <span>📁</span><span>🗑</span><span>✉</span><span>⋮</span>
+          </span>
+        </div>
+        <div class="emc-subject">${m.sub}</div>
+        <div class="emc-from-row">
+          <div class="emc-avatar">${initials}</div>
+          <div class="emc-meta">
+            <div class="emc-name">${fromName} <span>&lt;${fromEmail}&gt;</span></div>
+            <div class="emc-to">to me · <span class="emc-star">★</span></div>
+          </div>
+          <div class="emc-date">Day ${m.day}</div>
+        </div>
+      </div>
+      <img class="email-hero-img" src="${m.hero}" alt="${m.sub}" loading="lazy">
+      <div class="email-body-real">
+        <div class="ebr-brand-tag">${catLabel}</div>
+        <div class="ebr-h">${b.h}</div>
+        ${bodyHtml}
+        <a class="ebr-cta">${b.cta} →</a>
+        <div class="ebr-sig">${sig}</div>
+        <div class="ebr-footer">The French Atelier · by Acadomia · frenchatelierlive.com</div>
+      </div>
+    </div>`;
+}
+
+// Rebuild email host with the new card
+(function rebuildEmails(){
+  const host = document.getElementById("emailsHost");
+  if (!host || typeof EMAILS === "undefined") return;
+  host.innerHTML = CATS.map(cat => {
+    const items = EMAILS.filter(e => e.cat === cat);
+    if (!items.length) return "";
+    const catTitle = ({CELEBS:"Celebrities · faces students know",CULTURE:"Culture · stories worth retelling",PROMO:"Promo · seat and scholarship",PRODUCT:"Product · what French Atelier is",WHATSAPP:"WhatsApp broadcasts · six topics"})[cat] || cat;
+    return `
+      <div class="email-track">
+        <div class="track-h">
+          <h3>${catTitle}</h3>
+          <div class="count">${items.length} real emails</div>
+        </div>
+        <div class="email-row">${items.map(emailCardReal).join("")}</div>
+      </div>`;
+  }).join("");
+})();
+
+/* -------- 5. CULTURE CAPSULES · launch banner injected -------- */
+(function capsuleLaunch(){
+  const slide = document.querySelector('.slide[data-i="5"] .capsules .wrap');
+  if (!slide || slide.querySelector(".capsule-launch-banner")) return;
+  const banner = document.createElement("div");
+  banner.className = "capsule-launch-banner";
+  banner.innerHTML = `
+    <div class="clb-badge">Now Launching</div>
+    <div class="clb-headline">Culture Capsules · <em>fifteen-minute cinematic French lessons</em>, delivered inside every course.</div>
+    <div class="clb-meta">Six capsules live<br>Twice a month on social</div>
+  `;
+  const psSay = slide.querySelector(".presenter-say");
+  if (psSay) psSay.after(banner); else slide.appendChild(banner);
+})();
+
+/* -------- 6. MAPSTER · real interactive Instagram carousel mockup -------- */
+(function buildMapster(){
+  const slide = document.querySelector('.slide[data-i="6"] .mapster .wrap');
+  if (!slide) return;
+  const existing = slide.querySelector(".mapster-post");
+  if (existing) existing.remove();
+
+  const PLACES = [
+    {city:"Versailles · Île-de-France", h:"Versailles as grammar.", p:"The court, the hierarchy, the vous behind every French politeness that survives today.", img:"capsules/hero-versailles.jpg"},
+    {city:"Grasse · Provence", h:"The language of perfume.", p:"Sillage, longévité, projection, nez. Words the great houses invented for a sense English never bothered to name.", img:"capsules/capsule-chanel.jpg"},
+    {city:"Giverny · Normandy", h:"Reading Monet's light.", p:"Nuée, brume, lumière, chatoiement. The Impressionists rewrote how French sees light.", img:"capsules/capsule-impressionism.jpg"},
+    {city:"Paris · Rue de Rivoli", h:"Haussmann's Paris.", p:"Twenty thousand demolitions. Forty thousand new buildings. A word for every zinc roof.", img:"capsules/bg-staircase.jpg"},
+    {city:"Saint-Germain · Paris", h:"The café and the idea.", p:"Diderot at the Procope, Sartre at Les Deux Magots, Beauvoir at the Flore. French thought was written at zinc counters.", img:"capsules/bg-rooftops.jpg"}
+  ];
+
+  const post = document.createElement("div");
+  post.className = "mapster-post";
+  post.innerHTML = `
+    <div class="mp-phone">
+      <div class="mp-inner">
+        <div class="mp-status-bar"><span>9:41</span><span>●●● 100%</span></div>
+        <div class="mp-ig-header">
+          <div class="mp-ig-avatar"><div class="mp-ig-avatar-inner"></div></div>
+          <div class="mp-ig-userblock">
+            <div class="mp-ig-user">livefrenchatelier</div>
+            <div class="mp-ig-sub">Sponsored</div>
+          </div>
+          <div class="mp-ig-more">···</div>
+        </div>
+        <div class="mp-carousel" id="mpCarousel">
+          <div class="mp-slide mp-slide-map on" data-i="0">
+            <svg class="mp-map-svg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <radialGradient id="mapg" cx="50%" cy="45%" r="65%">
+                  <stop offset="0%" stop-color="#2a3f5a"/>
+                  <stop offset="100%" stop-color="#0a1420"/>
+                </radialGradient>
+              </defs>
+              <rect width="400" height="400" fill="url(#mapg)"/>
+              <!-- France outline -->
+              <path d="M 165 90 Q 200 78 235 92 Q 280 105 295 145 Q 310 190 300 235 Q 285 285 245 315 Q 210 335 175 325 Q 130 315 108 275 Q 95 235 100 190 Q 108 140 135 110 Q 148 95 165 90 Z"
+                    fill="rgba(201,166,98,0.15)" stroke="rgba(201,166,98,0.55)" stroke-width="1.5"/>
+              <!-- Rivers / routes -->
+              <path d="M 195 130 Q 210 170 220 210 Q 225 250 215 295" fill="none" stroke="rgba(201,166,98,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+              <path d="M 130 200 Q 180 205 240 215 Q 275 220 295 210" fill="none" stroke="rgba(201,166,98,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+              <!-- Pins -->
+              <g class="mp-pin pin-1" transform="translate(198,152)"><circle r="7" fill="#C9A662"/><circle r="14" fill="none" stroke="#C9A662" stroke-opacity="0.5" stroke-width="1.5"/></g>
+              <g class="mp-pin pin-2" transform="translate(158,168)"><circle r="6" fill="#E4B4A8"/><circle r="12" fill="none" stroke="#E4B4A8" stroke-opacity="0.5" stroke-width="1.5"/></g>
+              <g class="mp-pin pin-3" transform="translate(220,140)"><circle r="6" fill="#7CA6C7"/><circle r="12" fill="none" stroke="#7CA6C7" stroke-opacity="0.5" stroke-width="1.5"/></g>
+              <g class="mp-pin pin-4" transform="translate(180,240)"><circle r="6" fill="#C9A662"/><circle r="12" fill="none" stroke="#C9A662" stroke-opacity="0.5" stroke-width="1.5"/></g>
+              <g class="mp-pin pin-5" transform="translate(230,285)"><circle r="6" fill="#E4B4A8"/><circle r="12" fill="none" stroke="#E4B4A8" stroke-opacity="0.5" stroke-width="1.5"/></g>
+              <g class="mp-pin pin-6" transform="translate(140,220)"><circle r="6" fill="#7CA6C7"/><circle r="12" fill="none" stroke="#7CA6C7" stroke-opacity="0.5" stroke-width="1.5"/></g>
+              <g class="mp-pin pin-7" transform="translate(275,175)"><circle r="6" fill="#C9A662"/><circle r="12" fill="none" stroke="#C9A662" stroke-opacity="0.5" stroke-width="1.5"/></g>
+              <!-- Labels -->
+              <text x="205" y="146" font-family="Cormorant Garamond, serif" font-style="italic" font-size="11" fill="#F2EDE3">Paris</text>
+              <text x="146" y="182" font-family="Cormorant Garamond, serif" font-style="italic" font-size="11" fill="#F2EDE3">Normandy</text>
+              <text x="230" y="134" font-family="Cormorant Garamond, serif" font-style="italic" font-size="11" fill="#F2EDE3">Strasbourg</text>
+              <text x="168" y="254" font-family="Cormorant Garamond, serif" font-style="italic" font-size="11" fill="#F2EDE3">Bordeaux</text>
+              <text x="220" y="299" font-family="Cormorant Garamond, serif" font-style="italic" font-size="11" fill="#F2EDE3">Marseille</text>
+              <text x="128" y="234" font-family="Cormorant Garamond, serif" font-style="italic" font-size="11" fill="#F2EDE3">Loire</text>
+              <text x="284" y="189" font-family="Cormorant Garamond, serif" font-style="italic" font-size="11" fill="#F2EDE3">Chamonix</text>
+            </svg>
+            <div class="mp-map-label">The Mapster · France</div>
+            <div class="mp-map-count">42 places · 42 lessons</div>
+          </div>
+          ${PLACES.map((pl, i) => `
+            <div class="mp-slide mp-slide-place" data-i="${i+1}">
+              <img src="${pl.img}" alt="${pl.city}">
+              <div class="mp-place-overlay">
+                <div class="mp-place-city">${pl.city}</div>
+                <div class="mp-place-h">${pl.h}</div>
+                <div class="mp-place-p">${pl.p}</div>
+              </div>
+            </div>
+          `).join("")}
+          <div class="mp-dots" id="mpDots">
+            ${[0,1,2,3,4,5].map(i => `<div class="d${i===0?' on':''}"></div>`).join("")}
+          </div>
+        </div>
+        <div class="mp-actions">
+          <span>♡</span><span>💬</span><span>➤</span><span class="save">🔖</span>
+        </div>
+        <div class="mp-likes">18,246 likes</div>
+        <div class="mp-caption"><b>livefrenchatelier</b> Every French lesson has a place. Forty-two pins across France. Swipe to see where the next lesson lives. <em>#learnFrench #FrenchAtelier</em></div>
+        <div class="mp-time">2 hours ago</div>
+      </div>
+    </div>
+    <div class="mp-desc">
+      <h3>Every lesson has <em>a place</em>.</h3>
+      <p>The Mapster fold from <b>frenchatelierlive.com</b> becomes a native Instagram carousel post. Forty-two real pins across France, six of them rotate here on the phone as they would in-feed.</p>
+      <ul class="mp-desc-list">
+        <li><b>Slide 1</b><span>The map opens with animated pins across France.</span></li>
+        <li><b>Slide 2</b><span>Versailles · the court and the vous behind every polite French sentence.</span></li>
+        <li><b>Slide 3</b><span>Grasse · the twelve perfume terms that open Rue Cambon.</span></li>
+        <li><b>Slide 4</b><span>Giverny · Monet's light, in French.</span></li>
+        <li><b>Slide 5</b><span>Rue de Rivoli · Haussmann's Paris, one zinc roof at a time.</span></li>
+        <li><b>Slide 6</b><span>Saint-Germain · the cafés that wrote French thought.</span></li>
+      </ul>
+      <div class="mp-desc-note"><b>Cadence.</b> Every Friday, one pin becomes one carousel. Twelve carousels a quarter. Every one links back to the live Mapster on the site.</div>
+    </div>
+  `;
+  const psSay = slide.querySelector(".presenter-say");
+  if (psSay) psSay.after(post); else slide.appendChild(post);
+
+  // Auto-cycle the carousel
+  const slides = post.querySelectorAll(".mp-slide");
+  const dots = post.querySelectorAll("#mpDots .d");
+  let cur = 0;
+  function goto(i){
+    cur = (i + slides.length) % slides.length;
+    slides.forEach((s, idx) => s.classList.toggle("on", idx === cur));
+    dots.forEach((d, idx) => d.classList.toggle("on", idx === cur));
+  }
+  let timer = setInterval(() => goto(cur+1), 3200);
+  dots.forEach((d, idx) => d.addEventListener("click", () => { clearInterval(timer); goto(idx); }));
+})();
+
+/* -------- 7-8. CALENDARS · add LIVE badge to today's post (Sept 14, 2026) -------- */
+(function addLiveBadge(){
+  document.querySelectorAll(".mg-post").forEach(cell => {
+    const num = cell.querySelector(".mg-num");
+    if (!num) return;
+    const day = parseInt(num.textContent, 10);
+    // Sept 14 today - assumes Sept grid
+    const inSep = cell.closest("#calSepHost");
+    if (inSep && day === 14){
+      if (!cell.querySelector(".mg-live-badge")){
+        const b = document.createElement("div");
+        b.className = "mg-live-badge";
+        b.textContent = "LIVE TODAY";
+        cell.insertBefore(b, cell.querySelector(".mg-pill"));
+      }
+    }
+  });
+})();

@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/site.css?v=1400">
 <style>
   html, body { background: var(--ink); }
   body { padding-top: 60px; }
@@ -166,26 +166,8 @@
     <div class="wrap">
       <div class="eyebrow">Mapster · the interactive route across France · post-ready</div>
       <h2 class="big">Every lesson has <em>a place</em>.</h2>
-      <div class="presenter-say"><div class="lbl">Say this</div><div class="txt">"The Mapster fold from frenchatelierlive.com becomes an Instagram carousel post. Forty-two pins across France. Every pin is a photograph. Every photograph is a lesson. Every Friday, one pin becomes one carousel."</div></div>
-      <div class="mapster-post">
-        <div class="mp-phone">
-          <div class="mp-phone-header">
-            <span class="mp-ig-logo">Instagram</span>
-            <span class="mp-ig-user">@livefrenchatelier</span>
-          </div>
-          <div class="mp-phone-screen">
-            <img class="mp-cover-img" src="capsules/hero-versailles.jpg" alt="Route across France">
-            <div class="mp-caption-panel">
-              <h3>Follow your French journey across France.</h3>
-              <p>Paris → Normandy → Loire → Bordeaux → Marseille → Chamonix → Strasbourg. Forty-two real places. Every place a lesson.</p>
-              <div class="mp-cta">Swipe · tap · learn</div>
-            </div>
-          </div>
-        </div>
-        <div class="mp-map-preview">
-          <iframe class="map-iframe" src="https://gitteromri-ux.github.io/french-atelier/#mapstr" title="Live Mapster fold" loading="lazy"></iframe>
-        </div>
-      </div>
+      <div class="presenter-say"><div class="lbl">Say this</div><div class="txt">"The Mapster fold from frenchatelierlive.com becomes a native Instagram carousel post. Watch the phone on the left cycle through six real places from the map, exactly as the post would in feed. Forty-two pins total, one becomes a carousel every Friday."</div></div>
+      <!-- Mapster interactive mockup injected by site.js -->
     </div>
   </section>
 </div>
@@ -278,7 +260,7 @@
   <button class="deck-btn" id="next" aria-label="Next">›</button>
 </div>
 
-<script src="js/site.js"></script>
+<script src="js/site.js?v=1400"></script>
 <script>
   const slides = document.querySelectorAll(".slide");
   const total = slides.length;
@@ -304,7 +286,8 @@
     document.querySelectorAll("video").forEach(v => v.muted = true);
     document.querySelectorAll(".sound-btn").forEach(b => b.textContent = "🔇");
   }
-  show(0);
+  const urlSlide = parseInt(new URLSearchParams(location.search).get('slide') || '1', 10);
+  show(Math.max(0, Math.min(total-1, urlSlide-1)));
   document.getElementById("next").addEventListener("click", () => show(cur+1));
   document.getElementById("prev").addEventListener("click", () => show(cur-1));
   document.addEventListener("keydown", e => {
