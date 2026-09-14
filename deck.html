@@ -15,141 +15,75 @@
   .deck-btn { background: rgba(201,166,98,0.20); border: 1px solid rgba(201,166,98,0.45); color: var(--cream); width: 58px; height: 58px; border-radius: 50%; font-size: 26px; cursor: pointer; backdrop-filter: blur(10px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
   .deck-btn:hover { background: rgba(201,166,98,0.4); }
   .deck-counter { position: fixed; top: 20px; right: 40px; z-index: 200; font-family: var(--serif); font-style: italic; color: var(--gold-2); font-size: 22px; background: rgba(10,9,16,0.9); padding: 10px 18px; border-radius: 4px; }
-  .presenter-say { background: rgba(201,166,98,0.10); border-left: 3px solid var(--gold); padding: 20px 28px; margin: 24px 0 40px; max-width: 1100px; }
-  .presenter-say .lbl { font-size: 11px; letter-spacing: 0.20em; text-transform: uppercase; color: var(--gold-2); font-weight: 700; margin-bottom: 8px; }
-  .presenter-say .txt { font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 1.35; color: var(--cream); }
+  .presenter-say { background: rgba(201,166,98,0.10); border-left: 3px solid var(--gold); padding: 20px 28px; margin: 24px 0 40px; max-width: 1400px; }
+  .presenter-say .lbl { font-size: 14px; letter-spacing: 0.20em; text-transform: uppercase; color: var(--gold-2); font-weight: 700; margin-bottom: 8px; }
+  .presenter-say .txt { font-family: var(--serif); font-style: italic; font-size: 26px; line-height: 1.35; color: var(--cream); }
   .flow-strip { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 200; display: flex; gap: 6px; background: rgba(10,9,16,0.88); padding: 8px 12px; border-radius: 20px; backdrop-filter: blur(10px); }
-  .flow-dot { width: 24px; height: 24px; border-radius: 50%; background: rgba(242,237,227,0.15); color: rgba(242,237,227,0.6); font-size: 11px; display: flex; align-items: center; justify-content: center; font-weight: 700; cursor: pointer; transition: all .2s; }
+  .flow-dot { width: 28px; height: 28px; border-radius: 50%; background: rgba(242,237,227,0.15); color: rgba(242,237,227,0.6); font-size: 12px; display: flex; align-items: center; justify-content: center; font-weight: 700; cursor: pointer; transition: all .2s; }
   .flow-dot:hover { background: rgba(201,166,98,0.3); }
   .flow-dot.active { background: var(--gold); color: var(--ink); }
   .slide { display: none; padding: 40px 40px 100px; min-height: 100vh; }
   .slide.active { display: block; }
-  .slide section { padding: 60px 40px 40px; min-height: auto; }
-  .slide .section-num { top: 60px; right: 40px; font-size: 180px; }
-  .slide .stat-row { margin-top: 48px; padding-top: 32px; }
-  .slide .diag-grid { margin-top: 40px; }
-  .slide .pillar-grid { margin-top: 40px; }
-  .slide .rtm-grid, .slide .vid-grid, .slide .email-row, .slide .cap-grid { margin-top: 40px; }
-  .slide .lead { margin-top: 20px; font-size: 20px; }
-  .slide .cal-month { margin-top: 32px; }
-  .slide .cal-month h3 { font-size: 36px; }
-  .slide h1.display, .slide h2.big { font-size: clamp(48px, 5vw, 84px); }
-  .slide .hero-h1 { font-size: clamp(56px, 7vw, 120px); }
+  .slide section { padding: 60px 20px 40px; min-height: auto; }
+  .slide .wrap { max-width: 1900px !important; margin: 0 auto !important; padding: 0 20px !important; }
+  .slide .section-num { top: 60px; right: 40px; font-size: 220px; }
   .brand-strip { position: fixed; top: 20px; left: 40px; z-index: 200; font-family: var(--serif); font-size: 22px; color: var(--cream); }
   .brand-strip em { font-style: italic; color: var(--gold-2); }
+  .slide h2.big { font-size: clamp(72px, 8vw, 140px) !important; line-height: 0.95 !important; letter-spacing: -0.02em !important; }
+  .slide .eyebrow { font-size: 22px !important; letter-spacing: 0.22em !important; }
 </style>
 </head>
 <body>
 
 <div class="brand-strip">The French <em>Atelier</em> · Deck</div>
 <div class="flow-strip" id="flowStrip"></div>
-<div class="deck-counter" id="counter">01 / 13</div>
+<div class="deck-counter" id="counter">01 / 10</div>
 
-<!-- SLIDE 1 · HERO -->
-<div class="slide active" data-i="1" data-name="Cover">
-  <section class="hero" style="min-height:calc(100vh - 80px)">
-    <div class="wrap">
-      <div class="hero-kicker">French Atelier by Acadomia · Organic Social Kickstart · Sept and Oct 2026</div>
-      <h1 class="hero-h1">Three posts a week,<br>starting <em>today</em>.</h1>
-      <p class="hero-sub">A live cultural calendar, an on-brand cadence of Inspiration, Product and Education, and a delivery-ready library of Philippe and Charline videos, viral beauty reels, eighteen real drip and WhatsApp emails, and the Mapster journey.</p>
-      <div class="presenter-say"><div class="lbl">Say this to open</div><div class="txt">"The French Atelier social account has been quiet through the summer. Starting today we activate it · three posts a week, across September and October, all raw source, no bugs, everything you're about to see is ready to publish."</div></div>
-      <div class="stat-row">
-        <div class="stat"><div class="stat-n">16,875</div><div class="stat-l">Instagram · @livefrenchatelier</div><div class="stat-sub">Dormant audience</div></div>
-        <div class="stat"><div class="stat-n">6,700</div><div class="stat-l">Facebook · French Atelier</div><div class="stat-sub">Combined reach 23,575</div></div>
-        <div class="stat"><div class="stat-n">23</div><div class="stat-l">Posts · Sept and Oct</div><div class="stat-sub">3 per week</div></div>
-        <div class="stat"><div class="stat-n">18</div><div class="stat-l">Real designed emails ready</div><div class="stat-sub">12 ACQ drip · 6 WhatsApp topics</div></div>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- SLIDE 2 · BACKGROUND & STRATEGY -->
-<div class="slide" data-i="2" data-name="Strategy">
-  <section class="bg-diagnosis">
+<!-- SLIDE 1 · RTM OPPORTUNITIES · was 4 opening slides collapsed into 1 -->
+<div class="slide active" data-i="1" data-name="RTM Opportunities">
+  <section class="rtm">
     <div class="section-num">01</div>
     <div class="wrap">
-      <div class="eyebrow">Where we are · and where we go</div>
-      <h2 class="big">The account is quiet. From today, it <em>speaks</em>.</h2>
-      <div class="presenter-say"><div class="lbl">Say this</div><div class="txt">"We inherit 23,500 followers combined, silent since July. This is the plan to reactivate them."</div></div>
-      <div class="diag-grid">
-        <ul class="diag-list">
-          <li><span class="num">i.</span><span class="txt"><b>Baseline reality.</b> 16,875 followers on Instagram, 6,700 on Facebook, silent through the summer.</span></li>
-          <li><span class="num">ii.</span><span class="txt"><b>Audience.</b> American adults, aspirational Francophiles, drawn to beauty, taste, craft.</span></li>
-          <li><span class="num">iii.</span><span class="txt"><b>Cadence.</b> Three posts a week. Monday Inspiration, Wednesday Product, Friday Education.</span></li>
-          <li><span class="num">iv.</span><span class="txt"><b>Format bias.</b> Video first, ninety percent motion. Static reserved for editorial email heroes.</span></li>
-          <li><span class="num">v.</span><span class="txt"><b>Voice.</b> Cormorant italic, cream on ink, gold. Curated as a magazine, sold as a school.</span></li>
-        </ul>
-        <div class="right-card">
-          <h3>The one belief we shift</h3>
-          <p>Americans learn French from apps. We show them the culture apps cannot teach.</p>
-          <div class="metric">3× / week</div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- SLIDE 3 · CADENCE -->
-<div class="slide" data-i="3" data-name="Cadence">
-  <section class="cadence">
-    <div class="section-num">02</div>
-    <div class="wrap">
-      <div class="eyebrow">The three pillars of the week</div>
-      <h2 class="big">A rhythm that <em>reads like a magazine</em>.</h2>
-      <div class="presenter-say"><div class="lbl">Say this</div><div class="txt">"Monday inspires. Wednesday teaches a lesson. Friday gives one French idea. Every week. That's the whole system."</div></div>
-      <div class="pillar-grid">
-        <article class="pillar" data-num="01"><div class="pillar-tag">Monday · Inspiration</div><div class="pillar-h">The France that stops the scroll.</div><div class="pillar-p">Real-time cultural moments happening in France this week. Grape harvests, museum openings, Fashion Week couture close-ups, Lyon lit up, Louvre after dark.</div><div class="pillar-day"><b>Format:</b> 9:16 reel · 8 to 20 sec · music-forward</div></article>
-        <article class="pillar" data-num="02"><div class="pillar-tag">Wednesday · Product</div><div class="pillar-h">The lesson, in the wild.</div><div class="pillar-p">Philippe and Charline side-by-side, formal versus spoken French, one micro-lesson at a time. Lip-sync clean, subtitles on, sound-off legible, sound-on delightful.</div><div class="pillar-day"><b>Format:</b> 9:16 · 5 to 8 sec · captioned</div></article>
-        <article class="pillar" data-num="03"><div class="pillar-tag">Friday · Education</div><div class="pillar-h">One word that changes everything.</div><div class="pillar-p">Idea-behind-the-word posts. Tu me manques. Dépaysement. Flâner. Culture-first vocabulary delivered as a soft essay across a hero image.</div><div class="pillar-day"><b>Format:</b> Editorial carousel or 6-sec kinetic type</div></article>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- SLIDE 4 · RTM · factual title, 4K imagery -->
-<div class="slide" data-i="4" data-name="Culture Calendar">
-  <section class="rtm">
-    <div class="section-num">03</div>
-    <div class="wrap">
-      <div class="eyebrow">France · Sept 29 to Dec 20, 2026 · major cultural events</div>
-      <h2 class="big">Six events in France, <em>Sept to Dec</em>.</h2>
+      <div class="eyebrow">French Atelier by Acadomia · Sept and Oct 2026</div>
+      <h2 class="big">RTM Opportunities. <em>Connecting to Large Events in France</em>.</h2>
+      <div class="presenter-say"><div class="lbl">Say this</div><div class="txt">"Six major French cultural events between September and December give us a native reason to post. Fashion Week, Vendanges, Salon du Chocolat, Beaujolais Nouveau, Champs-Elysees illuminations, Strasbourg Christmas Markets. Every one is a Monday Inspiration post that writes itself."</div></div>
       <div class="rtm-grid" id="rtmGrid"></div>
     </div>
   </section>
 </div>
 
-<!-- SLIDE 5 · 5 ORGANIC FORMATS · one big video hero per format -->
-<div class="slide" data-i="5" data-name="5 Formats">
+<!-- SLIDE 2 · ORGANIC VIDEO FORMATS -->
+<div class="slide" data-i="2" data-name="Organic Video Formats">
   <section class="assets-vid">
-    <div class="section-num">04</div>
+    <div class="section-num">02</div>
     <div class="wrap">
-      <div class="eyebrow">In our repository · 5 organic formats · all raw source · zero strips</div>
-      <h2 class="big">Five formats. <em>Clean source</em>. Zero bugs.</h2>
-      <div class="presenter-say"><div class="lbl">Say this</div><div class="txt">"Five organic content formats already produced with Philippe and Charline. Each shows one hero video · press SOUND to hear it · click a thumbnail to switch clips."</div></div>
+      <div class="eyebrow">All 26 raw clips from Drive · zero baked strips · ready to publish</div>
+      <h2 class="big">Organic Video <em>Formats</em>.</h2>
+      <div class="presenter-say"><div class="lbl">Say this</div><div class="txt">"Five organic content formats already produced with Philippe and Charline. Every clip you see is real raw source from Drive. Click any tile to play. Press SOUND to hear it."</div></div>
       <div id="formatsHost"></div>
     </div>
   </section>
 </div>
 
-<!-- SLIDE 5B · BEAUTY OF FRENCH CULTURE -->
-<div class="slide" data-i="5b" data-name="Beauty Reels">
+<!-- SLIDE 3 · BEAUTY OF FRENCH CULTURE -->
+<div class="slide" data-i="3" data-name="Beauty of French Culture">
   <section class="assets-vid">
-    <div class="section-num">04b</div>
+    <div class="section-num">03</div>
     <div class="wrap">
-      <div class="eyebrow">Beauty of French Culture · 6 viral museum and boutique reels</div>
-      <h2 class="big">The Paris <em>Americans daydream about</em>.</h2>
-      <div class="presenter-say"><div class="lbl">Say this</div><div class="txt">"Six aspirational reels curated from top French Instagram accounts · the Louvre in front of the Mona Lisa, one day in Cannes at Cartier, sunset over Provence, the Sunday market. This is our Monday Inspiration reference bar. Every Monday post must look this good."</div></div>
+      <div class="eyebrow">6 Instagram viral museum and boutique reels · 8K resolution</div>
+      <h2 class="big">The Beauty of <em>French Culture</em>.</h2>
+      <div class="presenter-say"><div class="lbl">Say this</div><div class="txt">"Six aspirational Instagram reels curated from the top French museum and boutique accounts. 8K resolution. The Louvre in front of the Mona Lisa. One day in Cannes at Cartier. The Palais Garnier ceiling. Every one now carries the French Atelier logo top-left. This is our Monday Inspiration reference bar."</div></div>
       <div class="vid-grid beauty" id="beautyGrid"></div>
     </div>
   </section>
 </div>
 
-<!-- SLIDE 6 · EMAILS · all 30, organized by category -->
-<div class="slide" data-i="6" data-name="Emails">
+<!-- SLIDE 4 · REAL EMAILS -->
+<div class="slide" data-i="4" data-name="Real Emails">
   <section class="emails">
-    <div class="section-num">05</div>
+    <div class="section-num">04</div>
     <div class="wrap">
-      <div class="eyebrow">Real ACQ drip series and WhatsApp topics · 12 emails · 6 broadcasts · every real hero visible</div>
+      <div class="eyebrow">Real designed emails · 12 from ACQ drip series · 6 from WhatsApp broadcasts · every real hero visible</div>
       <h2 class="big">The <em>real emails</em>. Real subjects. Real imagery.</h2>
       <div class="presenter-say"><div class="lbl">Say this</div><div class="txt">"Eighteen real designed emails · twelve from the ACQ drip series with Sandra, six from the WhatsApp topic broadcasts. Every subject is an Instagram caption. Every hero is a Friday education carousel. Free leverage of finished work."</div></div>
       <div id="emailsHost"></div>
@@ -157,13 +91,13 @@
   </section>
 </div>
 
-<!-- SLIDE 7 · CAPSULES · real syllabus subjects, real imagery from FA culture library -->
-<div class="slide" data-i="7" data-name="Capsules">
+<!-- SLIDE 5 · CULTURE CAPSULES -->
+<div class="slide" data-i="5" data-name="Culture Capsules">
   <section class="capsules">
-    <div class="section-num">06</div>
+    <div class="section-num">05</div>
     <div class="wrap">
       <div class="eyebrow">Culture Capsules · the real syllabus · cinematic 15-minute lessons in French</div>
-      <h2 class="big">The <em>Birth of the Restaurant</em>. The <em>Café and the Idea</em>. <em>Haussmann's Paris</em>. The <em>Language of Perfume</em>.</h2>
+      <h2 class="big">The <em>Culture Capsules</em>.</h2>
       <div class="presenter-say"><div class="lbl">Say this</div><div class="txt">"The real Culture Capsule series from the French Atelier syllabus · cinematic 15-minute cultural lessons in French, one icon or idea per capsule, tied to the vocabulary of that world. This is what we invite people into, twice a month, on social."</div></div>
       <div class="cap-grid">
         <article class="cap-card cap-real">
@@ -172,8 +106,7 @@
           <div class="cap-body">
             <div class="cap-tag">Taste · Paris · 1765</div>
             <h3 class="cap-h">The Birth of the <em>Restaurant</em>.</h3>
-            <p class="cap-sub">Before Boulanger sold bouillon on rue des Poulies, no one "went out to eat." The word restaurant was a broth, then a place, then a French export the world adopted whole.</p>
-            <div class="cap-meta"><span>Taste chapter</span><span>Real syllabus</span></div>
+            <p class="cap-sub">Before Boulanger sold bouillon on rue des Poulies, no one "went out to eat." Restaurant was a broth, then a place, then a French export the world adopted whole.</p>
           </div>
         </article>
         <article class="cap-card cap-real">
@@ -182,8 +115,7 @@
           <div class="cap-body">
             <div class="cap-tag">Music · Left Bank · 1789 to 1968</div>
             <h3 class="cap-h">The Café <em>and the Idea</em>.</h3>
-            <p class="cap-sub">Diderot at the Procope, Sartre at Les Deux Magots, Beauvoir at the Flore. The revolutions of French thought were written at zinc counters, in the vocabulary of the dossier and the debate.</p>
-            <div class="cap-meta"><span>Music chapter</span><span>Real syllabus</span></div>
+            <p class="cap-sub">Diderot at the Procope, Sartre at Les Deux Magots, Beauvoir at the Flore. French thought was written at zinc counters.</p>
           </div>
         </article>
         <article class="cap-card cap-real">
@@ -192,8 +124,7 @@
           <div class="cap-body">
             <div class="cap-tag">Travel · Paris · 1853 to 1870</div>
             <h3 class="cap-h">Haussmann's <em>Paris</em>.</h3>
-            <p class="cap-sub">Twenty thousand demolitions. Forty thousand new buildings. Every avenue, every zinc roof, every wrought-iron balcony carries a word invented for it. The city as vocabulary.</p>
-            <div class="cap-meta"><span>Travel chapter</span><span>Real syllabus</span></div>
+            <p class="cap-sub">Twenty thousand demolitions. Forty thousand new buildings. Every avenue, every zinc roof, every wrought-iron balcony carries a word invented for it.</p>
           </div>
         </article>
         <article class="cap-card cap-real">
@@ -202,8 +133,7 @@
           <div class="cap-body">
             <div class="cap-tag">Beauty · Grasse and Rue Cambon</div>
             <h3 class="cap-h">The Language of <em>Perfume</em>.</h3>
-            <p class="cap-sub">Sillage, longevity, projection, nez. The words the great houses invented for a sense English never bothered to name. From Grasse fields to Chanel's mirrored staircase.</p>
-            <div class="cap-meta"><span>Beauty chapter</span><span>Real syllabus</span></div>
+            <p class="cap-sub">Sillage, longevity, projection, nez. The words the great houses invented for a sense English never bothered to name.</p>
           </div>
         </article>
         <article class="cap-card cap-real">
@@ -212,8 +142,7 @@
           <div class="cap-body">
             <div class="cap-tag">Art · Argenteuil to Giverny</div>
             <h3 class="cap-h">Reading <em>Monet's Light</em>.</h3>
-            <p class="cap-sub">The Impressionists rewrote how French sees light. Nuée, brume, lumière, chatoiement. That is the language every student inherits, in the words the painters used to each other on paper.</p>
-            <div class="cap-meta"><span>Art chapter</span><span>Real syllabus</span></div>
+            <p class="cap-sub">The Impressionists rewrote how French sees light. Nuée, brume, lumière, chatoiement. That is the language every student inherits.</p>
           </div>
         </article>
         <article class="cap-card cap-real">
@@ -223,7 +152,6 @@
             <div class="cap-tag">Heritage · Versailles · 1682</div>
             <h3 class="cap-h">Versailles as <em>Grammar</em>.</h3>
             <p class="cap-sub">The court, the hierarchy, the vous behind every French politeness that survives today. Louis XIV built a language of deference in stone and mirror.</p>
-            <div class="cap-meta"><span>Heritage chapter</span><span>Real syllabus</span></div>
           </div>
         </article>
       </div>
@@ -231,26 +159,42 @@
   </section>
 </div>
 
-<!-- SLIDE 7B · MAPSTER EMBED -->
-<div class="slide" data-i="7b" data-name="Mapster">
+<!-- SLIDE 6 · MAPSTER · rendered AS a post, not a screenshot -->
+<div class="slide" data-i="6" data-name="Mapster">
   <section class="mapster">
-    <div class="section-num">06b</div>
+    <div class="section-num">06</div>
     <div class="wrap">
-      <div class="eyebrow">Mapster fold · fully interactive on production</div>
-      <h2 class="big">Every lesson has <em>a place</em>. Every place has a lesson.</h2>
-      <div class="presenter-say"><div class="lbl">Say this</div><div class="txt">"This is the Mapster fold from frenchatelierlive.com, embedded live below. Forty-two pins, each with a photograph and a lesson. It becomes an Instagram post: swipe through Paris, tap a pin, discover the lesson. The interactive journey we take people on."</div></div>
-      <div class="map-shell" style="margin-top: 32px;">
-        <iframe class="map-iframe" src="https://gitteromri-ux.github.io/french-atelier/#mapstr" title="French Atelier · Mapstr" loading="lazy" allow="fullscreen"></iframe>
+      <div class="eyebrow">Mapster · the interactive route across France · post-ready</div>
+      <h2 class="big">Every lesson has <em>a place</em>.</h2>
+      <div class="presenter-say"><div class="lbl">Say this</div><div class="txt">"The Mapster fold from frenchatelierlive.com becomes an Instagram carousel post. Forty-two pins across France. Every pin is a photograph. Every photograph is a lesson. Every Friday, one pin becomes one carousel."</div></div>
+      <div class="mapster-post">
+        <div class="mp-phone">
+          <div class="mp-phone-header">
+            <span class="mp-ig-logo">Instagram</span>
+            <span class="mp-ig-user">@livefrenchatelier</span>
+          </div>
+          <div class="mp-phone-screen">
+            <img class="mp-cover-img" src="capsules/hero-versailles.jpg" alt="Route across France">
+            <div class="mp-caption-panel">
+              <h3>Follow your French journey across France.</h3>
+              <p>Paris → Normandy → Loire → Bordeaux → Marseille → Chamonix → Strasbourg. Forty-two real places. Every place a lesson.</p>
+              <div class="mp-cta">Swipe · tap · learn</div>
+            </div>
+          </div>
+        </div>
+        <div class="mp-map-preview">
+          <iframe class="map-iframe" src="https://gitteromri-ux.github.io/french-atelier/#mapstr" title="Live Mapster fold" loading="lazy"></iframe>
+        </div>
       </div>
     </div>
   </section>
 </div>
 
-<!-- SLIDE 8 · CONTENT CALENDAR SEPTEMBER · gorgeous colored cards with mockup thumbs -->
-<div class="slide" data-i="8" data-name="Calendar · Sept">
-  <section class="calendar">
+<!-- SLIDE 7 · SEPTEMBER CALENDAR · wide -->
+<div class="slide" data-i="7" data-name="September Calendar">
+  <section class="calendar wide-cal">
     <div class="section-num">07</div>
-    <div class="wrap">
+    <div class="wrap wrap-wide">
       <div class="eyebrow">Content calendar · September 2026 · 10 posts</div>
       <h2 class="big">September <em>calendar</em>.</h2>
       <div class="cal-legend">
@@ -258,16 +202,16 @@
         <span class="leg"><span class="swatch sw-prod"></span>Wednesday · Product</span>
         <span class="leg"><span class="swatch sw-edu"></span>Friday · Education</span>
       </div>
-      <div class="cal-grid" id="calSepHost"></div>
+      <div id="calSepHost"></div>
     </div>
   </section>
 </div>
 
-<!-- SLIDE 8B · CONTENT CALENDAR OCTOBER -->
-<div class="slide" data-i="8b" data-name="Calendar · Oct">
-  <section class="calendar">
-    <div class="section-num">07b</div>
-    <div class="wrap">
+<!-- SLIDE 8 · OCTOBER CALENDAR · wide -->
+<div class="slide" data-i="8" data-name="October Calendar">
+  <section class="calendar wide-cal">
+    <div class="section-num">08</div>
+    <div class="wrap wrap-wide">
       <div class="eyebrow">Content calendar · October 2026 · 13 posts</div>
       <h2 class="big">October <em>calendar</em>.</h2>
       <div class="cal-legend">
@@ -275,37 +219,38 @@
         <span class="leg"><span class="swatch sw-prod"></span>Wednesday · Product</span>
         <span class="leg"><span class="swatch sw-edu"></span>Friday · Education</span>
       </div>
-      <div class="cal-grid" id="calOctHost"></div>
+      <div id="calOctHost"></div>
     </div>
   </section>
 </div>
 
-<!-- SLIDE 12 · WHAT HAPPENS NEXT -->
-<div class="slide" data-i="12" data-name="What next">
+<!-- SLIDE 9 · WHAT HAPPENS NEXT · colored cards -->
+<div class="slide" data-i="9" data-name="What Happens Next">
   <section class="whats-next">
+    <div class="section-num">09</div>
     <div class="wrap">
       <div class="eyebrow">After you approve this plan</div>
       <h2 class="big">What <em>happens</em> next.</h2>
       <div class="wn-grid">
-        <div class="wn-step">
+        <div class="wn-step wn-c1">
           <div class="wn-num">01</div>
           <div class="wn-when">This week</div>
           <h3 class="wn-h">You approve the plan. We open Sprout Social Advanced and connect all channels.</h3>
           <p class="wn-p">Instagram, Facebook, TikTok, LinkedIn, X, YouTube, Threads, Pinterest linked to Philippe as External Approver. Nothing posts until he clicks approve.</p>
         </div>
-        <div class="wn-step">
+        <div class="wn-step wn-c2">
           <div class="wn-num">02</div>
           <div class="wn-when">Days 1 to 3</div>
           <h3 class="wn-h">We upload every asset for September and October. All 23 posts scheduled once.</h3>
           <p class="wn-p">Ten September posts, thirteen October posts. Every Reel, every carousel, every image. Every caption, every hashtag, every link.</p>
         </div>
-        <div class="wn-step">
+        <div class="wn-step wn-c3">
           <div class="wn-num">03</div>
           <div class="wn-when">Wed Sept 9</div>
           <h3 class="wn-h">First post goes live. Formal versus Spoken French, Il y a to Y a.</h3>
           <p class="wn-p">From that day forward: Monday Inspiration, Wednesday Product, Friday Education. Automatic. No missed dates.</p>
         </div>
-        <div class="wn-step">
+        <div class="wn-step wn-c4">
           <div class="wn-num">04</div>
           <div class="wn-when">Every Monday</div>
           <h3 class="wn-h">Weekly performance report emailed to Philippe. Reach, engagement, saves, link clicks.</h3>
@@ -316,9 +261,10 @@
   </section>
 </div>
 
-<!-- SLIDE 13 · EXECUTION · SPROUT SOCIAL ADVANCED -->
-<div class="slide" data-i="13" data-name="Execution">
+<!-- SLIDE 10 · EXECUTION · Sprout Social Advanced -->
+<div class="slide" data-i="10" data-name="Execution">
   <section style="padding: 100px 40px;">
+    <div class="section-num">10</div>
     <div class="wrap">
       <div class="eyebrow">Execution · Sprout Social Advanced · one seat</div>
       <h2 class="big">Execution.</h2>
@@ -339,7 +285,6 @@
   let cur = 0;
   const counter = document.getElementById("counter");
   const strip = document.getElementById("flowStrip");
-  // Build the flow strip with clickable dots for each slide
   slides.forEach((s, idx) => {
     const name = s.getAttribute("data-name") || String(idx+1);
     const d = document.createElement("button");
@@ -355,9 +300,7 @@
     slides.forEach((s, idx) => s.classList.toggle("active", idx === i));
     counter.textContent = String(i+1).padStart(2,"0") + " / " + String(total).padStart(2,"0");
     document.querySelectorAll(".flow-dot").forEach((d, idx) => d.classList.toggle("active", idx === i));
-    // scroll active slide to top
     slides[i].scrollTo && slides[i].scrollTo(0, 0);
-    // pause videos not in active slide
     document.querySelectorAll("video").forEach(v => v.muted = true);
     document.querySelectorAll(".sound-btn").forEach(b => b.textContent = "🔇");
   }

@@ -1174,3 +1174,155 @@ video, .fmt-hero, .beauty-card video, .cap-bg-video, .fmt-thumb video {
   background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(5,6,10,0.35) 45%, rgba(5,6,10,0.92) 88%, rgba(5,6,10,1) 100%) !important;
 }
 .cap-card.cap-real { min-height: 820px !important; }
+
+/* ============ R10 FINAL · 10 slides · executive polish ============ */
+/* Wide wrapping for calendar slides */
+.slide .wrap-wide { max-width: 2200px !important; padding: 0 8px !important; }
+.wide-cal .mg {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 10px !important;
+  margin-top: 40px !important;
+  width: 100% !important;
+}
+.wide-cal .mg-cell { min-height: 300px !important; padding: 16px !important; }
+.wide-cal .mg-empty { min-height: 200px !important; }
+.wide-cal .mg-blank { min-height: 200px !important; }
+.wide-cal .mg-num { font-size: 48px !important; }
+.wide-cal .mg-head { font-size: 20px !important; line-height: 1.15 !important; margin-top: 6px !important; }
+.wide-cal .mg-cap { font-size: 15px !important; line-height: 1.4 !important; }
+.wide-cal .mg-asset { font-size: 12px !important; }
+.wide-cal .mg-thumb { aspect-ratio: 4/3 !important; margin: 4px 0 !important; }
+.wide-cal .mg-hd { font-size: 24px !important; padding: 24px 0 !important; }
+.wide-cal .mg-pill { font-size: 14px !important; padding: 7px 16px !important; }
+
+/* Emails LARGER, unique real hero images, NO Philippe photos - just real banners */
+.email-frame { min-height: 1100px !important; max-width: 700px !important; }
+.email-hero-img { min-height: 460px !important; aspect-ratio: 12/7 !important; object-fit: cover !important; object-position: center center !important; }
+.email-sub { font-size: 42px !important; line-height: 1.1 !important; }
+.email-pre { font-size: 22px !important; line-height: 1.5 !important; }
+.email-tag { font-size: 15px !important; }
+.email-body-min { padding: 32px 40px !important; }
+.email-row { grid-template-columns: repeat(auto-fit, minmax(600px, 1fr)) !important; gap: 48px !important; }
+.email-track { margin-top: 100px !important; }
+.track-h h3 { font-size: 72px !important; }
+
+/* Mapster as an actual Instagram post + live map side by side */
+.mapster-post {
+  display: grid !important; grid-template-columns: 480px 1fr !important; gap: 60px !important;
+  margin-top: 60px !important; align-items: flex-start !important;
+}
+.mp-phone {
+  background: #0a0f1e; border-radius: 44px; padding: 12px; box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 0 12px #1a1a1a;
+  aspect-ratio: 9/19; max-width: 480px; overflow: hidden; position: relative;
+}
+.mp-phone-header {
+  display: flex; justify-content: space-between; align-items: center; padding: 16px 20px 14px;
+  background: #000; border-bottom: 1px solid #222; border-radius: 32px 32px 0 0;
+}
+.mp-ig-logo { font-family: var(--serif); font-style: italic; color: #fff; font-size: 24px; }
+.mp-ig-user { color: #fff; font-size: 14px; opacity: 0.7; }
+.mp-phone-screen { position: relative; height: calc(100% - 60px); overflow: hidden; }
+.mp-cover-img { width: 100%; height: 55%; object-fit: cover; display: block; }
+.mp-caption-panel { padding: 32px 28px; color: #fff; }
+.mp-caption-panel h3 {
+  font-family: var(--serif); font-weight: 500; font-size: 32px; line-height: 1.1;
+  color: var(--gold-2); letter-spacing: -0.02em; margin: 0 0 14px 0;
+}
+.mp-caption-panel p { font-size: 17px; line-height: 1.4; color: rgba(255,255,255,0.85); margin: 0 0 20px; }
+.mp-cta {
+  font-family: var(--sans); font-weight: 700; font-size: 14px; letter-spacing: 0.24em;
+  text-transform: uppercase; color: var(--gold-2); border: 2px solid var(--gold);
+  padding: 14px 24px; text-align: center; display: inline-block;
+}
+.mp-map-preview {
+  height: 1000px; border-radius: 20px; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.55);
+  background: #05060a;
+}
+.mp-map-preview .map-iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+/* What Happens Next · colored cards */
+.wn-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 32px !important; }
+.wn-step { padding: 44px 36px !important; min-height: 480px !important; }
+.wn-c1 { background: linear-gradient(160deg, #12244a 0%, #05060a 100%) !important; border-color: #7dd3ff !important; box-shadow: 0 40px 100px rgba(0,0,0,0.5), inset 0 0 60px rgba(125,211,255,0.10) !important; }
+.wn-c1 .wn-num { color: #7dd3ff !important; }
+.wn-c2 { background: linear-gradient(160deg, #4a1a3d 0%, #05060a 100%) !important; border-color: #d8a8ff !important; box-shadow: 0 40px 100px rgba(0,0,0,0.5), inset 0 0 60px rgba(216,168,255,0.10) !important; }
+.wn-c2 .wn-num { color: #d8a8ff !important; }
+.wn-c3 { background: linear-gradient(160deg, #4a341c 0%, #05060a 100%) !important; border-color: #f9c668 !important; box-shadow: 0 40px 100px rgba(0,0,0,0.5), inset 0 0 60px rgba(249,198,104,0.10) !important; }
+.wn-c3 .wn-num { color: #f9c668 !important; }
+.wn-c4 { background: linear-gradient(160deg, #1a4a2f 0%, #05060a 100%) !important; border-color: #6ce89a !important; box-shadow: 0 40px 100px rgba(0,0,0,0.5), inset 0 0 60px rgba(108,232,154,0.10) !important; }
+.wn-c4 .wn-num { color: #6ce89a !important; }
+.wn-h { font-size: 32px !important; line-height: 1.15 !important; }
+.wn-p { font-size: 18px !important; line-height: 1.45 !important; }
+.wn-when { font-size: 16px !important; letter-spacing: 0.22em !important; }
+.wn-num { font-size: 88px !important; }
+
+/* RTM slide · bigger cards, brighter imagery */
+.rtm-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 40px !important; margin-top: 60px !important; }
+.rtm-card { min-height: 780px !important; background: #0d1428 !important; }
+.rtm-img { aspect-ratio: 16/10 !important; }
+.rtm-body { padding: 44px 36px !important; }
+.rtm-name { font-size: 40px !important; line-height: 1.05 !important; }
+.rtm-city { font-size: 18px !important; margin-top: 8px !important; }
+.rtm-date { font-size: 24px !important; }
+.rtm-hook { font-size: 20px !important; line-height: 1.5 !important; margin-top: 16px !important; }
+
+/* Format slide - big videos side by side */
+.fmt-block { padding: 60px 0 !important; }
+.fmt-head { margin-bottom: 40px !important; }
+.fmt-title { font-size: clamp(56px, 6vw, 96px) !important; line-height: 0.95 !important; }
+.fmt-num { font-size: clamp(140px, 12vw, 200px) !important; }
+.fmt-lede { font-size: 22px !important; line-height: 1.5 !important; }
+.fmt-tag { font-size: 18px !important; }
+.fmt-block .fmt-stage {
+  max-width: 620px !important;
+  aspect-ratio: 9/16 !important;
+  margin: 40px auto !important;
+}
+.fmt-thumbs {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 260px)) !important;
+  gap: 24px !important;
+}
+.fmt-thumb {
+  aspect-ratio: 9/16 !important;
+  min-height: 460px !important;
+}
+
+/* Sprout Execution execution - ensure product screenshots visible + logo integrated */
+.sprout-block-lg { grid-template-columns: 1.2fr 1fr !important; }
+.sprout-shot img { max-height: 520px !important; }
+.sprout-title-lg { font-size: 44px !important; }
+.sprout-list-lg li { font-size: 20px !important; }
+
+/* Capsules cinematic imagery bright */
+.cap-real .cap-bg-img { filter: brightness(0.92) contrast(1.05) !important; }
+.cap-real::after {
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(5,6,10,0.15) 45%, rgba(5,6,10,0.85) 85%, rgba(5,6,10,1) 100%) !important;
+}
+.cap-card.cap-real { min-height: 780px !important; }
+.cap-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 32px !important; }
+.cap-h { font-size: clamp(38px, 3.4vw, 54px) !important; line-height: 1.02 !important; }
+.cap-sub { font-size: 18px !important; line-height: 1.5 !important; }
+.cap-tag { font-size: 14px !important; padding: 8px 16px !important; }
+.cap-num { font-size: 72px !important; }
+.cap-brand { font-size: 13px !important; letter-spacing: 0.28em !important; }
+.cap-body { padding: 32px 32px 36px !important; }
+
+/* Beauty reels wider aspect on the grid */
+.vid-grid.beauty {
+  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)) !important;
+  gap: 48px !important;
+}
+.vid-grid.beauty .beauty-card {
+  aspect-ratio: 9/16 !important;
+  min-height: 900px !important;
+  max-width: 620px !important;
+  margin: 0 auto !important;
+}
+.beauty-cap { font-size: 32px !important; padding: 26px 30px !important; }
+
+@media (max-width: 1400px) {
+  .mapster-post { grid-template-columns: 1fr !important; }
+  .wn-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .cap-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
