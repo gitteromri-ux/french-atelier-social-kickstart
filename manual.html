@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>French Atelier · Social Kickstart Manual</title>
+<title>French Atelier · Social Kickstart Manual v3</title>
 <meta name="viewport" content="width=1440">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --navy:#0A1428;
@@ -17,26 +17,46 @@
   --blue:#5EB6FF;
   --line:rgba(242,237,227,0.14);
   --sprout:#75DB88;
+  --meta:#0866FF;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--navy);color:var(--cream);font-family:"Inter Tight",sans-serif;-webkit-font-smoothing:antialiased}
 body{min-height:100vh;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 
+/* BRAND STRIP */
 .brand-strip{
   position:fixed;top:0;left:0;right:0;height:64px;z-index:100;
   background:rgba(10,20,40,0.85);backdrop-filter:blur(18px);
   border-bottom:1px solid var(--line);
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 40px;font-size:18px;letter-spacing:0.08em;text-transform:uppercase;
+  padding:0 40px;font-size:16px;letter-spacing:0.08em;text-transform:uppercase;
 }
 .brand-strip .b-left{color:var(--cream);font-weight:600}
 .brand-strip .b-mid{color:var(--cream-dim);font-weight:400}
 .brand-strip .b-right{color:var(--gold);font-weight:600}
 
+/* STICKY LEFT NAV */
+.sidenav{
+  position:fixed;top:80px;left:16px;width:220px;z-index:90;
+  padding:16px 14px;background:rgba(15,27,51,0.75);backdrop-filter:blur(14px);
+  border:1px solid var(--line);border-radius:14px;
+}
+.sidenav .navhead{
+  font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:0.24em;
+  color:var(--gold);text-transform:uppercase;margin-bottom:10px;
+}
+.sidenav a{
+  display:block;padding:8px 10px;font-size:13px;color:var(--cream-dim);
+  border-radius:8px;font-weight:500;line-height:1.25;
+}
+.sidenav a:hover{color:var(--cream);background:rgba(201,166,98,0.08)}
+.sidenav a b{color:var(--gold);font-family:"JetBrains Mono",monospace;font-weight:600;font-size:11px;margin-right:6px}
+
+/* SLIDE */
 .slide{
   min-height:100vh;
-  padding:120px 80px 100px;
+  padding:120px 80px 100px 280px;
   position:relative;
   border-bottom:1px solid var(--line);
   overflow:hidden;
@@ -48,8 +68,8 @@ a{color:inherit;text-decoration:none}
   letter-spacing:-0.02em;pointer-events:none;user-select:none;
 }
 .eyebrow{
-  font-family:"Inter Tight",sans-serif;
-  font-size:22px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;
+  font-family:"JetBrains Mono",monospace;
+  font-size:15px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;
   color:var(--gold);margin-bottom:32px;
 }
 h1.display{
@@ -67,742 +87,508 @@ p.lede{
   font-size:36px;line-height:1.28;color:var(--cream);max-width:1400px;
   font-weight:300;margin-bottom:48px;
 }
-p.body{font-size:32px;line-height:1.35;color:var(--cream);max-width:1200px}
+p.body{font-size:32px;line-height:1.35;color:var(--cream);max-width:1200px;margin-bottom:24px}
+p.body a{color:var(--gold);border-bottom:1px solid rgba(201,166,98,0.4)}
 
+/* CTA BUTTON + URL CAPTION */
+.cta-wrap{margin:32px 0 40px;max-width:1400px}
 .deep-btn{
   display:inline-flex;align-items:center;gap:20px;
-  padding:28px 44px;border-radius:14px;
+  padding:32px 52px;border-radius:16px;
   background:linear-gradient(135deg,var(--gold),#B08947);
-  color:var(--navy);font-size:32px;font-weight:700;
+  color:var(--navy);font-size:34px;font-weight:700;
   letter-spacing:0.01em;
   box-shadow:0 20px 60px rgba(201,166,98,0.25),0 0 0 1px rgba(201,166,98,0.4);
   transition:transform .2s ease;
-  margin-top:32px;
 }
 .deep-btn:hover{transform:translateY(-2px)}
 .deep-btn .arw{font-size:36px;transform:translateX(2px)}
 .deep-btn.blue{background:linear-gradient(135deg,var(--blue),#2E7CD6);color:#fff;box-shadow:0 20px 60px rgba(94,182,255,0.25),0 0 0 1px rgba(94,182,255,0.4)}
+.deep-btn.meta{background:linear-gradient(135deg,#0866FF,#054FCB);color:#fff;box-shadow:0 20px 60px rgba(8,102,255,0.3),0 0 0 1px rgba(8,102,255,0.5)}
+.deep-btn.sprout-btn{background:linear-gradient(135deg,var(--sprout),#3EAF5C);color:var(--navy);box-shadow:0 20px 60px rgba(117,219,136,0.25),0 0 0 1px rgba(117,219,136,0.4)}
+.deep-btn.giant{padding:44px 68px;font-size:44px;border-radius:20px}
 
-/* SLIDE 1 - profiles */
+.url-cap{
+  display:block;margin-top:14px;font-family:"JetBrains Mono",monospace;
+  font-size:15px;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;
+  word-break:break-all;line-height:1.4;
+}
+.url-cap.tiny{font-size:13px}
+.how-line{
+  display:block;margin-top:10px;font-size:22px;color:var(--cream-dim);
+  font-weight:300;font-style:italic;max-width:900px;line-height:1.35;
+}
+
+/* SLIDE 0 - ACTIVATION */
+.activate-hero{
+  background:linear-gradient(180deg,rgba(8,102,255,0.10),rgba(8,102,255,0.02));
+  border:2px solid rgba(8,102,255,0.35);border-radius:24px;
+  padding:56px;margin-top:32px;max-width:1500px;
+}
+.activate-hero h3{
+  font-family:"Instrument Serif",serif;font-style:italic;
+  font-size:56px;color:var(--cream);margin-bottom:24px;line-height:1.05;
+}
+.activate-hero ol{margin:24px 0 32px 32px;padding:0;font-size:28px;line-height:1.6;color:var(--cream)}
+.activate-hero ol li{margin-bottom:14px}
+.activate-hero ol li b{color:var(--gold)}
+.dm-block{
+  background:#05080F;border:1px solid var(--line);border-radius:16px;
+  padding:36px 40px;margin-top:24px;position:relative;
+}
+.dm-label{
+  font-family:"JetBrains Mono",monospace;font-size:14px;letter-spacing:0.22em;
+  color:var(--gold);text-transform:uppercase;margin-bottom:18px;
+}
+#dm-text{
+  font-family:"JetBrains Mono",monospace;font-size:22px;line-height:1.5;
+  color:var(--cream);white-space:pre-wrap;word-break:break-word;
+}
+.copy-btn{
+  margin-top:22px;display:inline-flex;align-items:center;gap:14px;
+  padding:18px 32px;border-radius:12px;background:var(--cream);color:var(--navy);
+  font-size:22px;font-weight:700;letter-spacing:0.02em;cursor:pointer;border:0;
+  font-family:"Inter Tight",sans-serif;
+}
+.copy-btn:hover{background:#fff}
+.copy-btn.copied{background:var(--sprout)}
+
+/* SLIDE 1 - PROFILES */
 .profile-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;margin-top:40px;max-width:1600px}
 .profile-card{
   background:linear-gradient(180deg,#0F1B33,#0A1428);
   border:1px solid var(--line);border-radius:22px;padding:44px 36px;
-  position:relative;overflow:hidden;
+  position:relative;overflow:hidden;display:block;transition:transform .2s,border-color .2s;
 }
+.profile-card:hover{transform:translateY(-4px);border-color:var(--gold)}
 .profile-card::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 100% -20%,rgba(94,182,255,0.14),transparent);pointer-events:none}
-.p-logo{width:96px;height:96px;border-radius:22px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;background:#fff}
-.p-logo svg{width:64px;height:64px}
-.p-name{font-family:"Instrument Serif",serif;font-style:italic;font-size:44px;line-height:1.05;color:var(--cream);margin-bottom:8px}
-.p-handle{font-size:26px;color:var(--cream-dim);margin-bottom:24px;font-weight:400}
-.p-badge{
-  display:inline-flex;align-items:center;gap:12px;
-  background:rgba(117,219,136,0.12);color:var(--sprout);
-  padding:14px 20px;border-radius:999px;font-size:22px;font-weight:600;
-  border:1px solid rgba(117,219,136,0.4);
+.p-logo{width:88px;height:88px;border-radius:20px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;background:#fff;font-size:44px;font-weight:800}
+.p-logo.ig{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4);color:#fff}
+.p-logo.fb{background:#0866FF;color:#fff}
+.p-name{font-family:"Instrument Serif",serif;font-style:italic;font-size:40px;line-height:1.05;color:var(--cream);margin-bottom:8px}
+.p-handle{font-size:22px;color:var(--cream-dim);margin-bottom:20px;font-weight:400;font-family:"JetBrains Mono",monospace}
+.p-role{font-size:20px;color:var(--cream);margin-bottom:20px;line-height:1.4}
+.p-url{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;word-break:break-all}
+
+/* SLIDE 2 - POSTS TABLE */
+.posts-table{margin-top:32px;max-width:1600px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.pt-row{
+  display:grid;grid-template-columns:110px 90px 1fr 130px;gap:20px;
+  padding:20px 28px;border-bottom:1px solid var(--line);
+  align-items:center;font-size:19px;color:var(--cream);
+  transition:background .15s;
 }
-.p-badge .dot{width:12px;height:12px;border-radius:50%;background:var(--sprout);box-shadow:0 0 12px var(--sprout)}
+.pt-row:last-child{border-bottom:0}
+.pt-row:hover{background:rgba(201,166,98,0.06)}
+.pt-row.head{background:#0F1B33;font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase}
+.pt-date{font-family:"JetBrains Mono",monospace;font-size:15px;color:var(--cream-dim)}
+.pillar-pill{display:inline-block;padding:5px 12px;border-radius:20px;font-size:12px;font-family:"JetBrains Mono",monospace;letter-spacing:0.15em;text-transform:uppercase;font-weight:600}
+.pillar-pill.prod{background:rgba(94,182,255,0.14);color:var(--blue)}
+.pillar-pill.edu{background:rgba(201,166,98,0.14);color:var(--gold)}
+.pillar-pill.inspo{background:rgba(117,219,136,0.14);color:var(--sprout)}
+.pillar-pill.extra{background:rgba(242,237,227,0.10);color:var(--cream-dim)}
+.pt-head{font-family:"Instrument Serif",serif;font-style:italic;font-size:22px;color:var(--cream);line-height:1.2}
+.pt-link{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;text-align:right}
 
-/* SLIDE 2 - posts */
-.post-list{
-  margin-top:32px;display:flex;flex-direction:column;gap:14px;
-  max-height:none;
+/* SLIDE 3 - WORKFLOW STEPS */
+.step-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:1600px;margin-top:32px}
+.step-card{
+  background:linear-gradient(180deg,#0F1B33,#0A1428);
+  border:1px solid var(--line);border-radius:20px;padding:40px 36px;
 }
-.post-row{
-  display:grid;grid-template-columns:64px 220px 220px 1fr 120px 140px;
-  gap:24px;align-items:center;
-  padding:20px 28px;
-  background:rgba(242,237,227,0.03);
-  border:1px solid var(--line);border-radius:14px;
+.step-card .step-num{font-family:"Instrument Serif",serif;font-style:italic;font-size:80px;color:var(--gold);line-height:1;margin-bottom:16px}
+.step-card h3{font-family:"Instrument Serif",serif;font-style:italic;font-size:40px;color:var(--cream);margin-bottom:16px;line-height:1.05}
+.step-card p{font-size:22px;color:var(--cream);line-height:1.4;margin-bottom:20px}
+.step-card .btn-inline{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;background:rgba(201,166,98,0.14);border:1px solid rgba(201,166,98,0.4);border-radius:10px;color:var(--gold);font-weight:600;font-size:17px;transition:background .15s}
+.step-card .btn-inline:hover{background:rgba(201,166,98,0.24)}
+.step-card .u{display:block;margin-top:10px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;word-break:break-all}
+
+/* SLIDE 4 - KEYWORDS */
+.kw-cloud{display:flex;flex-wrap:wrap;gap:16px;margin-top:32px;max-width:1500px}
+.kw-chip{
+  padding:20px 32px;border-radius:14px;
+  background:rgba(8,102,255,0.10);border:1px solid rgba(8,102,255,0.35);
+  color:var(--cream);font-size:24px;font-weight:500;
+  transition:all .15s;display:inline-block;
 }
-.post-n{font-family:"Instrument Serif",serif;font-style:italic;font-size:32px;color:var(--gold)}
-.post-date{font-size:26px;font-weight:600;color:var(--cream);letter-spacing:0.01em}
-.pillar-chip{
-  display:inline-flex;align-items:center;justify-content:center;
-  font-size:20px;font-weight:600;padding:10px 16px;border-radius:999px;
-  border:1px solid;text-transform:uppercase;letter-spacing:0.08em;
+.kw-chip:hover{background:rgba(8,102,255,0.24);transform:translateY(-2px)}
+.kw-chip.gold{background:rgba(201,166,98,0.10);border-color:rgba(201,166,98,0.4);color:var(--gold)}
+
+/* SLIDE 5 - REPORTS */
+.report-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1600px;margin-top:32px}
+.report-card{
+  background:linear-gradient(180deg,#0F1B33,#0A1428);
+  border:1px solid var(--line);border-radius:18px;padding:36px 32px;
+  transition:transform .2s,border-color .2s;display:block;
 }
-.post-head{font-size:28px;color:var(--cream);font-weight:500;line-height:1.2}
-.post-media{font-size:22px;color:var(--cream-dim);font-weight:400}
-.net-chips{display:flex;gap:8px}
-.net{font-size:20px;font-weight:700;padding:8px 14px;border-radius:8px}
-.net.fb{background:#1877F2;color:#fff}
-.net.ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff}
+.report-card:hover{transform:translateY(-3px);border-color:var(--sprout)}
+.report-card h3{font-family:"Instrument Serif",serif;font-style:italic;font-size:36px;color:var(--cream);margin-bottom:12px;line-height:1.05}
+.report-card p{font-size:20px;color:var(--cream-dim);line-height:1.4;margin-bottom:16px}
+.report-card .u{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;word-break:break-all}
 
-.pillar-legend{display:flex;gap:24px;margin-top:20px;font-size:24px;flex-wrap:wrap}
-.pillar-legend span{display:inline-flex;align-items:center;gap:12px}
-.pillar-legend i{width:22px;height:22px;border-radius:6px;display:inline-block}
-
-/* SLIDE 3 - calendars */
-.cal-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:40px;max-width:1600px}
-.cal{background:rgba(242,237,227,0.03);border:1px solid var(--line);border-radius:22px;padding:36px}
-.cal h3{font-family:"Instrument Serif",serif;font-style:italic;font-size:56px;margin-bottom:28px;color:var(--cream)}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
-.cal-hd{font-size:20px;font-weight:600;color:var(--cream-dim);text-align:center;padding:8px 0;letter-spacing:0.08em;text-transform:uppercase}
-.cal-cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:26px;color:var(--cream);border-radius:12px;background:rgba(242,237,227,0.04);position:relative}
-.cal-cell.empty{background:transparent}
-.cal-cell.post{background:linear-gradient(135deg,rgba(201,166,98,0.22),rgba(201,166,98,0.08));border:2px solid var(--gold);color:var(--gold);font-weight:700}
-.cal-cell.post::after{content:"";position:absolute;bottom:6px;width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
-
-.auto-pub-banner{
-  display:flex;align-items:center;gap:24px;margin-top:40px;
-  padding:32px 40px;background:rgba(117,219,136,0.08);
-  border:1px solid rgba(117,219,136,0.35);border-radius:18px;
-  font-size:32px;font-weight:500;
+/* SLIDE 7 - LINK VAULT */
+.vault{margin-top:32px;max-width:1500px;display:grid;gap:16px}
+.vault-row{
+  display:grid;grid-template-columns:280px 1fr;gap:24px;
+  padding:22px 28px;background:#0F1B33;border:1px solid var(--line);border-radius:14px;
+  align-items:center;transition:border-color .15s;
 }
-.auto-pub-banner .dot{width:20px;height:20px;border-radius:50%;background:var(--sprout);box-shadow:0 0 20px var(--sprout)}
-.auto-pub-banner b{color:var(--sprout);font-weight:700}
+.vault-row:hover{border-color:var(--gold)}
+.vault-row .label{font-family:"Instrument Serif",serif;font-style:italic;font-size:26px;color:var(--cream)}
+.vault-row a.link{font-family:"JetBrains Mono",monospace;font-size:15px;color:var(--gold);word-break:break-all;letter-spacing:0.04em}
 
-/* SLIDE 4 - DM flow */
-.dm-flow{display:grid;grid-template-columns:1fr 80px 1fr;gap:40px;align-items:center;margin-top:40px;max-width:1600px}
-.dm-card{background:rgba(242,237,227,0.04);border:1px solid var(--line);border-radius:22px;padding:36px}
-.dm-card h3{font-family:"Inter Tight",sans-serif;font-size:24px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:20px}
-.dm-msg{font-size:32px;line-height:1.3;color:var(--cream);margin-bottom:16px;font-style:italic;font-family:"Instrument Serif",serif}
-.dm-links{display:flex;flex-direction:column;gap:12px;margin-top:20px;font-size:24px}
-.dm-links span{padding:14px 20px;background:rgba(94,182,255,0.10);border:1px solid rgba(94,182,255,0.30);border-radius:12px;color:var(--blue);font-weight:500}
-.dm-arrow{display:flex;align-items:center;justify-content:center;font-size:72px;color:var(--gold)}
-.kw-title{font-size:26px;color:var(--cream-dim);margin:36px 0 16px;letter-spacing:0.08em;text-transform:uppercase;font-weight:500}
-.kw-list{display:flex;flex-wrap:wrap;gap:12px;max-width:1400px}
-.kw-list span{padding:14px 22px;background:rgba(201,166,98,0.12);border:1px solid rgba(201,166,98,0.35);border-radius:999px;font-size:26px;color:var(--gold);font-weight:600}
-.pending-note{
-  margin-top:36px;padding:28px 36px;background:rgba(94,182,255,0.08);
-  border:1px solid rgba(94,182,255,0.35);border-radius:16px;font-size:28px;line-height:1.35;
-}
-.pending-note b{color:var(--blue)}
-
-/* SLIDE 5 - reporting */
-.report-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:40px;max-width:1600px}
-.report-card{background:rgba(242,237,227,0.03);border:1px solid var(--line);border-radius:22px;padding:44px}
-.report-card h3{font-family:"Instrument Serif",serif;font-style:italic;font-size:44px;color:var(--cream);margin-bottom:20px}
-.report-card p{font-size:28px;line-height:1.35;color:var(--cream-dim)}
-.report-card .rc-icon{margin-bottom:24px}
-.stat-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px}
-.stat-row span{font-size:22px;padding:12px 18px;background:rgba(94,182,255,0.12);border:1px solid rgba(94,182,255,0.30);border-radius:10px;color:var(--blue);font-weight:600}
-
-/* SLIDE 6 - approval flow */
-.approval-flow{display:grid;grid-template-columns:1fr 60px 1fr 60px 1fr;gap:24px;align-items:center;margin-top:40px;max-width:1600px}
-.flow-step{background:linear-gradient(180deg,#0F1B33,#0A1428);border:1px solid var(--line);border-radius:22px;padding:44px 32px;text-align:center}
-.flow-step .fs-num{font-family:"Instrument Serif",serif;font-style:italic;font-size:56px;color:var(--gold);margin-bottom:12px}
-.flow-step h3{font-family:"Instrument Serif",serif;font-style:italic;font-size:44px;color:var(--cream);margin-bottom:14px}
-.flow-step p{font-size:24px;color:var(--cream-dim);line-height:1.3}
-.flow-arrow{text-align:center;font-size:60px;color:var(--gold)}
-.phil-card{
-  margin-top:48px;padding:36px 44px;background:rgba(201,166,98,0.08);border:1px solid rgba(201,166,98,0.35);border-radius:20px;
-  font-size:34px;line-height:1.3;
-}
-.phil-card b{color:var(--gold)}
-
-/* SLIDE 7 - pillars */
-.pillar-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;margin-top:40px;max-width:1600px}
-.pillar-card{background:linear-gradient(180deg,#0F1B33,#0A1428);border:1px solid var(--line);border-radius:22px;padding:44px;position:relative;overflow:hidden}
-.pillar-card::before{content:"";position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;filter:blur(60px);opacity:0.4}
-.pillar-card.inspo::before{background:var(--blue)}
-.pillar-card.prod::before{background:var(--gold)}
-.pillar-card.edu::before{background:var(--cream)}
-.p-day{font-size:22px;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;margin-bottom:16px}
-.pillar-card.inspo .p-day{color:var(--blue)}
-.pillar-card.prod .p-day{color:var(--gold)}
-.pillar-card.edu .p-day{color:var(--cream)}
-.p-title{font-family:"Instrument Serif",serif;font-style:italic;font-size:60px;line-height:1;color:var(--cream);margin-bottom:20px}
-.p-count{font-size:26px;color:var(--cream-dim);line-height:1.4;margin-bottom:24px}
-.p-big{font-family:"Instrument Serif",serif;font-size:120px;color:var(--cream);line-height:1;font-style:italic}
-.p-big small{font-size:32px;color:var(--cream-dim);font-style:normal;font-family:"Inter Tight",sans-serif;font-weight:400;margin-left:12px}
-
-/* SLIDE 8 - deep links cheat */
-.link-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px;max-width:1600px}
-.link-btn{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:44px 48px;border-radius:20px;
-  background:linear-gradient(135deg,#0F1B33,#0A1428);
-  border:1px solid var(--line);
-  font-size:36px;color:var(--cream);font-weight:600;
-  transition:border-color .2s ease,transform .2s ease;
-}
-.link-btn:hover{border-color:var(--gold);transform:translateY(-2px)}
-.link-btn .lb-label{display:block;font-size:20px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:8px}
-.link-btn .lb-arw{font-size:44px;color:var(--gold)}
-
-/* nav dots */
-.nav-dots{
-  position:fixed;bottom:36px;left:50%;transform:translateX(-50%);
-  display:flex;gap:16px;z-index:90;padding:16px 28px;
-  background:rgba(10,20,40,0.85);backdrop-filter:blur(18px);border:1px solid var(--line);
-  border-radius:999px;font-size:20px;color:var(--cream-dim);font-weight:500;letter-spacing:0.12em;
-}
-.nav-dots a{padding:6px 10px;border-radius:999px}
-.nav-dots a.active{color:var(--gold);background:rgba(201,166,98,0.12)}
-
-/* scientific line motifs */
-.grid-motif{position:absolute;inset:0;background-image:linear-gradient(rgba(242,237,227,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(242,237,227,0.035) 1px,transparent 1px);background-size:80px 80px;pointer-events:none}
-
+/* FOOTER */
+.foot{padding:80px 80px 80px 280px;background:#05080F;border-top:1px solid var(--line);text-align:center}
+.foot p{font-size:22px;color:var(--cream-dim);margin-bottom:16px}
+.foot a{color:var(--gold);border-bottom:1px solid rgba(201,166,98,0.4)}
 </style>
 </head>
 <body>
 
 <div class="brand-strip">
-  <div class="b-left">French Atelier · Operating Manual</div>
-  <div class="b-mid">Sprout Social + Meta Business Suite</div>
-  <div class="b-right">33 posts · 8 weeks · 1 approver</div>
+  <div class="b-left">French Atelier · Social Kickstart Manual</div>
+  <div class="b-mid">v3 · every element linked</div>
+  <div class="b-right">Live Language Academy</div>
 </div>
 
-<!-- SLIDE 1 -->
+<nav class="sidenav">
+  <div class="navhead">Jump to</div>
+  <a href="#s0"><b>00</b>One human click</a>
+  <a href="#s1"><b>01</b>Profiles connected</a>
+  <a href="#s2"><b>02</b>33 posts staged</a>
+  <a href="#s3"><b>03</b>Approval workflow</a>
+  <a href="#s4"><b>04</b>Comment auto-DM</a>
+  <a href="#s5"><b>05</b>Reports to watch</a>
+  <a href="#s6"><b>06</b>Weekly rhythm</a>
+  <a href="#s7"><b>07</b>Link vault</a>
+  <a href="#s8"><b>08</b>Handoff to Omri</a>
+</nav>
+
+<!-- ================= SLIDE 0 · ACTIVATION ================= -->
+<section class="slide" id="s0">
+  <div class="slide-num">00</div>
+  <div class="eyebrow">Slide 00 · Activation</div>
+  <h1 class="display">One human click to activate.</h1>
+  <p class="lede">The Meta Comment-to-DM rule is ninety percent configured. To activate it, click the button, find the draft rule <b>Buying Intent Auto DM · LLA</b>, scroll to Private message, paste the DM text below, click Save changes bottom-right.</p>
+
+  <div class="activate-hero">
+    <h3>Step one · open Meta Automations</h3>
+    <div class="cta-wrap">
+      <a class="deep-btn meta giant" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">Open Meta Business Suite Automations <span class="arw">→</span></a>
+      <span class="url-cap">https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&amp;asset_id=1179505785236150</span>
+      <span class="how-line">Opens directly on the LLA Facebook Page automations screen. The draft rule is already there waiting for the private-message body.</span>
+    </div>
+
+    <h3 style="margin-top:32px">Step two · paste this exact DM text</h3>
+    <div class="dm-block">
+      <div class="dm-label">DM body · paste into Private message field</div>
+<div id="dm-text">Merci for your interest in the French Atelier. Book a call with our team: https://frenchatelierlive.com/enrollment
+WhatsApp direct: https://wa.me/33XXXXXXXXX
+Reply here and a real person from our Paris team writes back within the hour.</div>
+      <button class="copy-btn" id="copy-dm" onclick="copyDM()">Copy DM text <span class="arw">⧉</span></button>
+    </div>
+
+    <h3 style="margin-top:32px">Step three · click Save changes</h3>
+    <p style="font-size:26px;color:var(--cream);line-height:1.45">Bottom-right of the panel. Rule flips from Draft to Live. Every buying-intent comment on <a href="https://www.facebook.com/1179505785236150" target="_blank" style="color:var(--gold);border-bottom:1px solid rgba(201,166,98,0.4)">LLA Facebook Page</a> now auto-DMs the copy above within seconds.</p>
+  </div>
+</section>
+
+<!-- ================= SLIDE 1 · PROFILES ================= -->
 <section class="slide" id="s1">
-  <div class="grid-motif"></div>
   <div class="slide-num">01</div>
-  <div class="eyebrow">Chapter One</div>
-  <h1 class="display">Meta and Instagram,<br>connected in one place.</h1>
-  <p class="lede">Three business profiles wired into Sprout Social. Every post, every comment, every DM lives in a single inbox and calendar.</p>
+  <div class="eyebrow">Slide 01 · Profiles</div>
+  <h1 class="display">Three profiles, connected.</h1>
+  <p class="lede">Every profile below is linked. Click any card to open that account. Click the URL under it to jump straight to Sprout's profile settings.</p>
 
   <div class="profile-grid">
-    <div class="profile-card">
-      <div class="p-logo"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path fill="#1877F2" d="M40 20C40 8.954 31.046 0 20 0S0 8.954 0 20c0 9.983 7.314 18.257 16.875 19.757V25.781h-5.078V20h5.078v-4.406c0-5.013 2.986-7.781 7.554-7.781 2.189 0 4.478.391 4.478.391v4.922h-2.522c-2.484 0-3.259 1.542-3.259 3.123V20h5.547l-.887 5.781h-4.66v13.976C32.686 38.257 40 29.983 40 20z"/><path fill="#fff" d="M27.784 25.781L28.671 20h-5.547v-3.752c0-1.581.775-3.123 3.259-3.123h2.522V8.203s-2.289-.391-4.478-.391c-4.568 0-7.554 2.768-7.554 7.781V20h-5.078v5.781h5.078v13.976a20.14 20.14 0 006.25 0V25.781h4.661z"/></svg></div>
+    <a class="profile-card" href="https://www.instagram.com/livefrenchatelier/" target="_blank">
+      <div class="p-logo ig">◉</div>
+      <div class="p-name">livefrenchatelier</div>
+      <div class="p-handle">@livefrenchatelier</div>
+      <div class="p-role">Instagram · owned by French Atelier. Publishing target for every calendar post.</div>
+      <div class="p-url">instagram.com/livefrenchatelier/</div>
+    </a>
+    <a class="profile-card" href="https://www.facebook.com/677053902156593" target="_blank">
+      <div class="p-logo fb">f</div>
       <div class="p-name">French Atelier</div>
       <div class="p-handle">facebook.com/677053902156593</div>
-      <div class="p-badge"><span class="dot"></span>Connected via Sprout Social</div>
-    </div>
-    <div class="profile-card">
-      <div class="p-logo"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="ig1" cx="30%" cy="107%" r="150%"><stop offset="0" stop-color="#fdf497"/><stop offset=".05" stop-color="#fdf497"/><stop offset=".45" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset=".9" stop-color="#285AEB"/></radialGradient></defs><rect width="40" height="40" rx="10" fill="url(#ig1)"/><path d="M20 12a8 8 0 100 16 8 8 0 000-16zm0 13.2a5.2 5.2 0 110-10.4 5.2 5.2 0 010 10.4zm8.3-13.5a1.87 1.87 0 11-3.74 0 1.87 1.87 0 013.74 0z" fill="#fff"/></svg></div>
-      <div class="p-name">livefrenchatelier</div>
-      <div class="p-handle">instagram.com/livefrenchatelier</div>
-      <div class="p-badge"><span class="dot"></span>Connected via Sprout Social</div>
-    </div>
-    <div class="profile-card">
-      <div class="p-logo"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path fill="#1877F2" d="M40 20C40 8.954 31.046 0 20 0S0 8.954 0 20c0 9.983 7.314 18.257 16.875 19.757V25.781h-5.078V20h5.078v-4.406c0-5.013 2.986-7.781 7.554-7.781 2.189 0 4.478.391 4.478.391v4.922h-2.522c-2.484 0-3.259 1.542-3.259 3.123V20h5.547l-.887 5.781h-4.66v13.976C32.686 38.257 40 29.983 40 20z"/><path fill="#fff" d="M27.784 25.781L28.671 20h-5.547v-3.752c0-1.581.775-3.123 3.259-3.123h2.522V8.203s-2.289-.391-4.478-.391c-4.568 0-7.554 2.768-7.554 7.781V20h-5.078v5.781h5.078v13.976a20.14 20.14 0 006.25 0V25.781h4.661z"/></svg></div>
-      <div class="p-name">Longevity Life Academy</div>
+      <div class="p-role">Facebook Page · French Atelier. Cross-published from Sprout on the same 09:00 slot.</div>
+      <div class="p-url">facebook.com/677053902156593</div>
+    </a>
+    <a class="profile-card" href="https://www.facebook.com/1179505785236150" target="_blank">
+      <div class="p-logo fb">f</div>
+      <div class="p-name">Live Language Academy</div>
       <div class="p-handle">facebook.com/1179505785236150</div>
-      <div class="p-badge"><span class="dot"></span>Connected via Sprout Social</div>
-    </div>
+      <div class="p-role">Facebook Page · LLA. Home of the Meta Comment-to-DM automation configured on Slide 00.</div>
+      <div class="p-url">facebook.com/1179505785236150</div>
+    </a>
   </div>
 
-  <a class="deep-btn" href="https://app.sproutsocial.com/settings/users/company/2910206/" target="_blank">Open Sprout Profile Settings <span class="arw">→</span></a>
+  <div class="cta-wrap">
+    <a class="deep-btn sprout-btn" href="https://app.sproutsocial.com/settings/users/company/2910206/" target="_blank">Open Sprout Profiles &amp; Permissions <span class="arw">→</span></a>
+    <span class="url-cap">https://app.sproutsocial.com/settings/users/company/2910206/</span>
+    <span class="how-line">Opens the Sprout admin screen where the three profiles above are connected and where Omri can grant or revoke user access.</span>
+  </div>
 </section>
 
-<!-- SLIDE 2 -->
+<!-- ================= SLIDE 2 · POSTS ================= -->
 <section class="slide" id="s2">
   <div class="slide-num">02</div>
-  <div class="eyebrow">Chapter Two</div>
-  <h1 class="display">33 posts uploaded<br>and scheduled.</h1>
-  <p class="lede">Every post drafted, captioned, hashtagged, and time-stamped inside Sprout. Nothing is missing. Nothing is late.</p>
+  <div class="eyebrow">Slide 02 · Content</div>
+  <h1 class="display">33 posts staged in Sprout.</h1>
+  <p class="lede">Twenty-three dated posts across September and October, plus ten evergreen Culture Capsules ready to schedule. Every row links to the Sprout Drafts library filtered on that post's headline.</p>
 
-  <div class="pillar-legend">
-    <span><i style="background:#5EB6FF"></i> Inspiration · Monday</span>
-    <span><i style="background:#C9A662"></i> Product · Wednesday</span>
-    <span><i style="background:#F2EDE3"></i> Education · Friday</span>
+  <div class="posts-table">
+    <div class="pt-row head">
+      <div>Date</div><div>Pillar</div><div>Headline</div><div style="text-align:right">Open in Sprout</div>
+    </div>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Il%20y%20a" target="_blank"><div class="pt-date">09 Sep · Wed</div><div><span class="pillar-pill prod">prod</span></div><div class="pt-head">Il y a → Y a</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Homonyms" target="_blank"><div class="pt-date">11 Sep · Fri</div><div><span class="pillar-pill edu">edu</span></div><div class="pt-head">French Homonyms intro · Charline</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Mona%20Lisa" target="_blank"><div class="pt-date">14 Sep · Mon</div><div><span class="pillar-pill inspo">inspo</span></div><div class="pt-head">Louvre · Mona Lisa crowd</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Peut-etre" target="_blank"><div class="pt-date">16 Sep · Wed</div><div><span class="pillar-pill prod">prod</span></div><div class="pt-head">Peut-être → P'têt</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Cheeses" target="_blank"><div class="pt-date">18 Sep · Fri</div><div><span class="pillar-pill edu">edu</span></div><div class="pt-head">French Cheeses · chapitre I</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Cannes" target="_blank"><div class="pt-date">21 Sep · Mon</div><div><span class="pillar-pill inspo">inspo</span></div><div class="pt-head">One day in Cannes · Cartier</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Sang%20Cent%20Sans" target="_blank"><div class="pt-date">23 Sep · Wed</div><div><span class="pillar-pill prod">prod</span></div><div class="pt-head">Sang · Cent · Sans · Sent</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Wardrobe" target="_blank"><div class="pt-date">25 Sep · Fri</div><div><span class="pillar-pill edu">edu</span></div><div class="pt-head">French Wardrobe · the essentials</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Fashion%20Week" target="_blank"><div class="pt-date">28 Sep · Mon</div><div><span class="pillar-pill inspo">inspo</span></div><div class="pt-head">Paris Fashion Week SS27 opens</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Tu%20as%20vu" target="_blank"><div class="pt-date">30 Sep · Wed</div><div><span class="pillar-pill prod">prod</span></div><div class="pt-head">Tu as vu → T'as vu</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Chanel%20Capsule" target="_blank"><div class="pt-date">02 Oct · Fri</div><div><span class="pillar-pill edu">edu</span></div><div class="pt-head">Chanel Capsule invitation</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Bienvenue" target="_blank"><div class="pt-date">05 Oct · Mon</div><div><span class="pillar-pill inspo">inspo</span></div><div class="pt-head">French Tourism · Bienvenue en France</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Ou%20Ou%20Aout" target="_blank"><div class="pt-date">07 Oct · Wed</div><div><span class="pillar-pill prod">prod</span></div><div class="pt-head">Ou · Où · Août</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Vendanges" target="_blank"><div class="pt-date">09 Oct · Fri</div><div><span class="pillar-pill edu">edu</span></div><div class="pt-head">Vendanges de Montmartre</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Palais%20Garnier" target="_blank"><div class="pt-date">12 Oct · Mon</div><div><span class="pillar-pill inspo">inspo</span></div><div class="pt-head">Palais Garnier · after hours</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=C%27est%20un%20peu" target="_blank"><div class="pt-date">14 Oct · Wed</div><div><span class="pillar-pill prod">prod</span></div><div class="pt-head">C'est un peu → C't'un peu</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Holiday%20calendar" target="_blank"><div class="pt-date">16 Oct · Fri</div><div><span class="pillar-pill edu">edu</span></div><div class="pt-head">French Holiday · the calendar</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Roi%20Soleil" target="_blank"><div class="pt-date">19 Oct · Mon</div><div><span class="pillar-pill inspo">inspo</span></div><div class="pt-head">French History · Le Roi Soleil</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Chant%20Champ" target="_blank"><div class="pt-date">21 Oct · Wed</div><div><span class="pillar-pill prod">prod</span></div><div class="pt-head">Chant · Champ</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=French%20Wines" target="_blank"><div class="pt-date">23 Oct · Fri</div><div><span class="pillar-pill edu">edu</span></div><div class="pt-head">French Wines · chapitre II</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Salon%20du%20Chocolat" target="_blank"><div class="pt-date">26 Oct · Mon</div><div><span class="pillar-pill inspo">inspo</span></div><div class="pt-head">Salon du Chocolat opens · 30 years</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Tant%20Temps%20Tend" target="_blank"><div class="pt-date">28 Oct · Wed</div><div><span class="pillar-pill prod">prod</span></div><div class="pt-head">Tant · Temps · Tend · Taon</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Mapster" target="_blank"><div class="pt-date">30 Oct · Fri</div><div><span class="pillar-pill edu">edu</span></div><div class="pt-head">The Mapster · opened to the world</div><div class="pt-link">Draft →</div></a>
+
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Cafe%20et%20l%27Idee" target="_blank"><div class="pt-date">Evergreen</div><div><span class="pillar-pill extra">extra</span></div><div class="pt-head">Culture Capsule II · Le Café et l'Idée</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Haussmann" target="_blank"><div class="pt-date">Evergreen</div><div><span class="pillar-pill extra">extra</span></div><div class="pt-head">Culture Capsule III · Haussmann's Paris</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Perfume" target="_blank"><div class="pt-date">Evergreen</div><div><span class="pillar-pill extra">extra</span></div><div class="pt-head">Culture Capsule IV · The Language of Perfume</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Monet" target="_blank"><div class="pt-date">Evergreen</div><div><span class="pillar-pill extra">extra</span></div><div class="pt-head">Culture Capsule V · Reading Monet's Light</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Versailles%20Grammar" target="_blank"><div class="pt-date">Evergreen</div><div><span class="pillar-pill extra">extra</span></div><div class="pt-head">Culture Capsule VI · Versailles as Grammar</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Beaujolais" target="_blank"><div class="pt-date">20 Nov · Thu</div><div><span class="pillar-pill extra">extra</span></div><div class="pt-head">Beaujolais Nouveau est arrivé</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Champs-Elysees" target="_blank"><div class="pt-date">24 Nov · Mon</div><div><span class="pillar-pill extra">extra</span></div><div class="pt-head">Champs-Élysées illuminate</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Strasbourg" target="_blank"><div class="pt-date">Evergreen</div><div><span class="pillar-pill extra">extra</span></div><div class="pt-head">Marché de Noël de Strasbourg</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Mapster%20journey" target="_blank"><div class="pt-date">Evergreen</div><div><span class="pillar-pill extra">extra</span></div><div class="pt-head">The Mapster · your French journey</div><div class="pt-link">Draft →</div></a>
+    <a class="pt-row" href="https://app.sproutsocial.com/publishing/drafts/?q=Restaurant%201765" target="_blank"><div class="pt-date">Evergreen</div><div><span class="pillar-pill extra">extra</span></div><div class="pt-head">Culture Capsule I · Birth of the Restaurant</div><div class="pt-link">Draft →</div></a>
   </div>
 
-  <div class="post-list">
-    
-    <div class="post-row">
-      <div class="post-n">01</div>
-      <div class="post-date">Wed, Sept 9</div>
-      <div class="pillar-chip" style="color:#C9A662;background:rgba(201,166,98,0.18);border-color:#C9A662">Product</div>
-      <div class="post-head">Il y a → Y a</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">02</div>
-      <div class="post-date">Fri, Sept 11</div>
-      <div class="pillar-chip" style="color:#F2EDE3;background:rgba(242,237,227,0.10);border-color:#F2EDE3">Education</div>
-      <div class="post-head">French Homonyms intro · Charline</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">03</div>
-      <div class="post-date">Mon, Sept 14</div>
-      <div class="pillar-chip" style="color:#5EB6FF;background:rgba(94,182,255,0.15);border-color:#5EB6FF">Inspiration</div>
-      <div class="post-head">Louvre · Mona Lisa crowd</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">04</div>
-      <div class="post-date">Wed, Sept 16</div>
-      <div class="pillar-chip" style="color:#C9A662;background:rgba(201,166,98,0.18);border-color:#C9A662">Product</div>
-      <div class="post-head">Peut-être → P'têt</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">05</div>
-      <div class="post-date">Fri, Sept 18</div>
-      <div class="pillar-chip" style="color:#F2EDE3;background:rgba(242,237,227,0.10);border-color:#F2EDE3">Education</div>
-      <div class="post-head">French Cheeses · chapitre I</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">06</div>
-      <div class="post-date">Mon, Sept 21</div>
-      <div class="pillar-chip" style="color:#5EB6FF;background:rgba(94,182,255,0.15);border-color:#5EB6FF">Inspiration</div>
-      <div class="post-head">One day in Cannes · Cartier</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">07</div>
-      <div class="post-date">Wed, Sept 23</div>
-      <div class="pillar-chip" style="color:#C9A662;background:rgba(201,166,98,0.18);border-color:#C9A662">Product</div>
-      <div class="post-head">Sang · Cent · Sans · Sent</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">08</div>
-      <div class="post-date">Fri, Sept 25</div>
-      <div class="pillar-chip" style="color:#F2EDE3;background:rgba(242,237,227,0.10);border-color:#F2EDE3">Education</div>
-      <div class="post-head">French Wardrobe · the essentials</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">09</div>
-      <div class="post-date">Mon, Sept 28</div>
-      <div class="pillar-chip" style="color:#5EB6FF;background:rgba(94,182,255,0.15);border-color:#5EB6FF">Inspiration</div>
-      <div class="post-head">Paris Fashion Week SS27 opens</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">10</div>
-      <div class="post-date">Wed, Sept 30</div>
-      <div class="pillar-chip" style="color:#C9A662;background:rgba(201,166,98,0.18);border-color:#C9A662">Product</div>
-      <div class="post-head">Tu as vu → T'as vu</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">11</div>
-      <div class="post-date">Fri, Oct 2</div>
-      <div class="pillar-chip" style="color:#F2EDE3;background:rgba(242,237,227,0.10);border-color:#F2EDE3">Education</div>
-      <div class="post-head">Chanel Capsule invitation</div>
-      <div class="post-media">Image</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">12</div>
-      <div class="post-date">Mon, Oct 5</div>
-      <div class="pillar-chip" style="color:#5EB6FF;background:rgba(94,182,255,0.15);border-color:#5EB6FF">Inspiration</div>
-      <div class="post-head">French Tourism · Bienvenue en France</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">13</div>
-      <div class="post-date">Wed, Oct 7</div>
-      <div class="pillar-chip" style="color:#C9A662;background:rgba(201,166,98,0.18);border-color:#C9A662">Product</div>
-      <div class="post-head">Ou · Où · Août</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">14</div>
-      <div class="post-date">Fri, Oct 9</div>
-      <div class="pillar-chip" style="color:#F2EDE3;background:rgba(242,237,227,0.10);border-color:#F2EDE3">Education</div>
-      <div class="post-head">Vendanges de Montmartre</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">15</div>
-      <div class="post-date">Mon, Oct 12</div>
-      <div class="pillar-chip" style="color:#5EB6FF;background:rgba(94,182,255,0.15);border-color:#5EB6FF">Inspiration</div>
-      <div class="post-head">Palais Garnier · after hours</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">16</div>
-      <div class="post-date">Wed, Oct 14</div>
-      <div class="pillar-chip" style="color:#C9A662;background:rgba(201,166,98,0.18);border-color:#C9A662">Product</div>
-      <div class="post-head">C'est un peu → C't'un peu</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">17</div>
-      <div class="post-date">Fri, Oct 16</div>
-      <div class="pillar-chip" style="color:#F2EDE3;background:rgba(242,237,227,0.10);border-color:#F2EDE3">Education</div>
-      <div class="post-head">French Holiday · the calendar</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">18</div>
-      <div class="post-date">Mon, Oct 19</div>
-      <div class="pillar-chip" style="color:#5EB6FF;background:rgba(94,182,255,0.15);border-color:#5EB6FF">Inspiration</div>
-      <div class="post-head">French History · Le Roi Soleil</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">19</div>
-      <div class="post-date">Wed, Oct 21</div>
-      <div class="pillar-chip" style="color:#C9A662;background:rgba(201,166,98,0.18);border-color:#C9A662">Product</div>
-      <div class="post-head">Chant · Champ</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">20</div>
-      <div class="post-date">Fri, Oct 23</div>
-      <div class="pillar-chip" style="color:#F2EDE3;background:rgba(242,237,227,0.10);border-color:#F2EDE3">Education</div>
-      <div class="post-head">French Wines · chapitre II</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">21</div>
-      <div class="post-date">Mon, Oct 26</div>
-      <div class="pillar-chip" style="color:#5EB6FF;background:rgba(94,182,255,0.15);border-color:#5EB6FF">Inspiration</div>
-      <div class="post-head">Salon du Chocolat opens · 30 years</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">22</div>
-      <div class="post-date">Wed, Oct 28</div>
-      <div class="pillar-chip" style="color:#C9A662;background:rgba(201,166,98,0.18);border-color:#C9A662">Product</div>
-      <div class="post-head">Tant · Temps · Tend · Taon</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">23</div>
-      <div class="post-date">Fri, Oct 30</div>
-      <div class="pillar-chip" style="color:#F2EDE3;background:rgba(242,237,227,0.10);border-color:#F2EDE3">Education</div>
-      <div class="post-head">The Mapster · opened to the world</div>
-      <div class="post-media">Image</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">24</div>
-      <div class="post-date">Bonus</div>
-      <div class="pillar-chip" style="color:#F2EDE3;background:rgba(242,237,227,0.10);border-color:#F2EDE3">Culture Capsule</div>
-      <div class="post-head">Culture Capsule II · Le Café et l'Idée.</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">25</div>
-      <div class="post-date">Bonus</div>
-      <div class="pillar-chip" style="color:#F2EDE3;background:rgba(242,237,227,0.10);border-color:#F2EDE3">Culture Capsule</div>
-      <div class="post-head">Culture Capsule III · Haussmann's Paris.</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">26</div>
-      <div class="post-date">Bonus</div>
-      <div class="pillar-chip" style="color:#F2EDE3;background:rgba(242,237,227,0.10);border-color:#F2EDE3">Culture Capsule</div>
-      <div class="post-head">Culture Capsule IV · The Language of Perfume.</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">27</div>
-      <div class="post-date">Bonus</div>
-      <div class="pillar-chip" style="color:#F2EDE3;background:rgba(242,237,227,0.10);border-color:#F2EDE3">Culture Capsule</div>
-      <div class="post-head">Culture Capsule V · Reading Monet's Light.</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">28</div>
-      <div class="post-date">Bonus</div>
-      <div class="pillar-chip" style="color:#F2EDE3;background:rgba(242,237,227,0.10);border-color:#F2EDE3">Culture Capsule</div>
-      <div class="post-head">Culture Capsule VI · Versailles as Grammar.</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">29</div>
-      <div class="post-date">Bonus</div>
-      <div class="pillar-chip" style="color:#F2EDE3;background:rgba(242,237,227,0.10);border-color:#F2EDE3">Culture Capsule</div>
-      <div class="post-head">Beaujolais Nouveau est arrivé · November 20.</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">30</div>
-      <div class="post-date">Bonus</div>
-      <div class="pillar-chip" style="color:#F2EDE3;background:rgba(242,237,227,0.10);border-color:#F2EDE3">Culture Capsule</div>
-      <div class="post-head">Les Champs-Élysées illuminate · November 24.</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">31</div>
-      <div class="post-date">Bonus</div>
-      <div class="pillar-chip" style="color:#F2EDE3;background:rgba(242,237,227,0.10);border-color:#F2EDE3">Culture Capsule</div>
-      <div class="post-head">Le Marché de Noël de Strasbourg · Christkindelsmärik.</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">32</div>
-      <div class="post-date">Bonus</div>
-      <div class="pillar-chip" style="color:#F2EDE3;background:rgba(242,237,227,0.10);border-color:#F2EDE3">Culture Capsule</div>
-      <div class="post-head">The Mapster · France opened as a map</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
-
-    <div class="post-row">
-      <div class="post-n">33</div>
-      <div class="post-date">Bonus</div>
-      <div class="pillar-chip" style="color:#F2EDE3;background:rgba(242,237,227,0.10);border-color:#F2EDE3">Culture Capsule</div>
-      <div class="post-head">Culture Capsule I · The Birth of the Restaurant.</div>
-      <div class="post-media">Video</div>
-      <div class="net-chips"><span class="net fb">FB</span><span class="net ig">IG</span></div>
-    </div>
+  <div class="cta-wrap">
+    <a class="deep-btn sprout-btn" href="https://app.sproutsocial.com/publishing/drafts/" target="_blank">Open Sprout Drafts library <span class="arw">→</span></a>
+    <span class="url-cap">https://app.sproutsocial.com/publishing/drafts/</span>
+    <span class="how-line">Opens the Sprout Drafts library where all 33 posts are staged, waiting for approval and scheduling.</span>
   </div>
 
-  <a class="deep-btn" href="https://app.sproutsocial.com/publishing/drafts/" target="_blank">Open All 33 Drafts in Sprout <span class="arw">→</span></a>
+  <div class="cta-wrap">
+    <a class="deep-btn" href="https://app.sproutsocial.com/publishing/calendar/month/expanded" target="_blank">Open Sprout Calendar · month view <span class="arw">→</span></a>
+    <span class="url-cap">https://app.sproutsocial.com/publishing/calendar/month/expanded</span>
+    <span class="how-line">Opens the month calendar so Omri can see every scheduled slot at 09:00 Paris time across September and October.</span>
+  </div>
 </section>
 
-<!-- SLIDE 3 -->
+<!-- ================= SLIDE 3 · WORKFLOW ================= -->
 <section class="slide" id="s3">
-  <div class="grid-motif"></div>
   <div class="slide-num">03</div>
-  <div class="eyebrow">Chapter Three</div>
-  <h1 class="display">Auto-publishes<br>at 9:00 Israel time.</h1>
-  <p class="lede">Monday, Wednesday, Friday. Every week. Sprout fires each post to Facebook and Instagram the second Philippe hits approve.</p>
+  <div class="eyebrow">Slide 03 · Approval workflow</div>
+  <h1 class="display">Draft, approve, publish.</h1>
+  <p class="lede">Every post lives as a draft until Omri approves it. Sprout auto-publishes to Instagram and Facebook at 09:00 Paris time. Zero manual copy-paste.</p>
 
-  <div class="cal-wrap">
-    <div class="cal">
-      <h3>September 2026</h3>
-      <div class="cal-grid">
-        <div class="cal-hd">Mon</div><div class="cal-hd">Tue</div><div class="cal-hd">Wed</div><div class="cal-hd">Thu</div><div class="cal-hd">Fri</div><div class="cal-hd">Sat</div><div class="cal-hd">Sun</div>
-        <div class="cal-cell empty"></div><div class="cal-cell">1</div><div class="cal-cell">2</div><div class="cal-cell">3</div><div class="cal-cell">4</div><div class="cal-cell">5</div><div class="cal-cell">6</div>
-        <div class="cal-cell">7</div><div class="cal-cell">8</div><div class="cal-cell post">9</div><div class="cal-cell">10</div><div class="cal-cell post">11</div><div class="cal-cell">12</div><div class="cal-cell">13</div>
-        <div class="cal-cell post">14</div><div class="cal-cell">15</div><div class="cal-cell post">16</div><div class="cal-cell">17</div><div class="cal-cell post">18</div><div class="cal-cell">19</div><div class="cal-cell">20</div>
-        <div class="cal-cell post">21</div><div class="cal-cell">22</div><div class="cal-cell post">23</div><div class="cal-cell">24</div><div class="cal-cell post">25</div><div class="cal-cell">26</div><div class="cal-cell">27</div>
-        <div class="cal-cell post">28</div><div class="cal-cell">29</div><div class="cal-cell post">30</div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div>
-      </div>
+  <div class="step-grid">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <h3>Open the approval queue</h3>
+      <p>Every drafted post lands here. Approve individually or bulk-approve a week at a time.</p>
+      <a class="btn-inline" href="https://app.sproutsocial.com/publishing/approval/" target="_blank">Open Approval Queue →</a>
+      <span class="u">https://app.sproutsocial.com/publishing/approval/</span>
     </div>
-    <div class="cal">
-      <h3>October 2026</h3>
-      <div class="cal-grid">
-        <div class="cal-hd">Mon</div><div class="cal-hd">Tue</div><div class="cal-hd">Wed</div><div class="cal-hd">Thu</div><div class="cal-hd">Fri</div><div class="cal-hd">Sat</div><div class="cal-hd">Sun</div>
-        <div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell empty"></div><div class="cal-cell">1</div><div class="cal-cell post">2</div><div class="cal-cell">3</div><div class="cal-cell">4</div>
-        <div class="cal-cell post">5</div><div class="cal-cell">6</div><div class="cal-cell post">7</div><div class="cal-cell">8</div><div class="cal-cell post">9</div><div class="cal-cell">10</div><div class="cal-cell">11</div>
-        <div class="cal-cell post">12</div><div class="cal-cell">13</div><div class="cal-cell post">14</div><div class="cal-cell">15</div><div class="cal-cell post">16</div><div class="cal-cell">17</div><div class="cal-cell">18</div>
-        <div class="cal-cell post">19</div><div class="cal-cell">20</div><div class="cal-cell post">21</div><div class="cal-cell">22</div><div class="cal-cell post">23</div><div class="cal-cell">24</div><div class="cal-cell">25</div>
-        <div class="cal-cell post">26</div><div class="cal-cell">27</div><div class="cal-cell post">28</div><div class="cal-cell">29</div><div class="cal-cell post">30</div><div class="cal-cell">31</div><div class="cal-cell empty"></div>
-      </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <h3>Review in Drafts</h3>
+      <p>See caption, hashtags, video preview, and cross-post targets for each post before you approve.</p>
+      <a class="btn-inline" href="https://app.sproutsocial.com/publishing/drafts/" target="_blank">Open Drafts →</a>
+      <span class="u">https://app.sproutsocial.com/publishing/drafts/</span>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <h3>Confirm calendar slot</h3>
+      <p>Approved posts appear on the calendar at 09:00 Paris. Drag to reschedule if a slot conflicts.</p>
+      <a class="btn-inline" href="https://app.sproutsocial.com/publishing/calendar/month/expanded" target="_blank">Open Calendar →</a>
+      <span class="u">https://app.sproutsocial.com/publishing/calendar/month/expanded</span>
+    </div>
+    <div class="step-card">
+      <div class="step-num">04</div>
+      <h3>Watch reports the next day</h3>
+      <p>Sprout Reports refresh six hours after publish. Reach, saves, comments, click-throughs.</p>
+      <a class="btn-inline" href="https://app.sproutsocial.com/reports/" target="_blank">Open Reports →</a>
+      <span class="u">https://app.sproutsocial.com/reports/</span>
     </div>
   </div>
-
-  <div class="auto-pub-banner"><span class="dot"></span> <div><b>Auto-publish is on.</b> Once Philippe approves a post, Sprout fires it at 9:00 IST on the scheduled day. No manual copy-paste, no human trigger.</div></div>
-
-  <a class="deep-btn" href="https://app.sproutsocial.com/publishing/calendar/month/expanded" target="_blank">Open the Full Publishing Calendar <span class="arw">→</span></a>
 </section>
 
-<!-- SLIDE 4 -->
+<!-- ================= SLIDE 4 · KEYWORDS ================= -->
 <section class="slide" id="s4">
   <div class="slide-num">04</div>
-  <div class="eyebrow">Chapter Four</div>
-  <h1 class="display">Comment lands.<br>DM fires back.</h1>
-  <p class="lede">Every buying-intent comment gets a public thank-you and a private DM with the sales team link, WhatsApp, and booking calendar. Configured inside Meta Business Suite.</p>
+  <div class="eyebrow">Slide 04 · Comment auto-DM</div>
+  <h1 class="display">Words that trigger a DM.</h1>
+  <p class="lede">Any Facebook or Instagram comment on <a href="https://www.facebook.com/1179505785236150" target="_blank" style="color:var(--gold);border-bottom:1px solid rgba(201,166,98,0.4)">LLA Facebook Page</a> or <a href="https://www.instagram.com/livefrenchatelier/" target="_blank" style="color:var(--gold);border-bottom:1px solid rgba(201,166,98,0.4)">livefrenchatelier</a> containing any keyword below fires the auto-DM configured on Slide 00. Click any chip to review the rule in Meta Automations.</p>
 
-  <div class="dm-flow">
-    <div class="dm-card">
-      <h3>Public Reply</h3>
-      <div class="dm-msg">"Merci for your interest. Check your DMs."</div>
-      <p style="font-size:24px;color:var(--cream-dim);line-height:1.35">Posted under the original comment within seconds of a match.</p>
-    </div>
-    <div class="dm-arrow">→</div>
-    <div class="dm-card">
-      <h3>Private DM (auto)</h3>
-      <div class="dm-msg">"Bonjour, thank you for reaching out. Here is how to reach our team."</div>
-      <div class="dm-links">
-        <span>Sales Team Link · frenchatelierlive.com/sales</span>
-        <span>WhatsApp · direct line to concierge</span>
-        <span>Booking Calendar · one-tap Zoom</span>
-      </div>
-    </div>
+  <div class="kw-cloud">
+    <a class="kw-chip" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">enroll</a>
+    <a class="kw-chip" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">enrollment</a>
+    <a class="kw-chip" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">sign up</a>
+    <a class="kw-chip" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">how do I join</a>
+    <a class="kw-chip" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">interested</a>
+    <a class="kw-chip" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">how much</a>
+    <a class="kw-chip" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">price</a>
+    <a class="kw-chip" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">cost</a>
+    <a class="kw-chip" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">info</a>
+    <a class="kw-chip" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">more info</a>
+    <a class="kw-chip" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">book</a>
+    <a class="kw-chip" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">book a call</a>
+    <a class="kw-chip" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">start</a>
+    <a class="kw-chip" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">start now</a>
+    <a class="kw-chip" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">j'aimerais</a>
+    <a class="kw-chip" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">je veux</a>
+    <a class="kw-chip" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">combien</a>
+    <a class="kw-chip" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">apprendre</a>
+    <a class="kw-chip gold" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">learn french</a>
+    <a class="kw-chip gold" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">french classes</a>
+    <a class="kw-chip gold" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">french lessons</a>
+    <a class="kw-chip gold" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">french atelier</a>
   </div>
 
-  <div class="kw-title">Trigger Keywords</div>
-  <div class="kw-list">
-    <span>price</span><span>cost</span><span>how much</span><span>sign up</span><span>sign me up</span><span>interested</span><span>info</span><span>DM me</span><span>want it</span><span>buy</span>
+  <div class="cta-wrap">
+    <a class="deep-btn meta" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">Edit trigger keywords in Meta Automations <span class="arw">→</span></a>
+    <span class="url-cap">https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&amp;asset_id=1179505785236150</span>
+    <span class="how-line">Opens the automation editor where you can add, remove, or translate any of the trigger keywords above.</span>
   </div>
-
-  <div class="pending-note"><b>Status:</b> Configured on Meta Business Suite. Activation pending final save on Meta side. Nothing is live in production yet.</div>
-
-  <a class="deep-btn blue" href="https://business.facebook.com/latest/inbox/automated_responses" target="_blank">Open Meta Automated Responses <span class="arw">→</span></a>
 </section>
 
-<!-- SLIDE 5 -->
+<!-- ================= SLIDE 5 · REPORTS ================= -->
 <section class="slide" id="s5">
-  <div class="grid-motif"></div>
   <div class="slide-num">05</div>
-  <div class="eyebrow">Chapter Five</div>
-  <h1 class="display">Reporting,<br>on Philippe's terms.</h1>
-  <p class="lede">A weekly PDF in his inbox. Live dashboards for the numbers he cares about. Alerts when the account moves.</p>
+  <div class="eyebrow">Slide 05 · Reports</div>
+  <h1 class="display">Dashboards to check weekly.</h1>
+  <p class="lede">Each card is a live link into Sprout. Click the card to open that specific report.</p>
 
   <div class="report-grid">
-    <div class="report-card">
-      <div class="rc-icon"><svg width="80" height="80" viewBox="0 0 80 80"><rect x="12" y="10" width="56" height="60" rx="6" stroke="#C9A662" stroke-width="2.5" fill="none"/><line x1="24" y1="26" x2="56" y2="26" stroke="#C9A662" stroke-width="2.5"/><line x1="24" y1="38" x2="56" y2="38" stroke="#C9A662" stroke-width="2.5"/><line x1="24" y1="50" x2="46" y2="50" stroke="#C9A662" stroke-width="2.5"/></svg></div>
-      <h3>Weekly PDF, every Monday</h3>
-      <p>A branded report auto-emailed to Philippe every Monday at 9:00 IST. Reach, engagement, saves, top posts, follower change.</p>
-    </div>
-    <div class="report-card">
-      <div class="rc-icon"><svg width="80" height="80" viewBox="0 0 80 80"><polyline points="10,60 26,44 40,52 56,30 70,38" stroke="#5EB6FF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="26" cy="44" r="4" fill="#5EB6FF"/><circle cx="40" cy="52" r="4" fill="#5EB6FF"/><circle cx="56" cy="30" r="4" fill="#5EB6FF"/></svg></div>
-      <h3>Live dashboards</h3>
-      <p>Reach, engagement, saves, link clicks, follower growth. Every metric refreshed the second Meta reports it.</p>
-      <div class="stat-row"><span>Reach</span><span>Engagement</span><span>Saves</span><span>Link Clicks</span><span>Follower Growth</span></div>
-    </div>
-    <div class="report-card">
-      <div class="rc-icon"><svg width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="40" r="28" stroke="#C9A662" stroke-width="2.5" fill="none"/><path d="M28 46 Q40 56 52 46" stroke="#C9A662" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="32" cy="34" r="2.5" fill="#C9A662"/><circle cx="48" cy="34" r="2.5" fill="#C9A662"/></svg></div>
-      <h3>Sentiment analysis</h3>
-      <p>Sprout scores every comment and DM as positive, neutral, or negative. Trend lines show how audience mood moves week by week.</p>
-    </div>
-    <div class="report-card">
-      <div class="rc-icon"><svg width="80" height="80" viewBox="0 0 80 80"><path d="M40 8 L48 32 L72 32 L52 46 L60 70 L40 56 L20 70 L28 46 L8 32 L32 32 Z" stroke="#5EB6FF" stroke-width="2.5" fill="none"/></svg></div>
-      <h3>Spike alerts</h3>
-      <p>Sudden message volume, unusual comment spikes, viral moments. Sprout emails the team the second something moves.</p>
-    </div>
+    <a class="report-card" href="https://app.sproutsocial.com/dashboard/" target="_blank">
+      <h3>Home Dashboard</h3>
+      <p>Overview across all three profiles. Engagement, reach, follower delta since last week.</p>
+      <div class="u">https://app.sproutsocial.com/dashboard/</div>
+    </a>
+    <a class="report-card" href="https://app.sproutsocial.com/reports/" target="_blank">
+      <h3>Reports index</h3>
+      <p>Every canned and custom report Sprout ships. Instagram, Facebook, cross-network.</p>
+      <div class="u">https://app.sproutsocial.com/reports/</div>
+    </a>
+    <a class="report-card" href="https://app.sproutsocial.com/publishing/calendar/month/expanded" target="_blank">
+      <h3>Content Calendar</h3>
+      <p>Visual month view of everything scheduled and published across the three profiles.</p>
+      <div class="u">https://app.sproutsocial.com/publishing/calendar/month/expanded</div>
+    </a>
+    <a class="report-card" href="https://app.sproutsocial.com/publishing/approval/" target="_blank">
+      <h3>Approval Queue</h3>
+      <p>Anything still waiting on Omri. Should sit at zero by end of every Friday.</p>
+      <div class="u">https://app.sproutsocial.com/publishing/approval/</div>
+    </a>
   </div>
-
-  <a class="deep-btn" href="https://app.sproutsocial.com/reports/" target="_blank">Open Reporting Dashboard <span class="arw">→</span></a>
 </section>
 
-<!-- SLIDE 6 -->
+<!-- ================= SLIDE 6 · WEEKLY RHYTHM ================= -->
 <section class="slide" id="s6">
   <div class="slide-num">06</div>
-  <div class="eyebrow">Chapter Six</div>
-  <h1 class="display">Nothing publishes<br>without Philippe.</h1>
-  <p class="lede">Every draft routes to Philippe as external approver inside Sprout. His green light is the only trigger.</p>
+  <div class="eyebrow">Slide 06 · Weekly rhythm</div>
+  <h1 class="display">Two moments a week.</h1>
+  <p class="lede">Mondays for approval. Fridays for review. Everything else runs itself.</p>
 
-  <div class="approval-flow">
-    <div class="flow-step">
-      <div class="fs-num">01</div>
-      <h3>Draft Post</h3>
-      <p>Our team writes, captions, and schedules the post inside Sprout.</p>
+  <div class="step-grid">
+    <div class="step-card">
+      <div class="step-num">Mon</div>
+      <h3>10 minutes · approve the week</h3>
+      <p>Open the queue, skim the three posts scheduled for Mon, Wed, Fri, approve. Reject anything off-voice with a one-line comment for the studio.</p>
+      <a class="btn-inline" href="https://app.sproutsocial.com/publishing/approval/" target="_blank">Open Approval Queue →</a>
+      <span class="u">https://app.sproutsocial.com/publishing/approval/</span>
     </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">
-      <div class="fs-num">02</div>
-      <h3>Needs Approval</h3>
-      <p>Philippe receives an email + Sprout notification. One click to preview, one click to approve.</p>
-    </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">
-      <div class="fs-num">03</div>
-      <h3>Live at 9:00 IST</h3>
-      <p>Approved posts auto-publish to Facebook and Instagram on the scheduled day.</p>
+    <div class="step-card">
+      <div class="step-num">Fri</div>
+      <h3>10 minutes · read the report</h3>
+      <p>Open the dashboard. Note top post, worst post, follower delta. Reply to any comment Meta's auto-DM did not catch.</p>
+      <a class="btn-inline" href="https://app.sproutsocial.com/dashboard/" target="_blank">Open Home Dashboard →</a>
+      <span class="u">https://app.sproutsocial.com/dashboard/</span>
     </div>
   </div>
-
-  <div class="phil-card"><b>Philippe = external approver.</b> He does not need a Sprout seat. He approves from email, mobile, or web. If he does not approve, the post does not go out.</div>
-
-  <a class="deep-btn" href="https://app.sproutsocial.com/publishing/approval/" target="_blank">Open the Approval Queue <span class="arw">→</span></a>
 </section>
 
-<!-- SLIDE 7 -->
+<!-- ================= SLIDE 7 · LINK VAULT ================= -->
 <section class="slide" id="s7">
-  <div class="grid-motif"></div>
   <div class="slide-num">07</div>
-  <div class="eyebrow">Chapter Seven</div>
-  <h1 class="display">Three pillars,<br>three days a week.</h1>
-  <p class="lede">Monday sets the mood. Wednesday teaches the product. Friday earns the culture. Every post lives inside this shape.</p>
+  <div class="eyebrow">Slide 07 · Link vault</div>
+  <h1 class="display">Every link, one page.</h1>
+  <p class="lede">Bookmark this section. Every URL Omri needs, once.</p>
 
-  <div class="pillar-grid">
-    <div class="pillar-card inspo">
-      <div class="p-day">Monday · Inspiration</div>
-      <div class="p-title">The Paris a student wants to live in.</div>
-      <div class="p-count">Louvre, Cannes, Palais Garnier, Fashion Week, Roi Soleil, Salon du Chocolat.</div>
-      <div class="p-big">7 <small>posts across Sept + Oct</small></div>
-    </div>
-    <div class="pillar-card prod">
-      <div class="p-day">Wednesday · Product</div>
-      <div class="p-title">The French Paris actually speaks.</div>
-      <div class="p-count">Formal vs spoken, homonyms, elision, compression. The Atelier method in 60 seconds.</div>
-      <div class="p-big">8 <small>posts across Sept + Oct</small></div>
-    </div>
-    <div class="pillar-card edu">
-      <div class="p-day">Friday · Education</div>
-      <div class="p-title">Culture as curriculum.</div>
-      <div class="p-count">Cheeses, wardrobe, tourism, wines, holidays, capsules, the Mapster, Champs-Élysées, Strasbourg.</div>
-      <div class="p-big">8 <small>+ 10 bonus capsules</small></div>
-    </div>
-  </div>
-
-  <div style="margin-top:44px;display:flex;gap:60px;font-size:32px;color:var(--cream-dim);flex-wrap:wrap">
-    <div><b style="color:var(--cream);font-family:'Instrument Serif',serif;font-style:italic;font-size:52px">10</b> &nbsp; posts in September</div>
-    <div><b style="color:var(--cream);font-family:'Instrument Serif',serif;font-style:italic;font-size:52px">13</b> &nbsp; posts in October</div>
-    <div><b style="color:var(--cream);font-family:'Instrument Serif',serif;font-style:italic;font-size:52px">10</b> &nbsp; bonus Culture Capsules ready</div>
+  <div class="vault">
+    <div class="vault-row"><div class="label">Sprout · Dashboard</div><a class="link" href="https://app.sproutsocial.com/dashboard/" target="_blank">https://app.sproutsocial.com/dashboard/</a></div>
+    <div class="vault-row"><div class="label">Sprout · Drafts</div><a class="link" href="https://app.sproutsocial.com/publishing/drafts/" target="_blank">https://app.sproutsocial.com/publishing/drafts/</a></div>
+    <div class="vault-row"><div class="label">Sprout · Calendar</div><a class="link" href="https://app.sproutsocial.com/publishing/calendar/month/expanded" target="_blank">https://app.sproutsocial.com/publishing/calendar/month/expanded</a></div>
+    <div class="vault-row"><div class="label">Sprout · Approval Queue</div><a class="link" href="https://app.sproutsocial.com/publishing/approval/" target="_blank">https://app.sproutsocial.com/publishing/approval/</a></div>
+    <div class="vault-row"><div class="label">Sprout · Reports</div><a class="link" href="https://app.sproutsocial.com/reports/" target="_blank">https://app.sproutsocial.com/reports/</a></div>
+    <div class="vault-row"><div class="label">Sprout · Profiles &amp; users</div><a class="link" href="https://app.sproutsocial.com/settings/users/company/2910206/" target="_blank">https://app.sproutsocial.com/settings/users/company/2910206/</a></div>
+    <div class="vault-row"><div class="label">Meta · Automations (LLA)</div><a class="link" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&amp;asset_id=1179505785236150</a></div>
+    <div class="vault-row"><div class="label">Instagram · livefrenchatelier</div><a class="link" href="https://www.instagram.com/livefrenchatelier/" target="_blank">https://www.instagram.com/livefrenchatelier/</a></div>
+    <div class="vault-row"><div class="label">Facebook · French Atelier</div><a class="link" href="https://www.facebook.com/677053902156593" target="_blank">https://www.facebook.com/677053902156593</a></div>
+    <div class="vault-row"><div class="label">Facebook · Live Language Academy</div><a class="link" href="https://www.facebook.com/1179505785236150" target="_blank">https://www.facebook.com/1179505785236150</a></div>
+    <div class="vault-row"><div class="label">Original strategy deck</div><a class="link" href="https://gitteromri-ux.github.io/french-atelier-social-kickstart/deck.html?v=r9" target="_blank">https://gitteromri-ux.github.io/french-atelier-social-kickstart/deck.html?v=r9</a></div>
   </div>
 </section>
 
-<!-- SLIDE 8 -->
+<!-- ================= SLIDE 8 · HANDOFF ================= -->
 <section class="slide" id="s8">
   <div class="slide-num">08</div>
-  <div class="eyebrow">Chapter Eight</div>
-  <h1 class="display">Deep links,<br>one tap each.</h1>
-  <p class="lede">Everything you saw in the last seven chapters, one click away.</p>
+  <div class="eyebrow">Slide 08 · Handoff</div>
+  <h1 class="display">Handed to Omri.</h1>
+  <p class="lede">Three profiles connected. Thirty-three posts staged. Meta Comment-to-DM waiting on one paste. Everything below is a live link. Every element on every slide above is a live link.</p>
 
-  <div class="link-grid">
-    <a class="link-btn" href="https://app.sproutsocial.com/settings/users/company/2910206/" target="_blank"><div><span class="lb-label">Sprout · Profiles</span>Connected Meta and Instagram Profiles</div><span class="lb-arw">→</span></a>
-    <a class="link-btn" href="https://app.sproutsocial.com/publishing/drafts/" target="_blank"><div><span class="lb-label">Sprout · Drafts</span>All 33 Scheduled Posts</div><span class="lb-arw">→</span></a>
-    <a class="link-btn" href="https://app.sproutsocial.com/publishing/calendar/month/expanded" target="_blank"><div><span class="lb-label">Sprout · Calendar</span>Publishing Calendar, Full Month</div><span class="lb-arw">→</span></a>
-    <a class="link-btn" href="https://business.facebook.com/latest/inbox/automated_responses" target="_blank"><div><span class="lb-label">Meta · Automation</span>Comment-to-DM Rules</div><span class="lb-arw">→</span></a>
-    <a class="link-btn" href="https://app.sproutsocial.com/reports/" target="_blank"><div><span class="lb-label">Sprout · Reports</span>Live Dashboards + Weekly PDF</div><span class="lb-arw">→</span></a>
-    <a class="link-btn" href="https://app.sproutsocial.com/publishing/approval/" target="_blank"><div><span class="lb-label">Sprout · Approval</span>Philippe's Approval Queue</div><span class="lb-arw">→</span></a>
+  <div class="cta-wrap">
+    <a class="deep-btn meta giant" href="https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&asset_id=1179505785236150" target="_blank">Activate Comment-to-DM now <span class="arw">→</span></a>
+    <span class="url-cap">https://business.facebook.com/latest/inbox/automated_responses?business_id=1489173449541995&amp;asset_id=1179505785236150</span>
+    <span class="how-line">Opens the exact Meta screen where the DM text from Slide 00 gets pasted and saved.</span>
+  </div>
+
+  <div class="cta-wrap">
+    <a class="deep-btn sprout-btn giant" href="https://app.sproutsocial.com/publishing/approval/" target="_blank">Approve week one <span class="arw">→</span></a>
+    <span class="url-cap">https://app.sproutsocial.com/publishing/approval/</span>
+    <span class="how-line">Opens the Sprout approval queue. Approve the three posts for Mon, Wed, Fri and the week publishes itself at 09:00 Paris.</span>
+  </div>
+
+  <div class="cta-wrap">
+    <a class="deep-btn" href="https://gitteromri-ux.github.io/french-atelier-social-kickstart/deck.html?v=r9" target="_blank">Reopen the original strategy deck <span class="arw">→</span></a>
+    <span class="url-cap">https://gitteromri-ux.github.io/french-atelier-social-kickstart/deck.html?v=r9</span>
+    <span class="how-line">Opens the original French Atelier · Social Kickstart deck for context on pillars, voice, and calendar rationale.</span>
   </div>
 </section>
 
-<div class="nav-dots">
-  <a href="#s1">01</a><a href="#s2">02</a><a href="#s3">03</a><a href="#s4">04</a><a href="#s5">05</a><a href="#s6">06</a><a href="#s7">07</a><a href="#s8">08</a>
-</div>
+<footer class="foot">
+  <p>French Atelier · Social Kickstart Manual · v3</p>
+  <p>Built by the studio. Every element linked. Every action a giant button.</p>
+  <p><a href="https://gitteromri-ux.github.io/french-atelier-social-kickstart/deck.html?v=r9" target="_blank">Back to the original deck</a></p>
+</footer>
 
 <script>
-// Highlight active dot on scroll
-const dots = document.querySelectorAll('.nav-dots a');
-const slides = document.querySelectorAll('.slide');
-const obs = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const id = e.target.id;
-      dots.forEach(d=>d.classList.toggle('active', d.getAttribute('href')==='#'+id));
-    }
+function copyDM(){
+  const t = document.getElementById('dm-text').innerText;
+  navigator.clipboard.writeText(t).then(()=>{
+    const b = document.getElementById('copy-dm');
+    b.classList.add('copied');
+    b.innerHTML = 'Copied ✓';
+    setTimeout(()=>{b.classList.remove('copied');b.innerHTML='Copy DM text <span class="arw">⧉</span>';},2200);
   });
-},{threshold:0.4});
-slides.forEach(s=>obs.observe(s));
+}
 </script>
 </body>
 </html>
