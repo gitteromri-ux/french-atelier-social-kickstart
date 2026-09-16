@@ -3,503 +3,250 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The Control Room · Sprout + Meta Automations · French Atelier</title>
-<meta name="description" content="How the French Atelier organic engine runs. Sprout Social publishing with Philippe as external approver, Monday Wednesday Friday auto-publish, weekly reports, and Meta Business Suite comment-to-DM automations that route buying intent straight to the sales team.">
+<title>French Atelier · Sprout Social Setup · Presentation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter+Tight:wght@400;500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ground:#0A1428;
-    --ground-2:#050B18;
-    --ground-3:#0F1B33;
+    --ink:#0A1428;
+    --ink-2:#0F1B36;
     --cream:#F2EDE3;
-    --cream-dim:rgba(242,237,227,.72);
-    --cream-mute:rgba(242,237,227,.52);
+    --cream-2:#DDD5C4;
     --gold:#C9A662;
-    --gold-2:#E8CB8A;
-    --line:rgba(242,237,227,.12);
-    --line-2:rgba(201,166,98,.35);
-    --serif:'Instrument Serif','Fraunces',Georgia,serif;
+    --gold-2:#E8C97F;
+    --blue:#5EB6FF;
+    --serif:'Instrument Serif',Georgia,serif;
     --sans:'Inter Tight','Hanken Grotesk',system-ui,sans-serif;
   }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:var(--ground);color:var(--cream);font-family:var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-  body{font-size:18px;line-height:1.55;font-weight:400;overflow-x:hidden}
-  a{color:var(--gold-2);text-decoration:none;border-bottom:1px solid rgba(232,203,138,.35)}
-  a:hover{color:var(--cream);border-color:var(--cream)}
-  .wrap{max-width:1240px;margin:0 auto;padding:0 44px}
-  @media (max-width:720px){.wrap{padding:0 22px}}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-size:20px;line-height:1.5;overflow-x:hidden}
 
-  /* NAV */
-  .nav{position:sticky;top:0;z-index:50;background:rgba(10,20,40,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-  .nav-inner{max-width:1240px;margin:0 auto;padding:16px 44px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-  .nav-brand{font-family:var(--serif);font-size:26px;color:var(--cream);border:none;letter-spacing:.5px}
-  .nav-brand em{color:var(--gold-2);font-style:italic}
-  .nav-links{display:flex;gap:22px;font-size:14px;font-weight:500;color:var(--cream-dim)}
-  .nav-links a{color:var(--cream-dim);border:none}
-  .nav-links a:hover{color:var(--gold-2)}
-  @media (max-width:820px){.nav-links{display:none}}
+  /* NAV STRIP */
+  .top{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,20,40,0.92);backdrop-filter:blur(20px);padding:18px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(201,166,98,0.20)}
+  .top .brand{font-family:var(--serif);font-size:32px;color:var(--cream)}
+  .top .brand em{color:var(--gold-2);font-style:italic}
+  .top .counter{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--gold-2);background:rgba(10,20,40,0.9);padding:8px 22px;border-radius:4px;border:1px solid rgba(201,166,98,0.35)}
 
-  /* HERO */
-  .hero{position:relative;padding:120px 0 90px;overflow:hidden}
-  .hero::before{content:"";position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(201,166,98,.18),transparent 60%);filter:blur(30px)}
-  .hero::after{content:"";position:absolute;bottom:-300px;left:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(94,182,255,.10),transparent 60%);filter:blur(40px)}
-  .kicker{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-2);margin-bottom:36px}
-  h1.display{font-family:var(--serif);font-weight:400;font-size:clamp(60px,9vw,120px);line-height:1;letter-spacing:-.02em;margin:0 0 32px;color:var(--cream)}
-  h1.display em{font-style:italic;color:var(--gold-2)}
-  .lede{font-family:var(--sans);font-size:clamp(19px,1.6vw,23px);line-height:1.5;color:var(--cream-dim);max-width:820px;margin:0 0 48px}
+  /* SLIDE FRAME */
+  .slide{min-height:100vh;padding:120px 80px 100px;display:flex;flex-direction:column;justify-content:center;position:relative;border-bottom:1px solid rgba(201,166,98,0.12)}
+  .slide:nth-child(odd){background:linear-gradient(180deg,var(--ink) 0%,var(--ink-2) 100%)}
+  .slide:nth-child(even){background:radial-gradient(circle at 80% 20%,rgba(94,182,255,0.06) 0%,transparent 60%),var(--ink)}
 
-  /* STAT CHIPS */
-  .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:56px}
-  @media (max-width:820px){.stat-row{grid-template-columns:repeat(2,1fr)}}
-  .stat{padding:26px 22px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));border:1px solid var(--line);border-radius:14px}
-  .stat-n{font-family:var(--serif);font-size:56px;line-height:1;color:var(--gold-2);margin-bottom:10px}
-  .stat-l{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--cream)}
-  .stat-sub{font-size:14px;color:var(--cream-mute);margin-top:6px;line-height:1.4}
+  .num{position:absolute;top:100px;right:80px;font-family:var(--serif);font-style:italic;font-size:220px;color:rgba(201,166,98,0.10);line-height:0.85;pointer-events:none}
+  .eyebrow{font-size:22px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold-2);font-weight:600;margin-bottom:32px}
+  .big{font-family:var(--serif);font-size:clamp(72px,8.5vw,140px);line-height:0.95;letter-spacing:-0.02em;color:var(--cream);max-width:1400px;margin-bottom:48px}
+  .big em{font-style:italic;color:var(--gold-2)}
+  .lead{font-family:var(--serif);font-size:clamp(34px,3.2vw,48px);line-height:1.28;color:var(--cream);max-width:1400px;margin-bottom:56px;font-style:italic}
+  .body{font-size:28px;line-height:1.55;color:var(--cream-2);max-width:1300px;margin-bottom:36px}
+  .body strong{color:var(--cream);font-weight:700}
 
-  /* SECTIONS */
-  section.block{padding:110px 0;position:relative;border-top:1px solid var(--line)}
-  .numeral{position:absolute;top:60px;right:44px;font-family:var(--serif);font-style:italic;font-size:220px;line-height:1;color:rgba(201,166,98,.08);pointer-events:none;user-select:none}
-  h2.section{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5.4vw,72px);line-height:1.02;letter-spacing:-.015em;margin:0 0 28px;color:var(--cream);max-width:900px}
-  h2.section em{color:var(--gold-2);font-style:italic}
-  h3.sub{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-2);margin:0 0 20px}
-  p.body{font-size:19px;line-height:1.6;color:var(--cream-dim);max-width:800px;margin:0 0 24px}
-  p.body strong{color:var(--cream);font-weight:600}
+  /* BIG LINK BUTTONS */
+  .link-row{display:flex;flex-wrap:wrap;gap:24px;margin-top:24px}
+  .biglink{display:inline-flex;align-items:center;gap:20px;padding:32px 44px;background:linear-gradient(135deg,rgba(94,182,255,0.14) 0%,rgba(201,166,98,0.10) 100%);border:2px solid rgba(94,182,255,0.55);border-radius:6px;color:var(--cream);text-decoration:none;font-size:28px;font-weight:700;transition:all 0.2s;box-shadow:0 20px 60px rgba(94,182,255,0.15),inset 0 1px 0 rgba(255,255,255,0.08)}
+  .biglink:hover{transform:translateY(-3px);border-color:var(--gold-2);box-shadow:0 30px 80px rgba(201,166,98,0.30)}
+  .biglink .arrow{font-family:var(--serif);font-size:44px;color:var(--gold-2);line-height:1}
+  .biglink small{display:block;font-size:16px;letter-spacing:0.20em;text-transform:uppercase;color:var(--gold-2);font-weight:600;margin-bottom:6px;font-family:var(--sans)}
 
-  /* BROWSER FRAME */
-  .browser{margin-top:48px;background:#0d1830;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 40px 100px -30px rgba(0,0,0,.7),0 0 0 1px rgba(201,166,98,.08),0 0 60px -20px rgba(201,166,98,.15)}
-  .browser-chrome{padding:14px 18px;background:#0a1428;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--line)}
-  .dots{display:flex;gap:7px}
-  .dot{width:12px;height:12px;border-radius:50%;background:#2a3a58}
-  .url-bar{flex:1;padding:8px 14px;background:#0a1428;border:1px solid var(--line);border-radius:8px;font-family:'Inter Tight',monospace;font-size:13px;color:var(--cream-dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .url-bar span.lock{color:var(--gold-2);margin-right:8px}
-  .browser-body{padding:36px 32px;background:linear-gradient(180deg,#0f1b33,#0a1428);min-height:220px}
-  .browser-body h4{font-family:var(--serif);font-size:32px;margin:0 0 20px;color:var(--cream)}
-  .browser-body .row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px dashed var(--line);font-size:15px}
-  .browser-body .row span{color:var(--cream-dim)}
-  .browser-body .row b{color:var(--gold-2);font-weight:600}
-  .badge{display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(201,166,98,.15);color:var(--gold-2);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line-2)}
-  .badge.green{background:rgba(94,220,150,.12);color:#8fe6b3;border-color:rgba(94,220,150,.3)}
-
-  /* CALENDAR STRIP */
-  .cal-wrap{margin-top:44px;overflow-x:auto;padding-bottom:8px}
-  table.cal{width:100%;min-width:900px;border-collapse:separate;border-spacing:0;background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-  table.cal th{padding:18px 16px;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-2);text-align:left;background:#0a1428;border-bottom:1px solid var(--line)}
-  table.cal td{padding:16px;font-size:14px;color:var(--cream);border-bottom:1px solid var(--line);vertical-align:top}
-  table.cal td.date{font-family:var(--serif);font-size:22px;color:var(--gold-2);width:110px}
-  table.cal td.day{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-mute);width:70px}
-  table.cal td.title{font-weight:600;color:var(--cream)}
-  table.cal td.pillar{width:130px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim)}
-  table.cal tr:last-child td{border-bottom:none}
-  table.cal tr:hover td{background:rgba(201,166,98,.04)}
+  /* NUMBER CHIPS ROW */
+  .chips{display:flex;flex-wrap:wrap;gap:32px;margin-top:44px}
+  .chip{background:rgba(15,27,54,0.75);border:1px solid rgba(201,166,98,0.35);border-radius:4px;padding:32px 44px;min-width:280px;box-shadow:0 12px 40px rgba(0,0,0,0.35)}
+  .chip .n{font-family:var(--serif);font-size:96px;line-height:1;color:var(--gold-2);font-weight:400;margin-bottom:8px}
+  .chip .l{font-size:22px;letter-spacing:0.14em;text-transform:uppercase;color:var(--cream-2);font-weight:600}
 
   /* KEYWORDS GRID */
-  .kw-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:44px}
-  @media (max-width:720px){.kw-grid{grid-template-columns:1fr}}
-  .kw-card{padding:32px;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent);border:1px solid var(--line);border-radius:14px}
-  .kw-card h4{font-family:var(--serif);font-size:28px;color:var(--gold-2);margin:0 0 20px;font-weight:400}
-  .kw-list{display:flex;flex-wrap:wrap;gap:8px}
-  .kw{padding:8px 14px;background:rgba(201,166,98,.08);border:1px solid var(--line-2);border-radius:8px;font-family:'Inter Tight',monospace;font-size:14px;color:var(--cream)}
+  .kw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:32px;max-width:1400px}
+  .kw{background:rgba(94,182,255,0.10);border:1.5px solid rgba(94,182,255,0.45);border-radius:4px;padding:28px 32px;font-size:32px;font-weight:600;color:var(--cream);text-align:center;font-family:var(--serif);font-style:italic}
 
-  /* PHONE FRAME */
-  .flow-wrap{display:grid;grid-template-columns:340px 1fr;gap:60px;margin-top:56px;align-items:start}
-  @media (max-width:820px){.flow-wrap{grid-template-columns:1fr}}
-  .phone{width:320px;height:640px;background:#050b18;border:10px solid #14213e;border-radius:44px;box-shadow:0 40px 90px -20px rgba(0,0,0,.8),0 0 60px -20px rgba(201,166,98,.2);overflow:hidden;position:relative;margin:0 auto}
-  .phone::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:26px;background:#050b18;border-radius:0 0 18px 18px;z-index:5}
-  .phone-header{padding:38px 16px 12px;background:#0a1428;border-bottom:1px solid var(--line);text-align:center;font-size:12px;color:var(--cream-dim);font-weight:600}
-  .phone-body{padding:16px;height:calc(100% - 82px);overflow:hidden;background:#0a1428;display:flex;flex-direction:column;gap:12px}
-  .bubble{max-width:82%;padding:11px 14px;border-radius:16px;font-size:14px;line-height:1.4}
-  .bubble.them{align-self:flex-start;background:#1a2949;color:var(--cream);border-bottom-left-radius:4px}
-  .bubble.us{align-self:flex-end;background:linear-gradient(135deg,#C9A662,#E8CB8A);color:#0A1428;font-weight:500;border-bottom-right-radius:4px}
-  .bubble small{display:block;font-size:10px;opacity:.7;margin-top:4px;letter-spacing:.05em;text-transform:uppercase}
-  .bubble a{color:#0A1428;text-decoration:underline;border:none}
+  /* CALENDAR STRIP */
+  .cal-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;max-width:1400px}
+  .cal-cell{background:rgba(15,27,54,0.7);border:1px solid rgba(94,182,255,0.30);border-radius:4px;padding:36px 32px;box-shadow:0 12px 32px rgba(0,0,0,0.3)}
+  .cal-cell .day{font-size:20px;letter-spacing:0.20em;text-transform:uppercase;color:var(--gold-2);font-weight:700;margin-bottom:16px}
+  .cal-cell .pillar{font-family:var(--serif);font-size:52px;line-height:1;color:var(--cream);margin-bottom:12px}
+  .cal-cell .desc{font-size:20px;color:var(--cream-2);line-height:1.4}
 
-  /* DIAGRAM */
-  .diagram-wrap{margin-top:32px;padding:40px 24px;background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);border:1px solid var(--line);border-radius:14px}
-  svg.flow{width:100%;height:auto;display:block}
+  /* FLOW DIAGRAM */
+  .flow{margin-top:48px;padding:56px 48px;background:rgba(15,27,54,0.65);border:1px solid rgba(201,166,98,0.28);border-radius:6px;box-shadow:0 24px 72px rgba(0,0,0,0.45);max-width:1400px}
+  .flow-svg{width:100%;height:auto;display:block}
 
-  /* LINK GRID */
-  .link-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:44px}
-  @media (max-width:720px){.link-grid{grid-template-columns:1fr}}
-  .link-card{padding:22px 24px;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent);border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column;gap:8px;transition:border-color .2s,transform .2s}
-  .link-card:hover{border-color:var(--line-2);transform:translateY(-2px)}
-  .link-card .l-cat{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2);font-weight:600}
-  .link-card .l-title{font-family:var(--serif);font-size:22px;color:var(--cream);line-height:1.2}
-  .link-card .l-url{font-family:'Inter Tight',monospace;font-size:12px;color:var(--cream-mute);word-break:break-all}
-  a.link-card{border:1px solid var(--line)}
+  .foot{padding:80px;background:var(--ink);text-align:center;border-top:1px solid rgba(201,166,98,0.20)}
+  .foot .brand{font-family:var(--serif);font-style:italic;font-size:44px;color:var(--gold-2)}
+  .foot .tag{font-size:22px;color:var(--cream-2);margin-top:16px}
 
-  /* CALLOUT */
-  .callout{margin-top:44px;padding:28px 32px;background:linear-gradient(90deg,rgba(201,166,98,.08),transparent);border-left:3px solid var(--gold);border-radius:6px}
-  .callout p{margin:0;font-size:17px;color:var(--cream);line-height:1.55}
-  .callout strong{color:var(--gold-2)}
-
-  /* FOOTER */
-  footer{padding:70px 0;text-align:center;border-top:1px solid var(--line);color:var(--cream-mute);font-size:14px}
-  footer .sig{font-family:var(--serif);font-size:24px;color:var(--cream-dim);margin-bottom:8px}
-
-  /* utility */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:44px;align-items:start}
-  @media (max-width:820px){.split{grid-template-columns:1fr}}
-  .step{padding:22px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:60px 1fr;gap:22px;align-items:start}
-  .step-n{font-family:var(--serif);font-style:italic;font-size:44px;color:var(--gold-2);line-height:1}
-  .step-t{font-family:var(--sans);font-size:15px;color:var(--cream);line-height:1.5}
-  .step-t b{color:var(--gold-2);display:block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px;font-weight:600}
-
+  @media (max-width:900px){
+    .slide{padding:100px 32px 80px}
+    .big{font-size:56px}
+    .lead{font-size:28px}
+    .body{font-size:20px}
+    .biglink{padding:22px 28px;font-size:22px}
+    .num{font-size:120px;top:80px;right:32px}
+    .cal-strip{grid-template-columns:1fr}
+  }
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <a class="nav-brand" href="index.html">The French <em>Atelier</em></a>
-    <div class="nav-links">
-      <a href="#platform">Platform</a>
-      <a href="#autopilot">Auto-Publish</a>
-      <a href="#reports">Reports</a>
-      <a href="#automations">Auto-Reply</a>
-      <a href="#links">Deep Links</a>
-      <a href="index.html">Kickstart</a>
-    </div>
+<div class="top">
+  <div class="brand">The French <em>Atelier</em> · Sprout Setup</div>
+  <div class="counter">Presentation · 8 points</div>
+</div>
+
+<!-- 1 -->
+<section class="slide">
+  <div class="num">01</div>
+  <div class="eyebrow">Point one · What is Sprout Social</div>
+  <h1 class="big">One <em>command center</em> for every channel.</h1>
+  <p class="lead">Sprout Social replaces posting one platform at a time. One draft goes to Facebook and Instagram at once, on your schedule, with Philippe as the final approver.</p>
+  <div class="chips">
+    <div class="chip"><div class="n">3</div><div class="l">Profiles connected</div></div>
+    <div class="chip"><div class="n">33</div><div class="l">Drafts ready</div></div>
+    <div class="chip"><div class="n">2</div><div class="l">Months scheduled</div></div>
   </div>
-</nav>
-
-<!-- HERO -->
-<header class="hero">
-  <div class="wrap">
-    <div class="kicker">Operations Manual · September 16, 2026 · For Philippe</div>
-    <h1 class="display">The <em>control room</em><br>for Sprout and Meta.</h1>
-    <p class="lede">Every organic post for French Atelier and Longevity Life Academy sits inside one publishing queue, on one approval workflow, on one auto-publish schedule. Every buying-intent comment is captured by Meta Business Suite and answered inside 30 seconds with a public thank-you and a private DM straight to the sales team. Here is exactly how it runs, where to look, and every deep link.</p>
-
-    <div class="stat-row">
-      <div class="stat">
-        <div class="stat-n">33</div>
-        <div class="stat-l">Drafts staged in Sprout</div>
-        <div class="stat-sub">23 calendar posts + 10 extras, each in FB and IG</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n">3</div>
-        <div class="stat-l">Profiles connected</div>
-        <div class="stat-sub">FA Facebook · FA Instagram · Longevity Life Academy</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n">M·W·F</div>
-        <div class="stat-l">9:00 Israel time</div>
-        <div class="stat-sub">Sept 9 through Oct 30, no manual touch</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n">&lt;30s</div>
-        <div class="stat-l">Reply latency</div>
-        <div class="stat-sub">Comment to public reply and private DM</div>
-      </div>
-    </div>
-  </div>
-</header>
-
-<!-- 1. PLATFORM -->
-<section class="block" id="platform">
-  <div class="numeral">01</div>
-  <div class="wrap">
-    <h3 class="sub">§ 01 · How the platform works</h3>
-    <h2 class="section">One queue. One approver.<br><em>Zero manual publishing.</em></h2>
-    <p class="body">Sprout Social sits on top of the three connected profiles as the single publishing brain. Every post is drafted once, given a Facebook version and an Instagram version, scheduled to a specific date and time, then routed to <strong>Philippe as External Approver</strong>. Philippe sees only the posts waiting on him, approves with one click per post, and Sprout auto-publishes at the scheduled minute to the correct network. No spreadsheets, no reminders, no copy-paste into Facebook or Instagram. The same queue also feeds the reporting engine, so every published post is measured automatically the moment it goes live.</p>
-
-    <div class="browser">
-      <div class="browser-chrome">
-        <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-        <div class="url-bar"><span class="lock">◉</span>app.sproutsocial.com/publishing/drafts/</div>
-      </div>
-      <div class="browser-body">
-        <h4>Drafts · French Atelier by eteachergroup</h4>
-        <div class="row"><span>Sept 9 · Wed 09:00 · Bonjour Post · FA IG + FB</span><b><span class="badge">Awaiting Philippe</span></b></div>
-        <div class="row"><span>Sept 11 · Fri 09:00 · Charline Reel · FA IG + FB</span><b><span class="badge">Awaiting Philippe</span></b></div>
-        <div class="row"><span>Sept 14 · Mon 09:00 · Culture Capsule · Fête de l'Humanité</span><b><span class="badge">Awaiting Philippe</span></b></div>
-        <div class="row"><span>Sept 16 · Wed 09:00 · Philippe Origin Story · FA IG + FB</span><b><span class="badge">Awaiting Philippe</span></b></div>
-        <div class="row"><span>Sept 18 · Fri 09:00 · Mapster Reveal · FA IG + FB</span><b><span class="badge">Awaiting Philippe</span></b></div>
-        <div class="row"><span>+28 more drafts through Oct 30</span><b><span class="badge green">Ready</span></b></div>
-      </div>
-    </div>
+  <div class="link-row">
+    <a class="biglink" href="https://app.sproutsocial.com/dashboard/" target="_blank"><span><small>Open Sprout</small>Dashboard</span><span class="arrow">→</span></a>
   </div>
 </section>
 
-<!-- 2. AUTOPILOT -->
-<section class="block" id="autopilot">
-  <div class="numeral">02</div>
-  <div class="wrap">
-    <h3 class="sub">§ 02 · How posts auto-upload and go live</h3>
-    <h2 class="section">Approve once.<br>Publish for <em>seven weeks</em>.</h2>
-    <p class="body">All 23 calendar posts are already inside Sprout as drafts, each with its own Facebook copy and Instagram copy, its own image or video, and its own exact publish time locked to <strong>Monday, Wednesday and Friday at 9:00 Israel time</strong> from September 9 through October 30. Philippe receives an email from Sprout the moment posts enter his approval queue, opens the External Approver link (no Sprout seat needed), and approves. From that moment forward, Sprout uploads the asset to Facebook and Instagram at the scheduled minute using the official Meta Graph API. Nobody logs into Meta. Nobody copies captions. Nobody uploads media manually.</p>
-
-    <div class="split">
-      <div>
-        <div class="step"><div class="step-n">i.</div><div class="step-t"><b>Draft is written</b>Every post is composed once inside Sprout with a Facebook variant and an Instagram variant, media attached, hashtags set, first-comment queued where relevant.</div></div>
-        <div class="step"><div class="step-n">ii.</div><div class="step-t"><b>Scheduled to the minute</b>Locked to Mon, Wed or Fri at 09:00 Israel time. The schedule respects DST automatically.</div></div>
-        <div class="step"><div class="step-n">iii.</div><div class="step-t"><b>Routed to Philippe</b>Sprout sends an email with a one-click approval link. External Approver mode: no login, no seat required.</div></div>
-        <div class="step"><div class="step-n">iv.</div><div class="step-t"><b>Auto-publishes</b>At the scheduled minute Sprout pushes to Meta via API. A success ping lands in the shared inbox.</div></div>
-        <div class="step"><div class="step-n">v.</div><div class="step-t"><b>Metrics stream back</b>Impressions, reach, saves, comments and click-throughs flow into Reports within the hour.</div></div>
-      </div>
-      <div>
-        <div class="browser">
-          <div class="browser-chrome">
-            <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-            <div class="url-bar"><span class="lock">◉</span>app.sproutsocial.com/publishing/approval/</div>
-          </div>
-          <div class="browser-body" style="min-height:340px">
-            <h4 style="font-size:24px">Needs Approval · Philippe</h4>
-            <div class="row"><span><b style="color:var(--cream)">Sept 16 · Wed 09:00</b><br><small style="color:var(--cream-mute)">Philippe origin story reel · IG + FB</small></span><span class="badge green">Approve</span></div>
-            <div class="row"><span><b style="color:var(--cream)">Sept 18 · Fri 09:00</b><br><small style="color:var(--cream-mute)">Mapster reveal carousel · IG + FB</small></span><span class="badge green">Approve</span></div>
-            <div class="row"><span><b style="color:var(--cream)">Sept 21 · Mon 09:00</b><br><small style="color:var(--cream-mute)">Culture capsule · Nuit Blanche · IG + FB</small></span><span class="badge green">Approve</span></div>
-            <div class="row"><span><b style="color:var(--cream)">Sept 23 · Wed 09:00</b><br><small style="color:var(--cream-mute)">Charline pronunciation reel · IG + FB</small></span><span class="badge green">Approve</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <h3 class="sub" style="margin-top:80px">§ 02b · Publish calendar at a glance</h3>
-    <h2 class="section" style="font-size:clamp(32px,4vw,52px)">Seven weeks. <em>Three posts a week.</em></h2>
-    <div class="cal-wrap">
-      <table class="cal">
-        <thead><tr><th>Date</th><th>Day</th><th>Post</th><th>Pillar</th><th>Networks</th></tr></thead>
-        <tbody>
-          <tr><td class="date">Sept 9</td><td class="day">Wed</td><td class="title">Bonjour · reintroduction to the Atelier</td><td class="pillar">Inspiration</td><td>IG + FB</td></tr>
-          <tr><td class="date">Sept 11</td><td class="day">Fri</td><td class="title">Charline reel · one French word</td><td class="pillar">Education</td><td>IG + FB</td></tr>
-          <tr><td class="date">Sept 14</td><td class="day">Mon</td><td class="title">Culture capsule · Fête de l'Humanité</td><td class="pillar">Culture</td><td>IG + FB</td></tr>
-          <tr><td class="date">Sept 16</td><td class="day">Wed</td><td class="title">Philippe origin story</td><td class="pillar">Inspiration</td><td>IG + FB</td></tr>
-          <tr><td class="date">Sept 18</td><td class="day">Fri</td><td class="title">Mapster reveal</td><td class="pillar">Product</td><td>IG + FB</td></tr>
-          <tr><td class="date">Sept 21</td><td class="day">Mon</td><td class="title">Culture capsule · Nuit Blanche</td><td class="pillar">Culture</td><td>IG + FB</td></tr>
-          <tr><td class="date">Sept 23</td><td class="day">Wed</td><td class="title">Charline pronunciation lab</td><td class="pillar">Education</td><td>IG + FB</td></tr>
-          <tr><td class="date">Sept 25</td><td class="day">Fri</td><td class="title">Restaurant capsule · Parisian bistro</td><td class="pillar">Culture</td><td>IG + FB</td></tr>
-          <tr><td class="date">Sept 28</td><td class="day">Mon</td><td class="title">Testimonial · Sarah, 14 months in</td><td class="pillar">Product</td><td>IG + FB</td></tr>
-          <tr><td class="date">Sept 30</td><td class="day">Wed</td><td class="title">Behind the scenes · Philippe teaching</td><td class="pillar">Inspiration</td><td>IG + FB</td></tr>
-          <tr><td class="date">Oct 2</td><td class="day">Fri</td><td class="title">Charline reel · idiom of the week</td><td class="pillar">Education</td><td>IG + FB</td></tr>
-          <tr><td class="date">Oct 5</td><td class="day">Mon</td><td class="title">RTM · Prix Nobel de Littérature</td><td class="pillar">RTM</td><td>IG + FB</td></tr>
-          <tr><td class="date">Oct 7</td><td class="day">Wed</td><td class="title">Culture capsule · Fête des Vendanges</td><td class="pillar">Culture</td><td>IG + FB</td></tr>
-          <tr><td class="date">Oct 9</td><td class="day">Fri</td><td class="title">Product · one-to-one with Philippe</td><td class="pillar">Product</td><td>IG + FB</td></tr>
-          <tr><td class="date">Oct 12</td><td class="day">Mon</td><td class="title">Charline · common French mistake</td><td class="pillar">Education</td><td>IG + FB</td></tr>
-          <tr><td class="date">Oct 14</td><td class="day">Wed</td><td class="title">Inspiration · Paris at dawn</td><td class="pillar">Inspiration</td><td>IG + FB</td></tr>
-          <tr><td class="date">Oct 16</td><td class="day">Fri</td><td class="title">Testimonial · Michael, business French</td><td class="pillar">Product</td><td>IG + FB</td></tr>
-          <tr><td class="date">Oct 19</td><td class="day">Mon</td><td class="title">RTM · Salon du Chocolat</td><td class="pillar">RTM</td><td>IG + FB</td></tr>
-          <tr><td class="date">Oct 21</td><td class="day">Wed</td><td class="title">Culture capsule · Impressionism at Musée d'Orsay</td><td class="pillar">Culture</td><td>IG + FB</td></tr>
-          <tr><td class="date">Oct 23</td><td class="day">Fri</td><td class="title">Charline · liaison lesson</td><td class="pillar">Education</td><td>IG + FB</td></tr>
-          <tr><td class="date">Oct 26</td><td class="day">Mon</td><td class="title">Behind the scenes · Charline studio</td><td class="pillar">Inspiration</td><td>IG + FB</td></tr>
-          <tr><td class="date">Oct 28</td><td class="day">Wed</td><td class="title">RTM · Toussaint · France pauses</td><td class="pillar">RTM</td><td>IG + FB</td></tr>
-          <tr><td class="date">Oct 30</td><td class="day">Fri</td><td class="title">Season close · what October gave us</td><td class="pillar">Inspiration</td><td>IG + FB</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="callout"><p><strong>Extras staged and ready:</strong> five culture capsules, three real-time-moment events, Mapster feature and the Restaurant capsule. Thirty-three drafts in total, each in both Facebook and Instagram form.</p></div>
+<!-- 2 -->
+<section class="slide">
+  <div class="num">02</div>
+  <div class="eyebrow">Point two · The three profiles</div>
+  <h1 class="big">Facebook and Instagram, <em>one identity</em>.</h1>
+  <p class="body"><strong>French Atelier Facebook Page.</strong> Live now, receiving posts.<br><strong>French Atelier Instagram · @livefrenchatelier.</strong> Live now, receiving posts.<br><strong>Longevity Life Academy Facebook Page.</strong> Connected as a bonus surface for the same content system.</p>
+  <div class="link-row">
+    <a class="biglink" href="https://app.sproutsocial.com/settings/users/company/2910206/" target="_blank"><span><small>Live view</small>Groups and Social Profiles</span><span class="arrow">→</span></a>
   </div>
 </section>
 
-<!-- 3. REPORTS -->
-<section class="block" id="reports">
-  <div class="numeral">03</div>
-  <div class="wrap">
-    <h3 class="sub">§ 03 · Where to see reports</h3>
-    <h2 class="section">Every metric, one screen.<br><em>Emailed Monday morning.</em></h2>
-    <p class="body">Sprout aggregates the metrics from all three profiles into one Reports section. Impressions, reach, engagement rate per post, follower growth, top-performing content, best time to post, comment sentiment, and click-throughs on every link, all filterable by date range and profile. On top of that, a <strong>weekly performance PDF is auto-emailed to Philippe every Monday at 09:00 Israel time</strong>, covering the previous seven days across Facebook and Instagram, so the numbers arrive before he asks for them.</p>
-
-    <div class="browser">
-      <div class="browser-chrome">
-        <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-        <div class="url-bar"><span class="lock">◉</span>app.sproutsocial.com/reports/</div>
-      </div>
-      <div class="browser-body">
-        <h4>Reports · French Atelier · Sept 9 to Oct 30</h4>
-        <div class="row"><span>Total impressions across FA IG + FB</span><b>live</b></div>
-        <div class="row"><span>Engagement rate per post, by pillar</span><b>live</b></div>
-        <div class="row"><span>Follower growth curve, both networks</span><b>live</b></div>
-        <div class="row"><span>Top posts of the week, ranked</span><b>live</b></div>
-        <div class="row"><span>Comment volume + sentiment</span><b>live</b></div>
-        <div class="row"><span>Weekly PDF to Philippe · every Monday 09:00</span><b><span class="badge green">Scheduled</span></b></div>
-      </div>
-    </div>
-
-    <div class="callout" style="margin-top:36px"><p><strong>Open Reports:</strong> <a href="https://app.sproutsocial.com/reports/" target="_blank" rel="noopener">app.sproutsocial.com/reports</a></p></div>
+<!-- 3 -->
+<section class="slide">
+  <div class="num">03</div>
+  <div class="eyebrow">Point three · The content bank</div>
+  <h1 class="big">33 posts, <em>drafted and staged</em>.</h1>
+  <p class="lead">Every post from the deck is already inside Sprout. Ten Culture Capsule expansions, three seasonal RTM moments, the Mapster carousel, and the full September to October calendar. Each has caption, hashtags, and preview attached.</p>
+  <div class="link-row">
+    <a class="biglink" href="https://app.sproutsocial.com/publishing/drafts/" target="_blank"><span><small>All 33 posts</small>Drafts library</span><span class="arrow">→</span></a>
+    <a class="biglink" href="https://gitteromri-ux.github.io/french-atelier-social-kickstart/deck.html?v=r9" target="_blank"><span><small>Source</small>Original deck</span><span class="arrow">→</span></a>
   </div>
 </section>
 
-<!-- 4. AUTOMATIONS -->
-<section class="block" id="automations">
-  <div class="numeral">04</div>
-  <div class="wrap">
-    <h3 class="sub">§ 04 · How auto-comment replies work</h3>
-    <h2 class="section">A comment with buying intent<br>becomes a <em>sales conversation</em><br>in under 30 seconds.</h2>
-    <p class="body">Meta Business Suite watches every comment on every French Atelier and Longevity Life Academy post. When a comment contains any of the pre-configured buying-intent keywords (price, sign me up, DM me, interested, and their French equivalents), the automation fires two things at once. First, a <strong>public reply</strong> lands under the comment thanking the person and telling them to check their inbox. Second, an <strong>instant private DM</strong> arrives in their inbox with a direct link to the sales team, a WhatsApp number, and a booking calendar. The person went from casual scroll to booked call without a human touching a keyboard.</p>
-
-    <div class="flow-wrap">
-      <div class="phone">
-        <div class="phone-header">livefrenchatelier · Direct</div>
-        <div class="phone-body">
-          <div class="bubble them">Combien ça coûte? <small>Comment on latest reel</small></div>
-          <div class="bubble us">Merci pour ton message. Voici tout ce qu'il te faut. <small>Public reply · &lt;10s</small></div>
-          <div class="bubble us">Bonjour · here is the direct line to Philippe's team, a WhatsApp, and a calendar to book a 15-minute call. <a href="#">frenchatelier.com/sales</a> · <a href="#">WhatsApp</a> · <a href="#">Book a call</a><small>Private DM · &lt;30s</small></div>
-          <div class="bubble them">Parfait, je réserve maintenant.</div>
-        </div>
-      </div>
-
-      <div>
-        <div class="diagram-wrap">
-          <svg class="flow" viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#C9A662"/>
-                <stop offset="100%" stop-color="#E8CB8A"/>
-              </linearGradient>
-              <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-                <feGaussianBlur stdDeviation="4" result="b"/>
-                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-            </defs>
-
-            <!-- 5 nodes horizontally -->
-            <g font-family="Inter Tight, sans-serif" font-size="12" fill="#F2EDE3" text-anchor="middle">
-              <!-- Node 1: Comment -->
-              <circle cx="72" cy="140" r="46" fill="#0F1B33" stroke="url(#gold)" stroke-width="1.5"/>
-              <text x="72" y="132" font-family="Instrument Serif, serif" font-size="22" fill="#E8CB8A">01</text>
-              <text x="72" y="152" font-size="11" fill="#F2EDE3">Comment</text>
-              <text x="72" y="215" font-size="10" fill="rgba(242,237,227,.62)">User comment</text>
-              <text x="72" y="228" font-size="10" fill="rgba(242,237,227,.62)">on FA post</text>
-
-              <!-- Node 2: Trigger -->
-              <circle cx="216" cy="140" r="46" fill="#0F1B33" stroke="url(#gold)" stroke-width="1.5"/>
-              <text x="216" y="132" font-family="Instrument Serif, serif" font-size="22" fill="#E8CB8A">02</text>
-              <text x="216" y="152" font-size="11" fill="#F2EDE3">Trigger</text>
-              <text x="216" y="215" font-size="10" fill="rgba(242,237,227,.62)">Keyword match</text>
-              <text x="216" y="228" font-size="10" fill="rgba(242,237,227,.62)">EN + FR</text>
-
-              <!-- Node 3: Public reply -->
-              <circle cx="360" cy="140" r="46" fill="#0F1B33" stroke="url(#gold)" stroke-width="1.5"/>
-              <text x="360" y="132" font-family="Instrument Serif, serif" font-size="22" fill="#E8CB8A">03</text>
-              <text x="360" y="152" font-size="11" fill="#F2EDE3">Public reply</text>
-              <text x="360" y="215" font-size="10" fill="rgba(242,237,227,.62)">Thanks + prompt</text>
-              <text x="360" y="228" font-size="10" fill="rgba(242,237,227,.62)">to check DMs</text>
-
-              <!-- Node 4: DM -->
-              <circle cx="504" cy="140" r="46" fill="#0F1B33" stroke="url(#gold)" stroke-width="1.5" filter="url(#glow)"/>
-              <text x="504" y="132" font-family="Instrument Serif, serif" font-size="22" fill="#E8CB8A">04</text>
-              <text x="504" y="152" font-size="11" fill="#F2EDE3">Private DM</text>
-              <text x="504" y="215" font-size="10" fill="rgba(242,237,227,.62)">Sales link + WA</text>
-              <text x="504" y="228" font-size="10" fill="rgba(242,237,227,.62)">+ calendar</text>
-
-              <!-- Node 5: Sales -->
-              <circle cx="648" cy="140" r="46" fill="url(#gold)" stroke="#E8CB8A" stroke-width="1.5"/>
-              <text x="648" y="132" font-family="Instrument Serif, serif" font-size="22" fill="#0A1428">05</text>
-              <text x="648" y="152" font-size="11" fill="#0A1428" font-weight="600">Sales team</text>
-              <text x="648" y="215" font-size="10" fill="rgba(242,237,227,.62)">Booked call</text>
-              <text x="648" y="228" font-size="10" fill="rgba(242,237,227,.62)">or WhatsApp chat</text>
-
-              <!-- Arrows -->
-              <g stroke="url(#gold)" stroke-width="1.5" fill="none" marker-end="url(#arrow)">
-                <line x1="118" y1="140" x2="170" y2="140"/>
-                <line x1="262" y1="140" x2="314" y2="140"/>
-                <line x1="406" y1="140" x2="458" y2="140"/>
-                <line x1="550" y1="140" x2="602" y2="140"/>
-              </g>
-
-              <!-- Small caption -->
-              <text x="360" y="298" font-family="Instrument Serif, serif" font-style="italic" font-size="18" fill="rgba(232,203,138,.85)">Comment · Trigger · Public reply · Private DM · Sales</text>
-              <text x="360" y="322" font-size="11" fill="rgba(242,237,227,.55)">Total elapsed time from comment to inbox: under 30 seconds</text>
-            </g>
-
-            <defs>
-              <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-                <path d="M0,0 L10,5 L0,10 z" fill="#E8CB8A"/>
-              </marker>
-            </defs>
-          </svg>
-        </div>
-
-        <div class="callout"><p><strong>Longevity Life Academy</strong> automation is live inside Meta Business Suite. <strong>French Atelier</strong> automation is being configured with the same portfolio pattern tonight.</p></div>
-      </div>
-    </div>
+<!-- 4 -->
+<section class="slide">
+  <div class="num">04</div>
+  <div class="eyebrow">Point four · How posts publish</div>
+  <h1 class="big">Monday, Wednesday, <em>Friday</em>. Automatic.</h1>
+  <p class="body">Every post carries a scheduled send time. Once Philippe approves, Sprout publishes to Facebook and Instagram at exactly 9am Israel time on the assigned date. No manual login, no cross-posting, no missed windows.</p>
+  <div class="cal-strip">
+    <div class="cal-cell"><div class="day">Monday</div><div class="pillar">Inspiration</div><div class="desc">Beauty of French culture, cinematic reels, RTM moments</div></div>
+    <div class="cal-cell"><div class="day">Wednesday</div><div class="pillar">Product</div><div class="desc">Homonyms, formal vs spoken, ear training</div></div>
+    <div class="cal-cell"><div class="day">Friday</div><div class="pillar">Education</div><div class="desc">Culture capsules, wines, cheeses, holidays</div></div>
+  </div>
+  <div class="link-row" style="margin-top:48px">
+    <a class="biglink" href="https://app.sproutsocial.com/publishing/calendar/month/expanded" target="_blank"><span><small>See the timing</small>Publishing calendar</span><span class="arrow">→</span></a>
   </div>
 </section>
 
-<!-- 5. KEYWORDS -->
-<section class="block" id="keywords">
-  <div class="numeral">05</div>
-  <div class="wrap">
-    <h3 class="sub">§ 05 · The exact buying-intent keywords</h3>
-    <h2 class="section">Every phrase that means<br>"<em>I want to buy</em>."</h2>
-    <p class="body">These are the keywords loaded into the Meta Business Suite comment-to-DM automation for both pages. Bilingual by design, because French Atelier's audience switches between English and French inside the same comment thread.</p>
-
-    <div class="kw-grid">
-      <div class="kw-card">
-        <h4>English triggers</h4>
-        <div class="kw-list">
-          <span class="kw">price</span><span class="kw">pricing</span><span class="kw">how much</span><span class="kw">cost</span><span class="kw">how do I sign up</span><span class="kw">sign me up</span><span class="kw">info</span><span class="kw">more info</span><span class="kw">DM me</span><span class="kw">send me the link</span><span class="kw">want it</span><span class="kw">I want</span><span class="kw">interested</span><span class="kw">I'm in</span><span class="kw">where do I start</span><span class="kw">how do I join</span><span class="kw">book a call</span>
-        </div>
-      </div>
-      <div class="kw-card">
-        <h4>French triggers</h4>
-        <div class="kw-list">
-          <span class="kw">prix</span><span class="kw">tarif</span><span class="kw">combien</span><span class="kw">ça coûte</span><span class="kw">je veux</span><span class="kw">m'inscrire</span><span class="kw">inscription</span><span class="kw">infos</span><span class="kw">plus d'infos</span><span class="kw">MP</span><span class="kw">envoie le lien</span><span class="kw">intéressé</span><span class="kw">intéressée</span><span class="kw">ça m'intéresse</span><span class="kw">comment commencer</span><span class="kw">rendez-vous</span><span class="kw">réserver</span>
-        </div>
-      </div>
-    </div>
+<!-- 5 -->
+<section class="slide">
+  <div class="num">05</div>
+  <div class="eyebrow">Point five · Philippe as approver</div>
+  <h1 class="big">Nothing publishes <em>until he says yes</em>.</h1>
+  <p class="lead">Every scheduled post lands in the Needs Approval queue. Philippe reviews, approves or requests a change, and Sprout ships from there. No shadow posts, no surprises.</p>
+  <div class="link-row">
+    <a class="biglink" href="https://app.sproutsocial.com/publishing/approval/" target="_blank"><span><small>Approval queue</small>Needs Approval</span><span class="arrow">→</span></a>
   </div>
 </section>
 
-<!-- 6. DEEP LINKS -->
-<section class="block" id="links">
-  <div class="numeral">06</div>
-  <div class="wrap">
-    <h3 class="sub">§ 06 · Deep links</h3>
-    <h2 class="section">One click to every surface.</h2>
-    <p class="body">Save this page. Every place Philippe or the team needs to be is one tap away.</p>
-
-    <div class="link-grid">
-      <a class="link-card" href="https://app.sproutsocial.com/publishing/drafts/" target="_blank" rel="noopener">
-        <span class="l-cat">Sprout · Publishing</span>
-        <span class="l-title">Drafts</span>
-        <span class="l-url">app.sproutsocial.com/publishing/drafts/</span>
-      </a>
-      <a class="link-card" href="https://app.sproutsocial.com/publishing/calendar/month/expanded" target="_blank" rel="noopener">
-        <span class="l-cat">Sprout · Publishing</span>
-        <span class="l-title">Calendar · month view</span>
-        <span class="l-url">app.sproutsocial.com/publishing/calendar/month/expanded</span>
-      </a>
-      <a class="link-card" href="https://app.sproutsocial.com/publishing/approval/" target="_blank" rel="noopener">
-        <span class="l-cat">Sprout · Approvals</span>
-        <span class="l-title">Needs approval (Philippe)</span>
-        <span class="l-url">app.sproutsocial.com/publishing/approval/</span>
-      </a>
-      <a class="link-card" href="https://app.sproutsocial.com/reports/" target="_blank" rel="noopener">
-        <span class="l-cat">Sprout · Analytics</span>
-        <span class="l-title">Reports</span>
-        <span class="l-url">app.sproutsocial.com/reports/</span>
-      </a>
-      <a class="link-card" href="https://business.facebook.com/latest/inbox/automated_responses" target="_blank" rel="noopener">
-        <span class="l-cat">Meta Business Suite</span>
-        <span class="l-title">Automations · comment-to-DM</span>
-        <span class="l-url">business.facebook.com/latest/inbox/automated_responses</span>
-      </a>
-      <a class="link-card" href="https://www.instagram.com/livefrenchatelier/" target="_blank" rel="noopener">
-        <span class="l-cat">Live account</span>
-        <span class="l-title">Instagram · @livefrenchatelier</span>
-        <span class="l-url">instagram.com/livefrenchatelier/</span>
-      </a>
-      <a class="link-card" href="https://www.facebook.com/677053902156593" target="_blank" rel="noopener">
-        <span class="l-cat">Live account</span>
-        <span class="l-title">Facebook · French Atelier Page</span>
-        <span class="l-url">facebook.com/677053902156593</span>
-      </a>
-      <a class="link-card" href="https://gitteromri-ux.github.io/french-atelier-social-kickstart/deck.html?v=r9" target="_blank" rel="noopener">
-        <span class="l-cat">Strategy</span>
-        <span class="l-title">The full kickstart deck</span>
-        <span class="l-url">gitteromri-ux.github.io/french-atelier-social-kickstart/deck.html</span>
-      </a>
-    </div>
+<!-- 6 -->
+<section class="slide">
+  <div class="num">06</div>
+  <div class="eyebrow">Point six · Reports and performance</div>
+  <h1 class="big">A weekly PDF <em>on Philippe's desk</em>.</h1>
+  <p class="body">Every Monday, Sprout emails Philippe a scheduled PDF report with reach, engagement, saves, link clicks, follower growth, and top posts across both networks. Sentiment analysis and message spike alerts run in the background.</p>
+  <div class="link-row">
+    <a class="biglink" href="https://app.sproutsocial.com/reports/" target="_blank"><span><small>Live dashboard</small>Reports center</span><span class="arrow">→</span></a>
   </div>
 </section>
 
-<footer>
-  <div class="wrap">
-    <div class="sig">The French <em style="color:var(--gold-2);font-style:italic">Atelier</em></div>
-    <div>Organic social kickstart · Sept and Oct 2026 · Sprout Social Advanced on eteachergroup workspace · Meta Business Suite automations by portfolio pattern</div>
+<!-- 7 -->
+<section class="slide">
+  <div class="num">07</div>
+  <div class="eyebrow">Point seven · Buying-intent auto reply</div>
+  <h1 class="big">Every buying comment <em>gets a DM in seconds</em>.</h1>
+  <p class="body">When someone comments a buying keyword on a French Atelier post, Meta Business Suite automation fires two things instantly. A public thank-you reply lands under the comment. A private DM sends the sales team link, the WhatsApp shortcut, and a booking calendar. Zero friction, sub-minute response.</p>
+  <div class="kw-grid">
+    <div class="kw">price</div>
+    <div class="kw">cost</div>
+    <div class="kw">how much</div>
+    <div class="kw">sign up</div>
+    <div class="kw">sign me up</div>
+    <div class="kw">interested</div>
+    <div class="kw">info</div>
+    <div class="kw">DM me</div>
+    <div class="kw">want it</div>
+    <div class="kw">buy</div>
   </div>
-</footer>
+  <div class="flow">
+    <svg class="flow-svg" viewBox="0 0 1600 220" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="10" markerHeight="10" orient="auto">
+          <path d="M0,0 L10,5 L0,10 Z" fill="#C9A662"/>
+        </marker>
+      </defs>
+      <g font-family="Instrument Serif" fill="#F2EDE3">
+        <rect x="0" y="60" width="270" height="100" rx="6" fill="rgba(94,182,255,0.16)" stroke="#5EB6FF" stroke-width="1.5"/>
+        <text x="135" y="105" text-anchor="middle" font-size="26" font-style="italic">Comment posted</text>
+        <text x="135" y="138" text-anchor="middle" font-size="18" fill="#DDD5C4" font-family="Inter Tight">on FA post</text>
+
+        <line x1="270" y1="110" x2="360" y2="110" stroke="#C9A662" stroke-width="2" marker-end="url(#arr)"/>
+
+        <rect x="365" y="60" width="290" height="100" rx="6" fill="rgba(201,166,98,0.14)" stroke="#C9A662" stroke-width="1.5"/>
+        <text x="510" y="105" text-anchor="middle" font-size="26" font-style="italic">Keyword match</text>
+        <text x="510" y="138" text-anchor="middle" font-size="18" fill="#DDD5C4" font-family="Inter Tight">price, sign up, interested, buy</text>
+
+        <line x1="655" y1="110" x2="745" y2="110" stroke="#C9A662" stroke-width="2" marker-end="url(#arr)"/>
+
+        <rect x="750" y="20" width="290" height="80" rx="6" fill="rgba(94,182,255,0.14)" stroke="#5EB6FF" stroke-width="1.5"/>
+        <text x="895" y="55" text-anchor="middle" font-size="22" font-style="italic">Public reply</text>
+        <text x="895" y="82" text-anchor="middle" font-size="16" fill="#DDD5C4" font-family="Inter Tight">Merci, DM sent</text>
+
+        <rect x="750" y="120" width="290" height="80" rx="6" fill="rgba(94,182,255,0.14)" stroke="#5EB6FF" stroke-width="1.5"/>
+        <text x="895" y="155" text-anchor="middle" font-size="22" font-style="italic">Private DM</text>
+        <text x="895" y="182" text-anchor="middle" font-size="16" fill="#DDD5C4" font-family="Inter Tight">Sales link and WhatsApp</text>
+
+        <line x1="1040" y1="160" x2="1130" y2="160" stroke="#C9A662" stroke-width="2" marker-end="url(#arr)"/>
+
+        <rect x="1135" y="110" width="290" height="100" rx="6" fill="rgba(201,166,98,0.22)" stroke="#E8C97F" stroke-width="2"/>
+        <text x="1280" y="155" text-anchor="middle" font-size="28" font-style="italic" fill="#E8C97F">Sales team</text>
+        <text x="1280" y="188" text-anchor="middle" font-size="18" fill="#DDD5C4" font-family="Inter Tight">call center pickup</text>
+      </g>
+    </svg>
+  </div>
+  <div class="link-row" style="margin-top:48px">
+    <a class="biglink" href="https://business.facebook.com/latest/inbox/automated_responses" target="_blank"><span><small>Rule configured, activation pending final save</small>Meta Automations</span><span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="slide">
+  <div class="num">08</div>
+  <div class="eyebrow">Point eight · Deep control at your fingertips</div>
+  <h1 class="big">Every screen, <em>one click away</em>.</h1>
+  <p class="body">These are the six URLs to run the entire French Atelier organic operation from Philippe's desk this month.</p>
+  <div class="link-row">
+    <a class="biglink" href="https://app.sproutsocial.com/publishing/drafts/" target="_blank"><span><small>1 · Content</small>Drafts</span><span class="arrow">→</span></a>
+    <a class="biglink" href="https://app.sproutsocial.com/publishing/calendar/month/expanded" target="_blank"><span><small>2 · Timing</small>Calendar</span><span class="arrow">→</span></a>
+    <a class="biglink" href="https://app.sproutsocial.com/publishing/approval/" target="_blank"><span><small>3 · Sign off</small>Needs Approval</span><span class="arrow">→</span></a>
+    <a class="biglink" href="https://app.sproutsocial.com/reports/" target="_blank"><span><small>4 · Performance</small>Reports</span><span class="arrow">→</span></a>
+    <a class="biglink" href="https://business.facebook.com/latest/inbox/automated_responses" target="_blank"><span><small>5 · Auto replies</small>Meta Automations</span><span class="arrow">→</span></a>
+    <a class="biglink" href="https://gitteromri-ux.github.io/french-atelier-social-kickstart/deck.html?v=r9" target="_blank"><span><small>6 · The plan</small>Original deck</span><span class="arrow">→</span></a>
+  </div>
+</section>
+
+<div class="foot">
+  <div class="brand">French <em>Atelier</em> · organic launch · September 2026</div>
+  <div class="tag">Built for Philippe. Configured tonight. Live on Monday.</div>
+</div>
 
 </body>
 </html>
